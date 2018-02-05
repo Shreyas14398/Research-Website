@@ -1,0 +1,269 @@
+<!Doctype HTML>
+<html>
+<head>
+  <link rel="shortcut icon" href="ss1.png">
+  <title>SS University- Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="Super">
+<div class="Header">
+  <img class="logo1" src="ss1.png">
+  <img class="logo2" src="ss.png">
+  <h1>SS University- Research Portal</h1>
+
+</div>
+<br>
+<div class="Menu">
+  <ul class="Mnu">
+    <li><a href="home.html">Home</a></li>
+    <li><a class="active" href="login.html">Login</a></li>
+    <li><a href="ann.html">Announcements</a></li>
+    <li><a href="journals.html">Journals</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="super.html">Supervisor</a></li>
+    <li><a href="support.html">Support</a></li>
+  </ul>
+</div>
+</div>
+<br>
+<h3>Login</h3>
+<div class="Top">
+  <div onclick='myfunc1()' class="scholar-box" id='1'>Scholar</div><div onclick='myfunc2()' class="supervisor-box" id='2' >Supervisor</div>
+  <div class="bor-top"></div>
+</div>
+<div class="login">
+  <div class="scholar" id='11'>
+    <form method="POST">
+      <br>
+      Register Number: <br><input type='text' name='regno'/><br>
+      <br>
+      Password: <br><input type='password' name='password'/></font><br>
+      <br>
+      <button type='submit' name='in'>Login</button>
+    </form>
+  </div>
+  <div class="supervisor" id='22'>
+    <form method="POST">
+      <br>
+      User ID: <br>
+      <input type='text' name='username'/><br>
+      <br>
+      Password:<br> <input type='password' name='password'/></font><br>
+      <br>
+      <button type='submit' name='in'>Login</button>
+    </form>
+  </div>
+
+  </div>
+  <br>
+  <br>
+  <br>
+  <hr>
+  <center>2018 &#169 Sharath and Shreyas | All Rights Reserved</center>
+<style>
+body{
+  font-size: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+h3{
+ text-align: center;
+ font-family: "Comic Sans MS", fantasy;
+}
+.Super{
+  position: sticky;
+  top:0;
+  z-index: 1;
+  background-color: white;
+}
+.Header{
+  width: 100%;
+  height: 80px;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  background-color: white;
+  padding: 0;
+  box-shadow: 5px 5px 5px grey;
+  white-space: nowrap;
+  font-family: "Bookman";
+  z-index: 1;
+}
+.logo1{
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  float:left;
+
+}
+.logo2{
+  display: inline-block;
+  float: right;
+  height: 80px;
+  width: 80px;
+  padding:0;
+
+}
+h1{
+  text-align: center;
+  font-size: 2.5em;
+  padding: 0;
+
+  margin-left: -15%;
+  margin-right: 0;
+  margin-top: 1%;
+  margin-bottom: 0;
+}
+ul{
+  list-style-type: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-bottom: solid;
+  border-width: 0.12px;
+  border-color: grey;
+  font-family: cursive;
+}
+li{
+  float: left;
+  padding: 12px 14px;
+  position: relative;
+  font-weight: 500;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+li a.active{
+  font-weight: bolder;
+}
+li a:hover{
+  font-weight: bold;
+}
+.Top{
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  text-align: center;
+}
+.login{
+  border-style: solid;
+  border-width: thin;
+  height: 251px;
+  width:599px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-top: none;
+  border-right: solid;
+  border-width: thin;
+  position: relative;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 5px 5px 5px grey;
+}
+.bor-top{
+
+  border-top: solid;
+  border-width: thin;
+  width: 360px;
+  margin-left: 240px;
+  margin-top: -1px;
+}
+.scholar-box{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-style: solid;
+  border-left: solid;
+  border-right: solid;
+  border-bottom: none;
+  margin-bottom: -2px;
+  border-width: thin;
+  height:30px;
+  width: 120px;
+  text-align: center;
+  font-weight: bold;
+
+}
+.supervisor-box{
+  height: 5px;
+  width:10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-style: solid;
+  border-left: none;
+
+  border-right: solid;
+  border-bottom: solid;
+  border-width: thin;
+  height:30px;
+  width:120px;
+  margin-left: 120px;
+  margin-top: -31px;
+  text-align: center;
+  font-weight: normal;
+}
+.supervisor-box:hover{
+  cursor: pointer;
+}
+.scholar-box:hover{
+  cursor: pointer;
+}
+.scholar{
+  display: block;
+}
+.supervisor{
+  display:none;
+}
+</style>
+<script>
+ function myfunc1(){
+   var A=document.getElementById('1')
+   {
+     A.style.fontWeight='bold';
+     A.style.borderBottom='none';
+     A.style.borderWidth='thin';
+   }
+   var B=document.getElementById('2')
+   {
+     B.style.fontWeight='normal';
+     B.style.borderBottom='solid';
+     B.style.borderWidth='thin';
+   }
+   var C=document.getElementById('11')
+   {
+     C.style.display='block';
+   }
+   var D=document.getElementById('22')
+   {
+     D.style.display='none';
+   }
+
+ }
+ function myfunc2(){
+   var A=document.getElementById('1')
+   {
+     A.style.fontWeight='normal';
+     A.style.borderBottom='solid';
+     A.style.borderWidth='thin';
+   }
+   var B=document.getElementById('2')
+   {
+     B.style.fontWeight='bold';
+     B.style.borderBottom='none';
+
+   }
+   var C=document.getElementById('11')
+   {
+     C.style.display='none';
+   }
+   var D=document.getElementById('22')
+   {
+     D.style.display='block';
+   }
+ }
+</script>
+</body>
+</html>

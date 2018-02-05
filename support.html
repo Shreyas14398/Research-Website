@@ -1,0 +1,186 @@
+<!Doctype HTML>
+<html>
+<head>
+  <link rel="shortcut icon" href="ss1.png">
+  <title>SS University- Support</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="Super">
+<div class="Header">
+  <img class="logo1" src="ss1.png">
+  <img class="logo2" src="ss.png">
+  <h1>SS University- Research Portal</h1>
+
+</div>
+<br>
+<div class="Menu">
+  <ul class="Mnu">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="ann.html">Announcements</a></li>
+    <li><a href="journals.html">Journals</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="super.html">Supervisor</a></li>
+    <li><a class="active" href="support.html">Support</a></li>
+  </ul>
+</div>
+</div>
+<br>
+<button class='A' onclick='fun1()'>Write to us!</button>
+<div class='panel' id='1'>
+  <form method="POST">
+    <br>
+    Name:  <input type="name" class="name"></input><br><br>
+    Designation: <input type="radio" name="desig"> Scholar </input>
+    <input type="radio" name="desig"> Supervisor </input><br><br>
+    Message: <br><textarea name="Mess" rows='10' cols='100'>
+    </textarea><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+<br>
+<button class='A' onclick='fun2()'>Details</button>
+<div class='panel1' id='2'>
+     The Dean : dean@ssuniv.edu 9696910342<br>
+     Registrar: registrar@ssuniv.edu 9393931234<br>
+     SAP: sap@ssuniv.edu 9123243453
+</div><br>
+<br>
+<hr>
+<center>2018 &#169 Sharath and Shreyas | All Rights Reserved</center>
+<style>
+body{
+  font-size: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.Super{
+  position: sticky;
+  top:0;
+  z-index: 1;
+  background-color: white;
+}
+.Header{
+  width: 100%;
+  height: 80px;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  background-color: white;
+  padding: 0;
+  box-shadow: 5px 5px 5px grey;
+  white-space: nowrap;
+  font-family: "Bookman";
+  z-index: 1;
+}
+.logo1{
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  float:left;
+
+}
+.logo2{
+  display: inline-block;
+  float: right;
+  height: 80px;
+  width: 80px;
+  padding:0;
+
+}
+h1{
+  text-align: center;
+  font-size: 2.5em;
+  padding: 0;
+
+  margin-left: -15%;
+  margin-right: 0;
+  margin-top: 1%;
+  margin-bottom: 0;
+}
+ul{
+  list-style-type: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-bottom: solid;
+  border-width: 0.12px;
+  border-color: grey;
+  font-family: cursive;
+}
+li{
+  float: left;
+  padding: 12px 14px;
+  position: relative;
+  font-weight: 500;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+li a.active{
+  font-weight: bolder;
+}
+li a:hover{
+  font-weight: bold;
+}
+.A{
+  background-color:#eee;
+  color:#444;
+  cursor:pointer;
+  padding:18px;
+  width:100%;
+  text-align:left;
+  border:none;
+  outline:none;
+}
+.A.active{
+    background-color:#ccc;
+}
+.A:hover{
+  background-color:#ccc;
+}
+
+.panel{
+  padding: 0 18px;
+  background-color:white;
+  display:none;
+}
+.panel1{
+  font-family: cursive;
+  font-stretch: extra-expanded;
+  padding: 5px 18px;
+  background-color:white;
+  display:none;
+}
+
+
+</style>
+<script>
+function fun1(){
+   var panel=document.getElementById('1');
+   if(panel.style.display==='block')
+   {
+     panel.style.display='none';
+   }
+   else
+   {
+     panel.style.display='block';
+   }
+ }
+function fun2(){
+  var panel=document.getElementById('2');
+  if(panel.style.display==='block')
+  {
+    panel.style.display='none';
+  }
+  else
+  {
+    panel.style.display='block';
+  }
+}
+</script>
+ </body>
+ </html>

@@ -1,0 +1,193 @@
+<!Doctype HTML>
+<html>
+<head>
+  <link rel="shortcut icon" href="ss1.png">
+  <title>SS University- Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="Super">
+<div class="Header">
+  <img class="logo1" src="ss1.png">
+  <img class="logo2" src="ss.png">
+  <h1>SS University- Research Portal</h1>
+
+</div>
+<br>
+<div class="Menu">
+  <ul class="Mnu">
+    <li><a class="active" href="home.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="ann.html">Announcements</a></li>
+    <li><a href="journals.html">Journals</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="super.html">Supervisor</a></li>
+    <li><a href="support.html">Support</a></li>
+  </ul>
+</div>
+</div>
+<br>
+<div class="body">
+<div class="Slideshow">
+<div class="MySlide">
+  <div class="img" id="1">
+    <img src="im1.jpeg" style="width:100%; height:400px">
+  </div>
+  <div class="img" id="2">
+    <img src="im2.jpeg" style="width:100%; height: 400px">
+  </div>
+  <div class="img" id="3">
+    <img src="im3.jpeg" style="width:100%; height: 400px">
+  </div>
+  <div class="img" id="4">
+    <img src="im4.jpeg" style="width:100%; height:400px">
+  </div>
+  <div class="img" id="5">
+    <img src="im5" style="width:100%; height:400px">
+  </div>
+</div>
+
+<div class="About">
+  <h3>About</h3>
+  <p>Research comprises "creative and systematic work undertaken to increase the stock of knowledge, including knowledge of humans, culture and society, and the use of this stock of knowledge to devise new applications."
+    It is used to establish or confirm facts, reaffirm the results of previous work, solve new or existing problems, support theorems, or develop new theories. A research project may also be an expansion on past work in the field. Research projects can be used to develop further knowledge on a topic, or in the example of a school research project, they can be used to further a student's research prowess to prepare them for future jobs or reports. To test the validity of instruments, procedures, or experiments, research may replicate elements of prior projects or the project as a whole. The primary purposes of basic research (as opposed to applied research) are documentation, discovery, interpretation, or the research and development (R&D) of methods and systems for the advancement of human knowledge. Approaches to research depend on epistemologies, which vary considerably both within and between humanities and sciences. There are several forms of research: scientific, humanities, artistic, economic, social, business, marketing, practitioner research, life, technological, etc.<br>
+    Research at SS University is an enthralling experience for both the professors and students who aspire to innovate and be at the core of innovation. SS University gives them an opportunity to join hands, collaborate and make a difference to this world with their contributions. If they have the will to do something different and make a difference to this world, we believe it is definitely possible to create a culture of clean innovation and techonological practices within the University. The focus of research at the Unviersity is strictly on quality and not at the quantity of papers coming out every year.
+  </p>
+</div>
+</div>
+<hr>
+<center>2018 &#169 Sharath and Shreyas | All Rights Reserved</center>
+
+<style>
+body{
+  font-size: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.Super{
+  position: sticky;
+  top:0;
+  z-index: 1;
+  background-color: white;
+}
+.Header{
+  width: 100%;
+  height: 80px;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  background-color: white;
+  padding: 0;
+  box-shadow: 5px 5px 5px grey;
+  white-space: nowrap;
+  font-family: "Bookman";
+  z-index: 1;
+}
+.logo1{
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  float:left;
+
+}
+.logo2{
+  display: inline-block;
+  float: right;
+  height: 80px;
+  width: 80px;
+  padding:0;
+
+}
+h1{
+  text-align: center;
+  font-size: 2.5em;
+  padding: 0;
+  margin-left: -15%;
+  margin-right: 0;
+  margin-top: 1%;
+  margin-bottom: 0;
+}
+ul{
+  list-style-type: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-bottom: solid;
+  border-width: 0.12px;
+  border-color: grey;
+  font-family: cursive;
+}
+li{
+  float: left;
+  padding: 12px 14px;
+  position: relative;
+  font-weight: 500;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+li a.active{
+  font-weight: bolder;
+}
+li a:hover{
+  font-weight: bold;
+}
+.Slideshow{
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+.img{
+  display:none;
+  transition: display .5s ease;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+}
+
+
+h3{
+ text-align: center;
+ font-family: "Comic Sans MS", fantasy;
+ font-size: 1.75em;
+}
+body{
+  font-family: fantasy;
+  text-align: justify;
+
+}
+p{
+  margin-left: 10%;
+  margin-right: 10%;
+  font-stretch: ultra-expanded;
+  font-size: 1.25em;
+  font-family: "Roboto Light";
+  font-size-adjust: auto;
+}
+</style>
+<script>
+var i=1;
+var imVar=setTimeout(imTm, 100);
+function def(){
+ var y;
+ for(y=1;y<=5;y++)
+ {
+   var x=document.getElementById(y);
+   x.style.display="none";
+ }
+}
+function imTm(){
+ def();
+ var x=document.getElementById(i);
+ x.style.display="block";
+ i=i+1;
+ if(i>5)
+ {
+   i=1;
+ }
+ var imVar=setTimeout(imTm, 5000)
+}
+</script>
+</body>
+</html>
