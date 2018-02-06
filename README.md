@@ -6,6 +6,7 @@ Access home.html to open the Home page for the website.
 
 Future Work includes:
 Addition of Django based back-end functionality to the webpage. 
-DEVELOPERS :N Shreyas
+DEVELOPERS: N Shreyas
+              and  
             S Sharath
 SASTRA UNIVERITY            
