@@ -1,281 +1,68 @@
-<!DOCTYPE html>
+<!Doctype HTML>
 <html>
 <head>
-  <title>ABC | India</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-    font-family: "Lato", sans-serif;
-    background-color: crimson;
-}
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-}
-button:hover {
-    opacity: 0.8;
-}
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
-}
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-}
-img.avatar {
-    width: 40%;
-    border-radius: 50%;
-}
-.container {
-    padding: 16px;
-}
-
-span.psw {
-    float: right;
-    padding-top: 16px;
-}
-.modal {
-    display: none; /* Hidden by default */
-    position:fixed;; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-}
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)}
-    to {-webkit-transform: scale(1)}
-}
-
-@keyframes animatezoom {
-    from {transform: scale(0)}
-    to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-    span.psw {
-       display: block;
-       float: none;
-    }
-    .cancelbtn {
-       width: 100%;
-    }
-}
-.head
-{
-  border-top: solid;
-  border-width: thin;
-  border-color:white;
-  font-size: 300%;
-  text-align: center;
-}
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-.copyright
-{
-  margin-top: 40%;
-  margin-left: -0.6%;
-  margin-right: -0.6%;
-  background-color: black
-}
-.Shop
-{
-  margin-top: 20%;
-  margin-left: 5%;
-  color:white;
-}
-.signin{
-  margin-left: 80%;
-  margin-bottom: -4%;
-}
-button {
-    background-color: crimson;
-    color: black;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    width: 100%;
-}
-.Info
-{
-  margin-top: -8%;
-  margin-left: 25%;
-  color:white;
-}
-.Connect
-{
-  margin-top: -8.5%;
-  margin-left: 45%;
-  color:white;
-}
-.More
-{
-  margin-top: -8%;
-  margin-left: 65%;
-  color:white;
-}
-.Touch
-{
-  margin-top: -8%;
-  margin-left: 85%;
-  color:white;
-}
-.copy
-{
-  font-size: 0.8em;
-  margin-left: 43%;
-  margin-top: 5%;
-  color:white;
-}
-.logo{
-  margin-top: -3%;
-  margin-left: 48%;
-}
-@media screen and (max-height: 400px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
+  <link rel="shortcut icon" href="ss1.png">
+  <title>SS University- Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div class="signin">
-  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign In</button>
-  <div id="id01" class="modal">
-
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Sign In</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
+<div class="Super">
+<div class="Header">
+  <img class="logo1" src="ss1.png">
+  <img class="logo2" src="ss.png">
+  <h1>SS <br>University</h1>
+  <div class="headd">
+  </p>Research Portal</h2>
 </div>
 </div>
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="si">ABC</a>
-  <a href="#">____________</a>
-  <p>shop</p>
-  <a href="#">All Products</a>
-  <a href="#">Men'S Fashion</a>
-  <a href="#">Womens'S Fashion</a>
-  <a href="#">Sports, Fitness, Bags, Luggage</a>
-  <a href="#">Books</a>
-  <a href="#">Home, Kitchen, Pets</a>
-  <a href="#">Electronics</a>
-  <a href="#">____________</a>
-  <a href="#">FAQ</a>
-  <a href="support.html">Write to us</a>
-  <a href="#">____________</a>
-  <a href="login2.html">Sign In</a>
+<br>
+<div class="Menu">
+  <ul class="Mnu">
+    <li><a class="active" href="home.html">Home</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="ann.html">Announcements</a></li>
+    <li><a href="journals.html">Journals</a></li>
+    <li><a href="downloads.html">Downloads</a></li>
+    <li><a href="super.html">Supervisor</a></li>
+    <li><a href="blog.html">Blog</a></l1>
+    <li><a href="support.html">Support</a></li>
+  </ul>
 </div>
-
-<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-<div class="logo">
-<img src="shopping-cart.png"style="width:50px;height:60px;"s>
 </div>
-<div class="head";
-<p>ABC</p>
-</div>
-<div class="copyright">
-  <div class="Shop">
-    <br><p><b><br>SHOP</b> <br><br>
-       All Live Products<br>
-       Tags<br>
-       Kids<br>
-       Wall of Fame</p>
+<div class="body">
+<div class="Slideshow">
+<div class="MySlide">
+  <div class="img" id="1">
+    <img src="im12.jpg" style="width:100%; height:400px">
   </div>
+  <div class="img" id="2">
+    <img src="im2.jpg" style="width:100%; height: 400px">
+  </div>
+  <div class="img" id="3">
+    <img src="im3.jpeg" style="width:100%; height: 400px">
+  </div>
+  <div class="img" id="4">
+    <img src="im4.jpeg" style="width:100%; height:400px">
+  </div>
+  <div class="img" id="5">
+    <img src="im5" style="width:100%; height:400px">
+  </div>
+</div>
+
+<div class="About">
+  <p class = "about">About</p>
+  <p>Research comprises "creative and systematic work undertaken to increase the stock of knowledge, including knowledge of humans, culture and society, and the use of this stock of knowledge to devise new applications."
+    It is used to establish or confirm facts, reaffirm the results of previous work, solve new or existing problems, support theorems, or develop new theories. A research project may also be an expansion on past work in the field. Research projects can be used to develop further knowledge on a topic, or in the example of a school research project, they can be used to further a student's research prowess to prepare them for future jobs or reports. To test the validity of instruments, procedures, or experiments, research may replicate elements of prior projects or the project as a whole. The primary purposes of basic research (as opposed to applied research) are documentation, discovery, interpretation, or the research and development (R&D) of methods and systems for the advancement of human knowledge. Approaches to research depend on epistemologies, which vary considerably both within and between humanities and sciences. There are several forms of research: scientific, humanities, artistic, economic, social, business, marketing, practitioner research, life, technological, etc.<br>
+    Research at SS University is an enthralling experience for both the professors and students who aspire to innovate and be at the core of innovation. SS University gives them an opportunity to join hands, collaborate and make a difference to this world with their contributions. If they have the will to do something different and make a difference to this world, we believe it is definitely possible to create a culture of clean innovation and techonological practices within the University. The focus of research at the Unviersity is strictly on quality and not at the quantity of papers coming out every year.
+  </p>
+</div>
+</div>
+</div>
+<br>
+<div class="Copyright">
+  <br><br>
+  <img class="logo1" src="ss1.png">
+  <h1>SS <br>UNIVERSITY</h1>
   <div class="Info">
     <p><b>INFO</b> <br><br>
        About US<br>
@@ -298,31 +85,193 @@ button {
   </div>
   <div class="Touch">
     <p><b>GET IN TOUCH</b> <br><br>
-       us@abc.in<br>
-       @abc<br>
+       us@ss.in<br>
+       @SS<br>
        Support available 10am to 6pm IST <br>
        Monday through Friday</p>
   </div>
-<div class="copy">
-  <p>&#169 ABC | All Rights Reserved</p>
+  <br><br>
 </div>
-</div>
+  <p class="rights"><br><br>2018 &#169 Sharath and Shreyas | All Rights Reserved<br><br></p>
+<style>
+body{
+  font-size: 100%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.rights{
+  width:100%;
+  margin-top:0%;
+  color: white;
+  text-align:center;
+  font-size:0.9em;
+  background-color:Black;
+  margin-left:0%;
+  margin-bottom:0;
+  margin-left:0%;
+}
+.about{
+  font-size:300%;
+}
+.Info
+{
+  margin-top: -6%;
+  margin-left: 20%;
+  color:white;
+}
+.Connect
+{
+  margin-top: -10.7%;
+  margin-left: 37%;
+  color:white;
+}
+.More
+{
+  margin-top: -10.6%;
+  margin-left: 55%;
+  color:white;
+}
+.Touch
+{
+  margin-top: -9.1%;
+  margin-left: 70%;
+  color:white;
+}
+.headd{
+  font-size:300%;
+  margin-top:-9%;
+  margin-left:40%;
+}
+.Super{
+  position: sticky;
+  top:0;
+  z-index: 1;
+  border-top: solid;
+  border-width: 5.12px;
+  border-color: orange;
+  background-color: white;
+}
+.Header{
+  width: 100%;
+  height: 80px;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  background-color: white;
+  padding: 0;
+  box-shadow: 5px 5px 5px grey;
+  white-space: nowrap;
+  font-family: "Bookman";
+  z-index: 1;
+}
+.logo1{
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  float:left;
+
+}
+.logo2{
+  display: inline-block;
+  float: right;
+  height: 80px;
+  width: 80px;
+  padding:0;
+
+}
+h1{
+  text-align: left;
+  font-size: 2em;
+  padding: 0;
+  margin-left: -15%;
+  margin-right: 0;
+  margin-top: 0%;
+  margin-bottom: 0;
+}
+h2{
+  font-size=100%;
+  text-align:center;
+  margin-top:-4%;
+  margin-bottom:0%;
+}
+ul{
+  list-style-type: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  margin-left:9%;
+}
+li{
+  float:left;
+  padding: 12px 14px;
+  position: relative;
+  font-weight: 500;
+}
+li a{
+  text-decoration: none;
+  color: black;
+}
+li a.active{
+  font-weight: bolder;
+}
+li a:hover{
+  font-weight: bold;
+}
+.Slideshow{
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+.img{
+  display:none;
+  transition: display .5s ease;
+  -webkit-transition: .5s ease;
+  -moz-transition: .5s ease;
+}
+body{
+  font-family: fantasy;
+  text-align: justify;
+}
+p{
+  margin-left: 10%;
+  margin-right: 10%;
+  font-stretch: ultra-expanded;
+  font-size: 1.25em;
+  font-family: "Roboto Light";
+  font-size-adjust: auto;
+}
+.Copyright{
+  font-size:0.9em;
+  margin-top:3%;
+  color: white;
+    background-color:#202020;
+    border-top:solid;
+    border-top-color:white;
+}
+</style>
 <script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
+var i=1;
+var imVar=setTimeout(imTm, 100);
+function def(){
+ var y;
+ for(y=1;y<=5;y++)
+ {
+   var x=document.getElementById(y);
+   x.style.display="none";
+ }
 }
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+function imTm(){
+ def();
+ var x=document.getElementById(i);
+ x.style.display="block";
+ i=i+1;
+ if(i>5)
+ {
+   i=1;
+ }
+ var imVar=setTimeout(imTm, 5000)
 }
 </script>
-
+</body>
 </html>
