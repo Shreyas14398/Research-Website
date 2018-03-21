@@ -280,7 +280,7 @@
 <br>
 <h1 class="loginhead">Login</h1>
 <div class="Top">
-  <div onclick='myfunc1()' class="scholar-box" id='1'>Scholar</div><div onclick='myfunc2()' class="supervisor-box" id='2' >Supervisor</div><div onclick='myfunc3()' class="dean-box" id='2' >Dean</div>
+  <div onclick='myfunc1()' class="scholar-box" id='1'>Scholar</div><div onclick='myfunc2()' class="supervisor-box" id='2' >Supervisor</div><div onclick='myfunc3()' class="dean-box" id='3' >Dean</div>
   <div class="bor-top"></div>
 </div>
 <div class="login">
@@ -304,10 +304,11 @@
       <br>
       <button type='submit' name='in'>Login</button>
     </form>
+  </div>
     <div class="dean" id='33'>
       <form method="POST">
         <br>
-        Register Number: <br><input type='text' name='regno'/><br>
+        Dean ID: <br><input type='text' name='username'/><br>
         <br>
         Password: <br><input type='password' name='password'/></font><br>
         <br>
@@ -394,8 +395,8 @@ li a:hover{
 
   border-top: solid;
   border-width: thin;
-  width: 360px;
-  margin-left: 240px;
+  width: 240px;
+  margin-left: 360px;
   margin-top: -1px;
 }
 .scholar-box{
@@ -405,30 +406,12 @@ li a:hover{
   border-left: solid;
   border-right: solid;
   border-bottom: none;
-  margin-bottom: 0px;
   border-width: thin;
   height:30px;
   width: 120px;
   text-align: center;
   font-weight: bold;
-
-}
-.dean-box{
-  height: 5px;
-  width:10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-top-style: solid;
-  border-left: none;
-  border-right: solid;
-  border-bottom: solid;
-  border-width: thin;
-  height:30px;
-  width:120px;
-  margin-left: 240px;
-  margin-top: -31px;
-  text-align: center;
-  font-weight: normal;
+  margin-left: 0.5px;
 }
 .supervisor-box{
   height: 5px;
@@ -444,7 +427,25 @@ li a:hover{
   height:30px;
   width:120px;
   margin-left: 120px;
-  margin-top: -31px;
+  margin-top: -30px;
+  text-align: center;
+  font-weight: normal;
+
+}
+.dean-box{
+  height: 5px;
+  width:10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-style: solid;
+  border-left: none;
+  border-right: solid;
+  border-bottom: solid;
+  border-width: thin;
+  height:30px;
+  width:120px;
+  margin-left: 240px;
+  margin-top: -30px;
   text-align: center;
   font-weight: normal;
 }
@@ -457,14 +458,14 @@ li a:hover{
 .scholar-box:hover{
   cursor: pointer;
 }
-.dean{
-  display: block;
-}
 .scholar{
   display: block;
 }
 .supervisor{
   display:none;
+}
+.dean{
+  display: none;
 }
 </style>
 <script>
