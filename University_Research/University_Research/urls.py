@@ -15,7 +15,29 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from Research.views import home 
+from django.views.generic import TemplateView
+from Research.views import logins
+from Research.views import loginsu
+from Research.views import logind
+from Research.views import superm
+from Research.views import super1
+from Research.views import super2
+from Research.views import super3
+from Research.views import super4
+from Research.views import support
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^home/', home),
+    url(r'^login/',TemplateView.as_view(template_name="login.html"),name="login"),
+    url(r'^logind/',logind),
+    url(r'^logins/',logins),
+    url(r'^loginsu/',loginsu),
+    url(r'^superm/',superm),
+    url(r'^super1/',super1),
+    url(r'^super2/',super2),
+    url(r'^super3/',super3),
+    url(r'^super4/',super4),
+    url(r'^support/',support),
 ]

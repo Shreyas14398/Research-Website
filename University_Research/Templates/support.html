@@ -1,8 +1,8 @@
 <!Doctype HTML>
 <html>
 <head>
-  <title>SASTRA Deemed University | Login</title>
-	<base href="http://sastra.edu/index.php/2014-01-29-07-16-29.html" />
+  <title>SASTRA Deemed University</title>
+  <base href="http://sastra.edu/index.php/2014-01-29-07-16-29.html" />
 	<title>Research - SASTRA Deemed University</title>
 	<link href="/templates/santosh/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	<link href="/plugins/editors/jckeditor/typography/typography2.php" rel="stylesheet" type="text/css" media="null" attribs="[]" />
@@ -35,6 +35,7 @@
 	</script>
 </head>
 <body>
+  <body oncontextmenu="return false" >
   <div  id="myDiv" class="animate-bottom">
   	<div id="top">
   		<div id="top1">
@@ -192,7 +193,6 @@
       </li>
     </ul>
   </li>
-  <li id="iceMenu_117" class="iceMenuLiLevel_1 mzr-drop parent"><a href="#" class=" iceMenuTitle"><span class="icemega_title icemega_nosubtitle">Blog</span></a>
     <ul class="icesubMenu  sub_level_1" style="width:230px">
       <li><div style="float:left;width:240px" class="iceCols">
       </div></li>
@@ -271,91 +271,100 @@
   			</div>
   			<!---------------- Mid content ----------------------------------->
   					<div class="clearpad"><div class="item-page">
+  	<h1 class="item-page-title">Research</h1>
 
-              <br>
-              <h1 class="loginhead">Login</h1>
-              <font color="red"><h3>{{message}}</h3></font>
-              <div class="Top">
-                <div onclick='myfunc1()' class="scholar-box" id='1'>Scholar</div><div onclick='myfunc2()' class="supervisor-box" id='2' >Supervisor</div><div onclick='myfunc3()' class="dean-box" id='3' >Dean</div>
-                <div class="bor-top"></div>
-              </div>
-              <div class="login">
-                <div class="scholar" id='11'>
-                  <form method="POST" action="http://127.0.0.1:8000/logins/" name="logins">
-                    <br>
-                    Register Number: <br><input type='text' name='regno'/><br>
-                    {%csrf_token%}
-                    <br>
-                    Password: <br><input type='password' name='password'/></font><br>
-                    <br>
-                    <button type='submit' name='in'>Login</button>
-                  </form>
-                </div>
-                <div class="supervisor" id='22'>
-                  <form method="POST" action="/loginsu/" name="loginsu">
-                    <br>
-                    User ID: <br>
-                    <input type='text' name='username'/><br>
-                        {%csrf_token%}
-                    <br>
-                    Password:<br> <input type='password' name='password'/></font><br>
-                    <br>
-                    <button type='submit' name='in'>Login</button>
-                  </form>
-                </div>
-                  <div class="dean" id='33'>
-                    <form method="POST" action="/logind/" name="logind">
-                      <br>
-                      Dean ID: <br><input type='text' name='username'/><br>
-                          {%csrf_token%}
-                      <br>
-                      Password: <br><input type='password' name='password'/></font><br>
-                      <br>
-                      <button type='submit' name='in'>Login</button>
-                    </form>
-                  </div>
-                </div>
+  		<ul class="button-icons">
+  										<li class="print-icon">
+  						<a href="/index.php/2014-01-29-07-16-29.html?tmpl=component&amp;print=1&amp;page=" title="Print article < Research >" onclick="window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;" rel="nofollow">					<img src="/media/system/images/printButton.png" alt="Print" />	</a>				</li>
 
-                </div>
-                <br>
-                <br>
-                <br>
-                <hr>
+  								<li class="email-icon">
+  						<a href="/index.php/component/mailto/?tmpl=component&amp;template=santosh&amp;link=0c860eb1c04f364d83f1ff29161b2db6056b50d8" title="Email this link to a friend" onclick="window.open(this.href,'win2','width=400,height=350,menubar=yes,resizable=yes'); return false;" rel="nofollow">			<img src="/media/system/images/emailButton.png" alt="Email" />	</a>				</li>
+  												</ul>
+<br>
+
+<br>
+<button class='A' onclick='fun1()'>Write to us!</button>
+<div class='panel' id='1'>
+  <form method="POST">
+    <br>
+    Name:  <input type="name" class="name"></input><br><br>
+    Designation: <input type="radio" name="desig"> Scholar </input>
+    <input type="radio" name="desig"> Supervisor </input><br><br>
+    Message: <br><textarea name="Mess" rows='10' cols='100'>
+    </textarea><br><br>
+    <button type="button" onclick=fun()><a href="file:///Users/shreyas/Research-Website-master/home2.html">submit</a></button><br>
+  </form>
+</div>
+<br>
+<button class='A' onclick='fun2()'>Details</button>
+<div class='panel1' id='2'>
+     The Dean : dean@ssuniv.edu 9696910342<br>
+     Registrar: registrar@ssuniv.edu 9393931234<br>
+     SAP: sap@ssuniv.edu 9123243453
+</div><br>
+<br>
+<hr>
+<div id="footer">
+  <div id="footer1">
+    <p class="copyrights">&copy; SASTRA Deemed University, All Rights Reserved. 2018<br/><b>SASTRA Deemed University</b>, Tirumalaisamudram, Thanjavur - 613401 - (+91) (4362) 264101-108, 304000-010, Telefax: +91 4362 264120</p>
+  </div><div class="clear"></div>
+</div>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48118274-1', 'auto');
+  ga('send', 'pageview');
+</script>
 <style>
 body{
   font-size: 100%;
   margin-left: 0%;
   margin-right: 0%;
 }
-h3{
- text-align:center;
+
+.Header{
+  width: 100%;
+  height: 80px;
+  border-style: solid;
+  border-width: thin;
+  border-color: white;
+  background-color: white;
+  padding: 0;
+  box-shadow: 5px 5px 5px grey;
+  white-space: nowrap;
+  z-index: 1;
 }
+
+
 h1{
   text-align: left;
   font-size: 2em;
   padding: 0;
-  margin-left: -15%;
+  margin-left: 2%;
   margin-right: 0;
   margin-top: 0%;
   margin-bottom: 0;
-}
-h2{
-  font-size=100%;
-  text-align:center;
-  margin-top:-4%;
-  margin-bottom:0%;
-}
-.loginhead{
-  text-align: center;
-  margin-left: 1%;
 }
 .headd{
   font-size:300%;
   margin-top:-9%;
   margin-left:40%;
 }
+ul{
+  list-style-type: none;
+  overflow: hidden;
+  width: 120%;
+  padding: 0;
+  margin: 0;
+}
 li{
-  font-size: 0.8em;
+  float: left;
+  position: relative;
+  font-weight: 500;
 }
 li a{
   text-decoration: none;
@@ -367,211 +376,69 @@ li a.active{
 li a:hover{
   font-weight: bold;
 }
-.Top{
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
-  text-align: center;
+.A{
+  font-size:100%;
+  background-color:#eee;
+  color:#444;
+  cursor:pointer;
+  padding:18px;
+  width:100%;
+  text-align:left;
+  border:none;
+  outline:none;
 }
-.login{
-  border-style: solid;
-  border-width: thin;
-  height: 251px;
-  width:599px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  border-top: none;
-  border-right: solid;
-  border-width: thin;
-  position: relative;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  box-shadow: 5px 5px 5px grey;
+.A.active{
+    background-color:#ccc;
 }
-.bor-top{
+.A:hover{
+  background-color:#ccc;
+}
 
-  border-top: solid;
-  border-width: thin;
-  width: 240px;
-  margin-left: 360px;
-  margin-top: -1px;
-}
-.scholar-box{
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-top-style: solid;
-  border-left: solid;
-  border-right: solid;
-  border-bottom: none;
-  border-width: thin;
-  height:30px;
-  width: 120px;
-  text-align: center;
-  font-weight: bold;
-  margin-left: 0.5px;
-}
-.supervisor-box{
-  height: 5px;
-  width:10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-top-style: solid;
-  border-left: none;
-
-  border-right: solid;
-  border-bottom: solid;
-  border-width: thin;
-  height:30px;
-  width:120px;
-  margin-left: 120px;
-  margin-top: -30px;
-  text-align: center;
-  font-weight: normal;
-
-}
-.dean-box{
-  height: 5px;
-  width:10px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-top-style: solid;
-  border-left: none;
-  border-right: solid;
-  border-bottom: solid;
-  border-width: thin;
-  height:30px;
-  width:120px;
-  margin-left: 240px;
-  margin-top: -30px;
-  text-align: center;
-  font-weight: normal;
-}
-.dean-box:hover{
-  cursor: pointer;
-}
-.supervisor-box:hover{
-  cursor: pointer;
-}
-.scholar-box:hover{
-  cursor: pointer;
-}
-.scholar{
-  display: block;
-}
-.supervisor{
+.panel{
+  font-size:100%;
+  padding: 0 18px;
+  background-color:white;
   display:none;
+  margin-bottom:0%;
 }
-.dean{
-  display: none;
+.panel1{
+
+  font-size:100%;
+  font-stretch: extra-expanded;
+  padding: 5px 18px;
+  background-color:white;
+  display:none;
+  margin-bottom:-3%;
 }
+
+
 </style>
 <script>
- function myfunc1(){
-   var A=document.getElementById('1')
+function fun(){
+  alert("Thank You")
+}
+function fun1(){
+   var panel=document.getElementById('1');
+   if(panel.style.display==='block')
    {
-     A.style.fontWeight='bold';
-     A.style.borderBottom='none';
-     A.style.borderWidth='thin';
+     panel.style.display='none';
    }
-   var B=document.getElementById('2')
+   else
    {
-     B.style.fontWeight='normal';
-     B.style.borderBottom='solid';
-     B.style.borderWidth='thin';
-   }
-   var E=document.getElementById('3')
-   {
-     E.style.fontWeight='normal';
-     E.style.borderBottom='solid';
-     E.style.borderWidth='thin';
-   }
-   var C=document.getElementById('11')
-   {
-     C.style.display='block';
-   }
-   var D=document.getElementById('22')
-   {
-     D.style.display='none';
-   }
-   var F=document.getElementById('33')
-   {
-     F.style.display='none';
-   }
-
- }
- function myfunc2(){
-   var A=document.getElementById('1')
-   {
-     A.style.fontWeight='normal';
-     A.style.borderBottom='solid';
-     A.style.borderWidth='thin';
-   }
-   var B=document.getElementById('2')
-   {
-     B.style.fontWeight='bold';
-     B.style.borderBottom='none';
-     B.style.borderWidth='thin';
-
-   }
-   var E=document.getElementById('3')
-   {
-     E.style.fontWeight='normal';
-     E.style.borderBottom='solid';
-     E.style.borderWidth='thin';
-   }
-   var C=document.getElementById('11')
-   {
-     C.style.display='none';
-   }
-   var D=document.getElementById('22')
-   {
-     D.style.display='block';
-   }
-   var F=document.getElementById('33')
-   {
-     F.style.display='none';
+     panel.style.display='block';
    }
  }
- function myfunc3(){
-   var A=document.getElementById('1')
-   {
-     A.style.fontWeight='normal';
-     A.style.borderBottom='solid';
-     A.style.borderWidth='thin';
-   }
-   var B=document.getElementById('2')
-   {
-     B.style.fontWeight='normal';
-     B.style.borderBottom='solid';
-     B.style.borderWidth='thin';
-   }
-   var E=document.getElementById('3')
-   {
-     E.style.fontWeight='bold';
-     E.style.borderBottom='none';
-     E.style.borderWidth='thin';
-   }
-   var C=document.getElementById('11')
-   {
-     C.style.display='none';
-   }
-   var D=document.getElementById('22')
-   {
-     D.style.display='none';
-   }
-   var F=document.getElementById('33')
-   {
-     F.style.display='block';
-   }
- }
-
+function fun2(){
+  var panel=document.getElementById('2');
+  if(panel.style.display==='block')
+  {
+    panel.style.display='none';
+  }
+  else
+  {
+    panel.style.display='block';
+  }
+}
 </script>
-
-<div id="footer">
-  <div id="footer1">
-    <p class="copyrights">&copy; SASTRA Deemed University, All Rights Reserved. 2018<br/><b>SASTRA Deemed University</b>, Tirumalaisamudram, Thanjavur - 613401 - (+91) (4362) 264101-108, 304000-010, Telefax: +91 4362 264120</p>
-  </div><div class="clear"></div>
-</div>
-</body>
-</html>
+ </body>
+ </html>

@@ -1,8 +1,9 @@
 from django import forms
 from Research.models import Scholar
 from Research.models import Supervisor
+from django.core.validators import MaxValueValidator, MinValueValidator
 class LoginS(forms.Form):
-  regno=forms.IntegerField(validators=[MaxValueValidator(999999999)])
+  regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
   password=forms.CharField(widget=forms.PasswordInput())
 
   def clean_regno(self):
@@ -29,7 +30,7 @@ class LoginS(forms.Form):
          return password
 
 class LoginSu(forms.Form):
-  mid=forms.IntegerField(validators=[MaxValueValidator(999999999)])
+  mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
   password=forms.CharField(widget=forms.PasswordInput())
 
   def clean_regno(self):
@@ -60,7 +61,7 @@ class LoginSu(forms.Form):
           return password
 
 class LoginD(forms.Form):
-  mid=forms.IntegerField(validators=[MaxValueValidator(999999999)])
+  mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
   password=forms.CharField(widget=forms.PasswordInput())
 
   def clean_regno(self):
