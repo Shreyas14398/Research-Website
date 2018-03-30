@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', home),
     url(r'^login/',TemplateView.as_view(template_name="login.html"),name="login"),
+    url(r'^login1/',TemplateView.as_view(template_name="login1.html"),name="login1"),
     url(r'^logind/',logind),
     url(r'^logins/',logins),
     url(r'^loginsu/',loginsu),
