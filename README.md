@@ -9,4 +9,4 @@ Addition of Django based back-end functionality to the webpage.
 DEVELOPERS: N Shreyas
               and  
             S Sharath
-of SASTRA UNIVERITY            
+of SASTRA UNIVERSITY            
