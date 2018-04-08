@@ -3,57 +3,64 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+import datetime
 # Create your models here.
 class Scholar(models.Model):
-   regno=models.PositiveIntegerField(primary_key=True, validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    password=models.CharField(max_length=30)
 
 class Personal_Det(models.Model):
    name=models.CharField(max_length=30)
-   regno=models.OneToOneField(Scholar, primary_key=True)
+   regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    email=models.EmailField()
    school=models.CharField(max_length=30)
+   regdate=models.CharField(max_length=10)
+   sex=models.CharField(max_length=10)
+   dob=models.CharField(max_length=10)
+   supervisor=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
 
-class Research_Det(models.Model):
-   regno=models.OneToOneField(Scholar, primary_key=True)
-   supervisor=models.ForeignKey("Supervisor")
-   
 
 class Supervisor(models.Model):
    mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    password=models.CharField(max_length=30)
-   dean=models.BooleanField()
+   dean=models.BooleanField(default=False)
    
 class Su_Personal_Det(models.Model):
    name=models.CharField(max_length=30)
+   mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    email=models.EmailField()
+   sex=models.CharField(max_length=10)
    school=models.CharField(max_length=30)
+   aoi=models.CharField(max_length=500)
 
 class DC_Meeting(models.Model):
    Progress_Choices=(
-        (0,"Zeroth Review"),
-        (1,"First DC"),
-        (2,"Coursework Completion"),
-        (3,"Comprehensive Viva"),
-        (4,"Second DC"),
-        (5,"RAC"),
-        (6,"Thesis Submission"),
-        (7,"Public Viva"),
+        ("A","Zeroth Review"),
+        ("B","First DC"),
+        ("C","Coursework Completion"),
+        ("D","Comprehensive Viva"),
+        ("E","Second DC"),
+        ("F","RAC"),
+        ("G","Thesis Submission"),
+        ("H","Public Viva"),
    )
-   progress=models.CharField(choices=Progress_Choices,default=0,max_length=30)
+   progress=models.CharField(choices=Progress_Choices,default="A",max_length=30)
    remarks=models.CharField(max_length=500)
-   status=models.CharField(max_length=30)
-   date=models.DateTimeField()
-   Completed=models.BooleanField()
-   Started=models.BooleanField()
-   scholar=models.ManyToManyField("Scholar")
+   message=models.CharField(max_length=500)
+   status=models.CharField(max_length=30,default="None")
+   sdate=models.DateField(null=True,blank=True)
+   cdate=models.DateField(null=True,blank=True)
+   Completed=models.BooleanField(default=False)
+   Started=models.BooleanField(default=False)
+   regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
   
 class Publications(models.Model):
    title=models.CharField(max_length=1000)
    name=models.CharField(max_length=1000)
-   date=models.DateField()
-   author=models.ManyToManyField("Scholar")
-   author1=models.ManyToManyField("Supervisor")
+   date=models.CharField(max_length=10)
+   author=models.CharField(max_length=1000)
+   regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
 
    
    
