@@ -182,24 +182,85 @@
 					<h1>Supervisor:</h1>
 
 					<div class="tab">
-					  <button class="tablinks" onclick="openCity(event, 'regde')">Regestration Details</button>
+					  <button class="tablinks" onclick="openCity(event, 'regde')">Scholar Details</button>
 					  <button class="tablinks" onclick="openCity(event, 'resde')">Research Details</button>
-					  <button class="tablinks" onclick="openCity(event, 'prog')">Progress</button>
+					  <button class="tablinks" onclick="openCity(event, 'prog')">Personal Details</button>
 					</div>
 
 					<div id="regde" class="tabcontent">
-					  <h3>Regestration Details</h3>
-					  <p>London is the capital city of England.</p>
+					  <h3>List of Scholars: </h3>
+						<table>
+							<tr>
+								<th>Register Number</th>
+								<th>Name</th>
+								<th>E-mail</th>
+								<th>Information</th>
+				      </tr>
+            {%for s in sch%}
+						<tr>
+							<td>{{s.regno}}</td>
+							<td>{{s.name}}</td>
+							<td>{{s.email}}</td>
+							<td>
+								<form method="POST" action="http://127.0.0.1:8000/schinfo/">
+									{%csrf_token%}
+									<input type="hidden" name="regno" value={{s.regno}}>
+									<input type="submit" name="Info" value="Info">
+								</form>
+							</td>
+						</tr>
+						{%endfor%}
+					</table>
 					</div>
 
 					<div id="resde" class="tabcontent">
-					  <h3>Research Details</h3>
-					  <p>Paris is the capital of France.</p>
+						<h3>Publication Details</h3>
+						<table>
+							<tr>
+								<th>S.No. </th>
+								<th>Name </th>
+								<th>Authors </th>
+								<th>Year </th>
+							</tr>
+							{%for p in pubs%}
+							  <tr>
+									<td>{{p.title}}</td>
+									<td>{{p.name}}</td>
+									<td>{{p.author}}</td>
+									<td>{{p.date}}</td>
+								</tr>
+							{%endfor%}
+						</table>
 					</div>
 
 					<div id="prog" class="tabcontent">
-					  <h3>Progress</h3>
-					  <p>Tokyo is the capital of Japan.</p>
+						<center><table>
+						<tr>
+							<th>Name:</th>
+							<td>{{name}}</td>
+						</tr>
+						<tr>
+							<th>Sex:</th>
+							<td>{{sex}}</td>
+						</tr>
+						<tr>
+							<th>E-mail:</th>
+							<td>{{email}}</td>
+						</tr>
+						<tr>
+							<th>Employee ID:</th>
+							<td>{{mid}}</td>
+						</tr>
+						<tr>
+							<th>School:</th>
+							<td>{{school}}</td>
+						</tr>
+						<tr>
+							<th>Area of Interest:</th>
+							<td>{{aoi}}</td>
+						</tr>
+					</table>
+				</center>
 					</div>
 
 					<script>
