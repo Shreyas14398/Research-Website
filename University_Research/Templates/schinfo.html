@@ -314,10 +314,7 @@
 	          width: 80%;
 					}
 					.ed1{
-						display:none;
-						z-index: 1;
-						overflow: auto;
-						width: 100%;
+						display:block;
 					}
 					.ed2{
 						display:none;
@@ -421,8 +418,8 @@
 								<h5>Date Completed:</h5><p>{{sp.cdate}}</p>
 								<h5>Status: </h5><p>{{sp.status}}</p>
 								<h5>Remarks:</h5><p>{{sp.remarks}}</p>
-								<button onclick="editfun()">Edit</button>
-								<div class="Blah">
+								<button class="edup">Edit</button>
+								<div class="panel1">
 									<form method="POST" action="http://127.0.0.1:8000/schedit/">{%csrf_token%}
 									<div id="ed1" class="ed1">
 									 Status:
@@ -450,9 +447,9 @@
 						  <div class="panel">
 							 <h5>Date:</h5><p>{{sp.sdate}}</p>
 							 <h5>Message:</h5><p>{{sp.message}}</p>
-							 <button onclick="updatefun()">Update</button>
+							 <button class="edup">Update</button>
+							 <div class="panel1">
 							 <form method="POST" action="http://127.0.0.1:8000/schedit/">{%csrf_token%}
-							 <div class="Blah">
 								 <div class="no1" id="no1">
 									Status:
 									<select id="n1" class="n1" name="status">
@@ -478,8 +475,8 @@
 						{%else%}
 						<button class="accordion"><h2 style="opacity:0.8">{{value}}</h2></button>
 						<div class="panel">
-						 <button onclick="document.getElementById('Start').style.display='block'">Start</button>
-						 <div class="Start" id="Start">
+						 <button class="edup">Start</button>
+						 <div class="panel1" id="Start">
 						 <form method="POST" class="start-content" action="http://127.0.0.1:8000/schstart/">{%csrf_token%}
 								Date:
 								<input type="Date" name="date">
@@ -513,6 +510,7 @@ panel.style.maxHeight = panel.scrollHeight + "px";
 }
 });
 }
+
 					function openCity(evt, cityName) {
 					    var i, tabcontent, tablinks;
 					    tabcontent = document.getElementsByClassName("tabcontent");
@@ -624,6 +622,14 @@ panel.style.maxHeight = panel.scrollHeight + "px";
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+.panel1{
+	padding: 0 18px;
+	background-color: white;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}
+
 </style>
 </div>
 </div>
