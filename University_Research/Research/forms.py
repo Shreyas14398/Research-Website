@@ -64,7 +64,7 @@ class LoginD(forms.Form):
   mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
   password=forms.CharField(widget=forms.PasswordInput())
 
-  def clean_regno(self):
+  def clean_mid(self):
       mid=self.cleaned_data.get("mid")
       dbn=Supervisor.objects.filter(mid=mid)
       if not dbn:

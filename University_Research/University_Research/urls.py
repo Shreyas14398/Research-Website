@@ -37,6 +37,8 @@ from Research.views import supervisor1
 from Research.views import reg
 from Research.views import schreg
 from Research.views import sureg
+from Research.views import logout
+from Research.views import logoutsu
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -49,6 +51,8 @@ urlpatterns = [
     url(r'^superm/',superm),
     url(r'^super1/',super1),
     url(r'^super2/',super2),
+    url(r'^logout/',logout),
+    url(r'^logoutsu/',logoutsu),
     url(r'^super3/',super3),
     url(r'^super4/',super4),
     url(r'^scholar1/',scholar1),
