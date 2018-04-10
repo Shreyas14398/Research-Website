@@ -21,11 +21,34 @@ from Research.forms import SunamesearchForm
 from Research.forms import midsearchForm
 from Research.forms import schregForm
 from Research.forms import suregForm
+from Research.forms import PwdForm
 
 # Create your views here.
 levels={"A":"Zeroth Review","B":"First DC","C":"Coursework Completion","D":"Comprehensive Viva","E":"Second DC","F":"RAC","G":"Thesis Submission","H":"Public Viva"}
 def home(request):
   return render(request,"home.html",{})
+
+def chnpwd(request):
+  if request.POST: 
+    PwdF=PwdForm(request.POST)
+    if PwdF.is_valid():
+      regno=request.session['regno']
+      dbS=Scholar.objects.get(regno=regno)
+      pd=dbS.password
+      if PwdF.cleaned_data['old']==pd:
+         dbS.password=PwdF.cleaned_data['new']
+         dbS.save()
+         del request.session['regno']
+         return render(request,"login.html",{"message":"Password Changed Successfully"})
+      else:
+         del request.session['regno']
+         return render(request,"login.html",{"message":"Incorrect Old Password"})
+    else:
+      del request.session['regno']
+      return render(request,"login.html",{"message":"Incorrect Information!"})
+  else:
+     return render(request,"home.html",{})
+
 
 def logins(request):
   if request.POST:

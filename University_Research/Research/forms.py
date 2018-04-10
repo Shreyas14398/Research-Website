@@ -91,6 +91,19 @@ class LoginD(forms.Form):
         else:
           return password
 
+class PwdForm(forms.Form):
+  old=forms.CharField(widget=forms.PasswordInput())
+  new=forms.CharField(widget=forms.PasswordInput())
+  newd=forms.CharField(widget=forms.PasswordInput())
+  
+  def clean_newd(self):
+    new=self.cleaned_data.get("new")
+    newd=self.cleaned_data.get("newd")
+    if new==newd:
+      return newd
+    else:
+      raise forms.ValidationError("Incorrect")
+
 class editform(forms.Form):
   status=forms.CharField(max_length=10)
   date=forms.DateField()

@@ -346,8 +346,18 @@
 							<td>{{school}}</td>
 						</tr>
 					</table>
+					<button onclick="document.getElementById('pwd').style.display='block'">Change Password:</button></p>
+					<div class="pwd" id="pwd">
+						<form method="POST" action="http://127.0.0.1:8000/chnpwd/">{%csrf_token%}
+						Old Password: <input type="password" name="old"><br><br>
+						New Password: <input type="password" name="new"><br><br>
+						Re-enter New Password: <input type="password" name="newd"><br><br>
+						<button type="button" value="Cancel" onclick="document.getElementById('pwd').style.display='none'">Cancel</button>
+						<input type="submit" value="Submit">
+					</form>
+						</div>
         </center>
-					</div>
+
 
 					<div id="resde" class="tabcontent">
 					  <h3>Current Status: {{status1}}</h3>
@@ -453,6 +463,9 @@ for (i = 0; i < acc.length; i++) {
 					}
 					</script>
 					<style>
+					.pwd{
+						display: none;
+					}
 .accordion {
     background-color: #eee;
     color: #444;

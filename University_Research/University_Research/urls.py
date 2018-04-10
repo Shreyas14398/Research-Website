@@ -36,6 +36,7 @@ from Research.views import schinfo
 from Research.views import supervisor1
 from Research.views import reg
 from Research.views import schreg
+from Research.views import chnpwd
 from Research.views import sureg
 from Research.views import logout
 from Research.views import logoutsu
@@ -45,6 +46,7 @@ urlpatterns = [
     url(r'^home/', home),
     url(r'^login/',TemplateView.as_view(template_name="login.html"),name="login"),
     url(r'^login1/',TemplateView.as_view(template_name="login1.html"),name="login1"),
+    url(r'^chnpwd/',chnpwd),
     url(r'^logind/',logind),
     url(r'^logins/',logins),
     url(r'^loginsu/',loginsu),
