@@ -29,7 +29,7 @@ def home(request):
   return render(request,"home.html",{})
 
 def chnpwd(request):
-  if request.POST: 
+  if request.POST:
     PwdF=PwdForm(request.POST)
     if PwdF.is_valid():
       regno=request.session['regno']
@@ -58,7 +58,7 @@ def logins(request):
      request.session['regno']=dbN.regno
      return HttpResponseRedirect('/scholar1')
     else:
-     return render(request,"login.html",{"message":"Invalid Username or Password"}) 
+     return render(request,"login.html",{"message":"Invalid Username or Password"})
   else:
     return render(request,"login.html",{})
 
@@ -70,7 +70,7 @@ def logind(request):
      request.session['mid']=dbN.mid
      return HttpResponseRedirect('/dean1')
     else:
-     return render(request,"login.html",{"message":"Invalid Username or Password"}) 
+     return render(request,"login.html",{"message":"Invalid Username or Password"})
   else:
     return render(request,"login.html",{})
 
@@ -83,12 +83,12 @@ def logout(request):
 
 def logoutsu(request):
   try:
-    del request.session['mid']
+    del request.session['regno']
   except:
     pass
   return render(request,"login.html",{"message":"Logged out successfully!"})
 
-def loginsu(request): 
+def loginsu(request):
   if request.POST:
     MyUseForm=LoginSu(request.POST)
     if MyUseForm.is_valid():
@@ -130,7 +130,7 @@ def suinfo(request):
        dbSch=Personal_Det.objects.filter(supervisor=mid).values()
        return render(request,"suinfo.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
   else:
-     return render(request,"home.html",{})  
+     return render(request,"home.html",{})
 
 def schinfo(request):
   status1=""
@@ -151,7 +151,7 @@ def schinfo(request):
       return render(request,"home.html",{})
   else:
     return render(request,"home.html",{})
- 
+
 def schedit(request):
   if request.POST:
     EForm=editform(request.POST)
@@ -226,7 +226,7 @@ def dean2(request):
        return render(request,'dean1.html',{})
   else:
     return render(request,'dean1.html',{})
-    
+
 def dean3(request):
     if request.POST:
       SearchF=midsearchForm(request.POST)
@@ -293,6 +293,6 @@ def super3(request):
 
 def super4(request):
    return render(request,"super4.html",{})
- 
+
 def support(request):
    return render(request,"support.html",{})

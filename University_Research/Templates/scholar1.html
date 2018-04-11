@@ -322,31 +322,33 @@
 					<div id="regde" class="tabcontent">
 					  <center><table>
             <tr>
-							<th>Name:</th>
-							<td>{{name}}</td>
+							<th style="width:30%">Name:</th>
+							<td style="text-align:center">{{name}}</td>
 						</tr>
 						<tr>
 							<th>Date of Birth:</th>
-							<td>{{dob}}</td>
+							<td style="text-align:center">{{dob}}</td>
 						</tr>
 						<tr>
 							<th>Sex:</th>
-							<td>{{sex}}</td>
+							<td style="text-align:center">{{sex}}</td>
 						</tr>
 						<tr>
 							<th>Registration Number:</th>
-							<td>{{regno}}</td>
+							<td style="text-align:center">{{regno}}</td>
 						</tr>
 						<tr>
 							<th>Registration Date:</th>
-							<td>{{regdate}}</td>
+							<td style="text-align:center">{{regdate}}</td>
 					  </tr>
 						<tr>
 							<th>School:</th>
-							<td>{{school}}</td>
+							<td style="text-align:center">{{school}}</td>
 						</tr>
 					</table>
-					<button onclick="document.getElementById('pwd').style.display='block'">Change Password:</button></p>
+					<br>
+					<br>
+					<button class="button" onclick="document.getElementById('pwd').style.display='block'">Change Password:</button></p><br><br>
 					<div class="pwd" id="pwd">
 						<form method="POST" action="http://127.0.0.1:8000/chnpwd/">{%csrf_token%}
 						Old Password: <input type="password" name="old"><br><br>
@@ -365,10 +367,10 @@
 						<h3>Publication Details</h3><br>
 						<table>
 							<tr>
-								<th>Title </th>
-								<th>Name </th>
+								<th>Title of the Publication</th>
+								<th>Name of thr Journal</th>
 								<th>Authors </th>
-								<th>Year </th>
+								<th>Year of Publication</th>
 							</tr>
 							{%for p in pubs%}
 							  <tr>
@@ -387,14 +389,14 @@
 						{%ifequal key sp.progress%}
 						 {% ifequal sp.Started True %}
 							 {% ifequal sp.Completed True %}
-							 <button class="accordion"><h2>{{value}}</h2></button>
+							 <button class="accordion"><h2 style="color:green;">{{value}}</h2></button>
 						   <div class="panel">
 							   <h5>Date Completed:</h5><p>{{sp.sdate}}</p>
 							   <h5>Status: </h5><p>{{sp.status}}</p>
 							   <h5>Remarks:</h5><p>{{sp.remarks}}</p>
 						   </div>
 						  {% else %}
-							<button class="accordion"><h2>{{value}}</h2></button>
+							<button class="accordion"><h2 style="color:red;">{{value}}</h2></button>
 						    <div class="panel">
 								{%ifequal sp.status "Fail"%}
 								<h5>Repeat Date:</h5><p>{{sp.cdate}}</p>
@@ -463,6 +465,16 @@ for (i = 0; i < acc.length; i++) {
 					}
 					</script>
 					<style>
+					.button {
+					    background-color:#003399; /* Green */
+					    border: bold;
+					    color: white;
+					    padding: 15px 32px;
+					    text-align: center;
+					    text-decoration: none;
+					    display: inline-block;
+					    font-size: 15px;
+					}
 					.pwd{
 						display: none;
 					}
@@ -521,9 +533,7 @@ for (i = 0; i < acc.length; i++) {
 		</div>
 	</div>
 <style>
-th{
- width = "30"
-}
+
 </style>
 	<div id="footer">
 		<div id="footer1">
