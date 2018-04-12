@@ -358,28 +358,28 @@
 					<div id="regde" class="tabcontent">
 					  <center><table>
             <tr>
-							<th>Name:</th>
-							<td>{{name}}</td>
+							<th style="width:30%">Name:</th>
+							<td style="text-align:center">{{name}}</td>
 						</tr>
 						<tr>
 							<th>Date of Birth:</th>
-							<td>{{dob}}</td>
+							<td style="text-align:center">{{dob}}</td>
 						</tr>
 						<tr>
 							<th>Sex:</th>
-							<td>{{sex}}</td>
+							<td style="text-align:center">{{sex}}</td>
 						</tr>
 						<tr>
 							<th>Registration Number:</th>
-							<td>{{regno}}</td>
+							<td style="text-align:center">{{regno}}</td>
 						</tr>
 						<tr>
 							<th>Registration Date:</th>
-							<td>{{regdate}}</td>
+							<td style="text-align:center">{{regdate}}</td>
 					  </tr>
 						<tr>
 							<th>School:</th>
-							<td>{{school}}</td>
+							<td style="text-align:center">{{school}}</td>
 						</tr>
 					</table>
         </center>
@@ -388,13 +388,13 @@
 					<div id="resde" class="tabcontent">
 					  <h3>Current Status: {{status1}}</h3>
 						<h3>Supervisor: {{supervisor}}</h3>
-						<h3>Publication Details</h3><br>
+						<br><h3>Publication Details</h3><br>
 						<table>
 							<tr>
-								<th>Title </th>
-								<th>Name </th>
+								<th>Title of the Publication</th>
+								<th>Name of thr Journal</th>
 								<th>Authors </th>
-								<th>Year </th>
+								<th>Year of Publication</th>
 							</tr>
 							{%for p in pubs%}
 							  <tr>
@@ -475,7 +475,7 @@
 						{%else%}
 						<button class="accordion"><h2 style="opacity:0.8">{{value}}</h2></button>
 						<div class="panel">
-						 <button class="edup">Start</button>
+						 <br><br><button class="edup">Start</button><br><br>
 						 <div class="panel1" id="Start">
 						 <form method="POST" class="start-content" action="http://127.0.0.1:8000/schstart/">{%csrf_token%}
 								Date:
