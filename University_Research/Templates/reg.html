@@ -287,15 +287,17 @@
                               <br></div>
                               <div class="reg">  School:<input type='text' name='school'/><br>
                               <br></div>
-                              <div class="reg">  E-mail ID:<input type='text' name='email'/><br>
+                              <div class="reg"> Official E-mail ID:<input type='text' name='email'/><br>
                               <br></div>
+															<div class="reg">  Personal E-mail ID:<input type='text' name='email'/><br>
+															<br></div>
                               <div class="reg">  Supervisor ID:<input type='text' name='supervisor'/><br>
                               <br></div>
                               <div class="reg">  Reg Date:<input type='date' name='regdate'/><br>
                               <br></div>
                             </font><br>
                               <br>
-                              <button type='submit' name='in'>Submit</button>
+                              <button class="buttonlog" type='submit' name='in'>Submit</button>
                             </form>
                           </div>
                           <div class="supervisor" id='22'>
@@ -310,17 +312,38 @@
                               <br></div>
                               <div class="reg">  School: <input type='text' name='school'/><br>
                               <br></div>
-                              <div class="reg">  E-mail ID:<input type='text' name='email'/><br>
+                              <div class="reg">  Official E-mail ID:<input type='text' name='email'/><br>
                               <br></div>
+															<div class="reg"> Personal E-mail ID:<input type='text' name='email'/><br>
+															<br></div>
                                 <div class="reg">Areas of Interest:<input type='text' name='aoi'/><br>
-                              <br></div>
-                              <button type='submit' name='in'>Submit</button>
+                              </div>
+                              <button class="buttonlog" type='submit' name='in'>Submit</button>
                             </form>
-														<br><br>
-                          </div><br>
+														<br>
+                          </div>
 												</div>
 
 <style>
+.buttonlog {
+    background-color:darkblue;
+    border: solid;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 15px;
+  box-shadow: 0 4px #999;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+.buttonlog:hover {background-color: darkblue}
+
+.buttonlog:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 .loginhead{
   text-align: center;
   margin-left: 1%;

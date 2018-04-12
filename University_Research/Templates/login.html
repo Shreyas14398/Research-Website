@@ -274,7 +274,9 @@
                     <br>
                     Password: <br><input type='password' name='password'/></font><br>
                     <br>
+                    <a href="#">Forgot Password</a><br><br>
                     <button class="buttonlog" type='submit' name='in'>Login</button>
+
                   </form>
                 </div>
                 <div class="supervisor" id='22'>
@@ -321,14 +323,23 @@ h3{
  text-align:center;
 }
 .buttonlog {
-    background-color:darkblue; /* Green */
+    background-color:darkblue;
     border: solid;
     color: white;
     padding: 5px 10px;
     text-align: center;
+    border-radius: 15px;
+  box-shadow: 0 4px #999;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
+}
+.buttonlog:hover {background-color: darkblue}
+
+.buttonlog:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 h1{
   text-align: left;

@@ -348,7 +348,7 @@
 					</table>
 					<br>
 					<br>
-					<button class="button" onclick="document.getElementById('pwd').style.display='block'">Change Password:</button></p><br><br>
+					<button class="buttonlog" onclick="document.getElementById('pwd').style.display='block'">Change Password:</button></p><br><br>
 					<div class="pwd" id="pwd">
 						<form method="POST" action="http://127.0.0.1:8000/chnpwd/">{%csrf_token%}
 						Old Password: <input type="password" name="old"><br><br>
@@ -362,9 +362,9 @@
       </div>
 
 					<div id="resde" class="tabcontent">
-					  <h3>Current Status: {{status1}}</h3>
-						<h3>Supervisor: {{supervisor}} </h3>
-						<h3>Publication Details</h3><br>
+					  <h3>Current Status: {{status1}}</h3><br>
+						<h3>Supervisor: {{supervisor}} </h3><br>
+						<h2>Publication Details</h2><br>
 						<table>
 							<tr>
 								<th>Title of the Publication</th>
@@ -474,6 +474,25 @@ for (i = 0; i < acc.length; i++) {
 					    text-decoration: none;
 					    display: inline-block;
 					    font-size: 15px;
+					}
+					.buttonlog {
+					    background-color:darkblue;
+					    border: solid;
+					    color: white;
+					    padding: 5px 10px;
+					    text-align: center;
+					    border-radius: 15px;
+					  box-shadow: 0 4px #999;
+					    text-decoration: none;
+					    display: inline-block;
+					    font-size: 15px;
+					}
+					.buttonlog:hover {background-color: darkblue}
+
+					.buttonlog:active {
+					  background-color: black;
+					  box-shadow: 0 5px #666;
+					  transform: translateY(4px);
 					}
 					.pwd{
 						display: none;
