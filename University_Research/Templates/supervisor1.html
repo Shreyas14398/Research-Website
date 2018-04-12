@@ -314,7 +314,7 @@
 					</div>
 
 					<div id="regde" class="tabcontent">
-					  <h3>List of Scholars: </h3>
+					  <br><h3>List of Scholars: </h3><br>
 						<table>
 							<tr>
 								<th>Register Number</th>
@@ -324,14 +324,14 @@
 				      </tr>
             {%for s in sch%}
 						<tr>
-							<td>{{s.regno}}</td>
-							<td>{{s.name}}</td>
-							<td>{{s.email}}</td>
-							<td>
+							<td style="text-align:center">{{s.regno}}</td>
+							<td style="text-align:center">{{s.name}}</td>
+							<td style="text-align:center">{{s.email}}</td>
+							<td style="text-align:center">
 								<form method="POST" action="http://127.0.0.1:8000/schinfo/">
 									{%csrf_token%}
 									<input type="hidden" name="regno" value={{s.regno}}>
-									<input type="submit" name="Info" value="Info">
+									<input style="width:30%" type="submit" name="Info" value="Info">
 								</form>
 							</td>
 						</tr>
@@ -340,20 +340,20 @@
 					</div>
 
 					<div id="resde" class="tabcontent">
-						<h3>Publication Details</h3>
+						<br><h3>Publication Details :</h3><br>
 						<table>
 							<tr>
-								<th>S.No. </th>
-								<th>Name </th>
-								<th>Authors </th>
-								<th>Year </th>
+								<th style="text-align:center">Title of Publication</th>
+								<th style="text-align:center">Name of thr Journal</th>
+								<th style="text-align:center">Authors </th>
+								<th style="text-align:center">Year of Publication</th>
 							</tr>
 							{%for p in pubs%}
 							  <tr>
-									<td>{{p.title}}</td>
-									<td>{{p.name}}</td>
-									<td>{{p.author}}</td>
-									<td>{{p.date}}</td>
+									<td style="text-align:center">{{p.title}}</td>
+									<td style="text-align:center">{{p.name}}</td>
+									<td style="text-align:center">{{p.author}}</td>
+									<td style="text-align:center">{{p.date}}</td>
 								</tr>
 							{%endfor%}
 						</table>
@@ -362,28 +362,28 @@
 					<div id="prog" class="tabcontent">
 						<center><table>
 						<tr>
-							<th>Name:</th>
-							<td>{{name}}</td>
+							<th style="text-align:center">Name:</th>
+							<td style="text-align:center">{{name}}</td>
 						</tr>
 						<tr>
-							<th>Sex:</th>
-							<td>{{sex}}</td>
+							<th style="text-align:center">Sex:</th>
+							<td style="text-align:center">{{sex}}</td>
 						</tr>
 						<tr>
-							<th>E-mail:</th>
-							<td>{{email}}</td>
+							<th style="text-align:center">E-mail:</th>
+							<td style="text-align:center">{{email}}</td>
 						</tr>
 						<tr>
-							<th>Employee ID:</th>
-							<td>{{mid}}</td>
+							<th style="text-align:center">Employee ID:</th>
+							<td style="text-align:center">{{mid}}</td>
 						</tr>
 						<tr>
-							<th>School:</th>
-							<td>{{school}}</td>
+							<th style="text-align:center">School:</th>
+							<td style="text-align:center">{{school}}</td>
 						</tr>
 						<tr>
-							<th>Area of Interest:</th>
-							<td>{{aoi}}</td>
+							<th style="text-align:center">Area of Interest:</th>
+							<td style="text-align:center">{{aoi}}</td>
 						</tr>
 					</table>
 				</center>
