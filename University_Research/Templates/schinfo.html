@@ -458,7 +458,7 @@
 									</select>
 								 <button type="button" onclick="document.getElementById('no1').style.display='none'">Cancel</button>
                  <button type="button" onclick="updatefun1()">Next</button>
-								</div>
+							 </div>
 								<p id="p2"></p>
 								<div class="no2" id="no2">
 									<input type="Date" name="date">
@@ -507,6 +507,20 @@ if (panel.style.maxHeight){
 panel.style.maxHeight = null;
 } else {
 panel.style.maxHeight = panel.scrollHeight + "px";
+}
+});
+}
+var edup = document.getElementsByClassName("edup");
+var j;
+
+for (j = 0; j < edup.length; j++) {
+edup[j].addEventListener("click", function() {
+this.classList.toggle("active");
+var panel1 = this.nextElementSibling;
+if (panel1.style.maxHeight){
+panel1.style.maxHeight = null;
+} else {
+panel1.style.maxHeight = panel1.scrollHeight + "px";
 }
 });
 }
