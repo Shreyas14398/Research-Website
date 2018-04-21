@@ -13,7 +13,12 @@ class Personal_Det(models.Model):
    name=models.CharField(max_length=30)
    regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    email=models.EmailField()
+   pemail=models.EmailField()
+   category=models.CharField(max_length=10)
    school=models.CharField(max_length=30)
+   phno=models.PositiveIntegerField()
+   retitle=models.CharField(max_length=500)
+   typet=models.CharField(max_length=30)
    regdate=models.CharField(max_length=10)
    sex=models.CharField(max_length=10)
    dob=models.CharField(max_length=10)
@@ -24,14 +29,19 @@ class Supervisor(models.Model):
    mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    password=models.CharField(max_length=30)
    dean=models.BooleanField(default=False)
+   external=models.BooleanField(default=False)
    
 class Su_Personal_Det(models.Model):
    name=models.CharField(max_length=30)
    mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   phno=models.PositiveIntegerField()
    email=models.EmailField()
+   pemail=models.EmailField()
    sex=models.CharField(max_length=10)
    school=models.CharField(max_length=30)
    aoi=models.CharField(max_length=500)
+   institution=models.CharField(max_length=500)
+   affiliation=models.CharField(max_length=300)
 
 class DC_Meeting(models.Model):
    Progress_Choices=(
@@ -39,10 +49,10 @@ class DC_Meeting(models.Model):
         ("B","First DC"),
         ("C","Coursework Completion"),
         ("D","Comprehensive Viva"),
-        ("E","Second DC"),
-        ("F","RAC"),
+        ("E","RAC"),
+        ("F","Second DC"),
         ("G","Thesis Submission"),
-        ("H","Public Viva"),
+        ("H","Open Defence"),
    )
    progress=models.CharField(choices=Progress_Choices,default="A",max_length=30)
    remarks=models.CharField(max_length=500)

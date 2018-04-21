@@ -259,7 +259,7 @@
 			</div>
 			<!---------------- Mid content ----------------------------------->
 					<div class="clearpad"><div class="item-page">
-	<h1 class="item-page-title">Regestration Form</h1>
+	<h1 class="item-page-title">Registration Form</h1>
 
 		<ul class="button-icons">
 										<li class="print-icon">
@@ -279,21 +279,34 @@
 															{%csrf_token%}
                               <br>
                               <div class="reg">  Name:  <input type='text' name='name'/><br>
-                              <br></div>
-                              Sex: <input type="radio" name="sex" value="Male" checked> Male
-  <input type="radio" name="sex" value="Female"> Female<br><br>
-	                          Date of Birth: <br><input type="date" name="dob"><br><br>
+                              <br></div><div class="reg">
+                              Sex: <input type="radio" name="sex" value="Male" checked> Male</input>
+  <input type="radio" name="sex" value="Female"> Female</input><br><br></div><div class="reg">
+	                          Date of Birth: <br><input type="date" name="dob"><br><br></div>
+														<div class="reg">  Category:<br><select name="category"><option value="OC">OC</option>
+														<option value="BC">BC</option>
+														<option value="MBC">MBC</option>
+														<option value="SC">SC</option>
+														<option value="ST">ST</option></select>
+													</div><br>
                               <div class="reg">  Register Number: <input type='text' name='regno'/><br>
                               <br></div>
                               <div class="reg">  School:<input type='text' name='school'/><br>
                               <br></div>
                               <div class="reg"> Official E-mail ID:<input type='text' name='email'/><br>
                               <br></div>
-															<div class="reg">  Personal E-mail ID:<input type='text' name='email'/><br>
+															<div class="reg">  Personal E-mail ID:<input type='text' name='pemail'/><br>
+															<br></div>
+															<div class="reg">  Phone Number:<input type='number' name='phno'/><br>
 															<br></div>
                               <div class="reg">  Supervisor ID:<input type='text' name='supervisor'/><br>
                               <br></div>
                               <div class="reg">  Reg Date:<br><input type='date' name='regdate'/><br>
+                              <br></div>
+															<div class="reg">  Proposed Title of Research: <br><input type='text' name='retitle'/><br>
+                              <br></div>
+															<div class="reg">  Type: <br><input type='radio' name='typet' value='Full-Time' checked>Full-Time</input>
+																<input type='radio' name='typet' value='Part-Time'>Part-Time</input><br>
                               <br></div>
                             </font>
       <button class="buttonlog" type='submit' name='in'>Submit</button>
@@ -307,16 +320,27 @@
                               <br></div>
                               Sex: <input type="radio" name="sex" value="male" checked> Male
   <input type="radio" name="sex" value="female"> Female<br><br>
-                                <div class="reg">Member ID: <input type='text' name='mid'/><br>
+	                            <div class="reg"> Phone Number:<input type='text' name='phno'/><br>
+	<br></div>
+                                <div class="reg">Member ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p><br>
                               <br></div>
                               <div class="reg">  School: <input type='text' name='school'/><br>
                               <br></div>
                               <div class="reg">  Official E-mail ID:<input type='text' name='email'/><br>
                               <br></div>
-															<div class="reg"> Personal E-mail ID:<input type='text' name='email'/><br>
+															<div class="reg"> Personal E-mail ID:<input type='text' name='pemail'/><br>
 															<br></div>
                                 <div class="reg">Areas of Interest:<input type='text' name='aoi'/><br>
                               </div>
+															<div class="reg">Institution: <input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'">SASTRA</input>
+																<input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'">Other</input><br>
+															  <div class="external" id="external">
+																	<div class="reg">  Institution Name: <input type='text' name='institution'/><br>
+		                              <br></div>
+																	<div class="reg">  Affiliation: <input type='text' name='affiliation'/><br>
+		                              <br></div>
+                               </div>
+														</div>
                             <br>  <button class="buttonlog" type='submit' name='in'>Submit</button>
                             </form>
 														<br>
@@ -324,7 +348,10 @@
 												</div>
 
 <style>
-
+.external{
+	display: none;
+	width:100%;
+}
 .buttonlog {
     background-color:darkblue;
     border: solid;

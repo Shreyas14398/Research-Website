@@ -24,7 +24,7 @@ from Research.forms import suregForm
 from Research.forms import PwdForm
 
 # Create your views here.
-levels={"A":"Zeroth Review","B":"First DC","C":"Coursework Completion","D":"Comprehensive Viva","E":"Second DC","F":"RAC","G":"Thesis Submission","H":"Public Viva"}
+levels={"A":"Zeroth Review","B":"First DC","C":"Coursework Completion","D":"Comprehensive Viva","E":"RAC","F":"Second DC","G":"Thesis Submission","H":"Open Defence"}
 def home(request):
   return render(request,"home.html",{})
 
