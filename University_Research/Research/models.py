@@ -72,6 +72,11 @@ class Publications(models.Model):
    regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
 
+class Announcement(models.Model):
+  title=models.CharField(max_length=200)
+  body=models.CharField(max_length=1000)
+  adate=models.DateField(null=True,blank=True)
+
    
    
    

@@ -260,7 +260,7 @@
 
               <br>
               <h1 class="loginhead">Login</h1>
-              <font color="red"><h3>{{message}}</h3></font>
+              <font color="{{col}}"><h3>{{message}}</h3></font>
               <div class="Top">
                 <div onclick='myfunc1()' class="scholar-box" id='1'>Scholar</div><div onclick='myfunc2()' class="supervisor-box" id='2' >Supervisor</div><div onclick='myfunc3()' class="dean-box" id='3' >Dean</div>
                 <div class="bor-top"></div>
@@ -269,35 +269,38 @@
                 <div class="scholar" id='11'>
                   <form method="POST" action="http://127.0.0.1:8000/logins/" name="logins">
                     <br>
-                    Register Number: <br><input type='text' name='regno'/><br>
-                    {%csrf_token%}
+                  <div class="box_size">  Register Number: <br><input type='text' name='regno'/><br>
+                    {%csrf_token%}</div>
                     <br>
                     Password: <br><input type='password' name='password'/></font><br>
                     <br>
-                    <button type='submit' name='in'>Login</button>
+                    <a href="#">Forgot Password</a><br><br>
+                    <button class="buttonlog" type='submit' name='in'>Login</button>
+
                   </form>
                 </div>
                 <div class="supervisor" id='22'>
-                  <form method="POST" action="/loginsu/" name="loginsu">
+                  <form method="POST" action="http://127.0.0.1:8000/loginsu/" name="loginsu">
                     <br>
-                    User ID: <br>
-                    <input type='text' name='username'/><br>
+                    <div class="box_size">  User ID: <br>
+                    <input type='text' name='mid'/><br></div>
                         {%csrf_token%}
                     <br>
                     Password:<br> <input type='password' name='password'/></font><br>
                     <br>
-                    <button type='submit' name='in'>Login</button>
+                      <a href="#">Forgot Password</a><br><br>
+                    <button class="buttonlog" name='in'>Login</button>
                   </form>
                 </div>
                   <div class="dean" id='33'>
-                    <form method="POST" action="/logind/" name="logind">
+                    <form method="POST" action="http://127.0.0.1:8000/logind/" name="logind">
                       <br>
-                      Dean ID: <br><input type='text' name='username'/><br>
+                    <div class="box_size">    Dean ID: <br><input type='text' name='mid'/><br></div>
                           {%csrf_token%}
                       <br>
                       Password: <br><input type='password' name='password'/></font><br>
                       <br>
-                      <button type='submit' name='in'>Login</button>
+                      <button class="buttonlog "type='submit' name='in'>Login</button>
                     </form>
                   </div>
                 </div>
@@ -308,6 +311,10 @@
                 <br>
                 <hr>
 <style>
+.box_size{
+  margin-left: 38%;
+  margin-right: 38%;
+}
 body{
   font-size: 100%;
   margin-left: 0%;
@@ -315,6 +322,25 @@ body{
 }
 h3{
  text-align:center;
+}
+.buttonlog {
+    background-color:darkblue;
+    border: solid;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    border-radius: 15px;
+  box-shadow: 0 4px #999;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+}
+.buttonlog:hover {background-color: darkblue}
+
+.buttonlog:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 h1{
   text-align: left;

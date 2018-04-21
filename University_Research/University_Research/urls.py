@@ -18,6 +18,8 @@ from django.contrib import admin
 from Research.views import home 
 from django.views.generic import TemplateView
 from Research.views import logins
+from Research.views import ann
+from Research.views import login1
 from Research.views import loginsu
 from Research.views import logind
 from Research.views import superm
@@ -37,7 +39,9 @@ from Research.views import supervisor1
 from Research.views import reg
 from Research.views import schreg
 from Research.views import chnpwd
+from Research.views import newann
 from Research.views import sureg
+from Research.views import annd
 from Research.views import logout
 from Research.views import logoutsu
 
@@ -47,12 +51,16 @@ urlpatterns = [
     url(r'^login/',TemplateView.as_view(template_name="login.html"),name="login"),
     url(r'^login1/',TemplateView.as_view(template_name="login1.html"),name="login1"),
     url(r'^chnpwd/',chnpwd),
+    url(r'^login1/',login1),
+    url(r'^ann/',ann),
     url(r'^logind/',logind),
     url(r'^logins/',logins),
     url(r'^loginsu/',loginsu),
+    url(r'^annd/',annd),
     url(r'^superm/',superm),
     url(r'^super1/',super1),
     url(r'^super2/',super2),
+    url(r'^newann/',newann),
     url(r'^logout/',logout),
     url(r'^logoutsu/',logoutsu),
     url(r'^super3/',super3),

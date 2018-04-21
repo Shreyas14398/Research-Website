@@ -17,16 +17,45 @@ from Research.forms import startform
 from Research.forms import infof
 import datetime
 from Research.forms import namesearchForm
+from Research.models import Announcement
 from Research.forms import SunamesearchForm
 from Research.forms import midsearchForm
 from Research.forms import schregForm
 from Research.forms import suregForm
+from Research.forms import AnForm
 from Research.forms import PwdForm
 
 # Create your views here.
 levels={"A":"Zeroth Review","B":"First DC","C":"Coursework Completion","D":"Comprehensive Viva","E":"RAC","F":"Second DC","G":"Thesis Submission","H":"Open Defence"}
 def home(request):
   return render(request,"home.html",{})
+
+def newann(request):
+  if request.POST:
+    AnnF=AnForm(request.POST)
+    if AnnF.is_valid():
+      da=datetime.datetime.now()
+      NAn=Announcement(title=AnnF.cleaned_data['title'],body=AnnF.cleaned_data['body'],adate=da)
+      NAn.save()
+      return HttpResponseRedirect('/annd')
+    else:
+      return render(request,"home.html",{})
+  else:
+    return render(request,"home.html",{})
+
+def annd(request):
+  if request.session.has_key('mid'):
+    dbA=Announcement.objects.filter()
+    return render(request,"annd.html",{"dbA":dbA})
+  else: 
+    return HttpResponseRedirect('/login1')
+
+def ann(request):
+  if request.session.has_key('mid') or request.session.has_key('regno'):
+    dbA=Announcement.objects.filter()
+    return render(request,"ann.html",{"dbA":dbA})
+  else:
+    return HttpResponseRedirect('/login1')
 
 def chnpwd(request):
   if request.POST:
@@ -39,13 +68,13 @@ def chnpwd(request):
          dbS.password=PwdF.cleaned_data['new']
          dbS.save()
          del request.session['regno']
-         return render(request,"login.html",{"message":"Password Changed Successfully"})
+         return render(request,"login.html",{"message":"Password Changed Successfully","col":"green"})
       else:
          del request.session['regno']
-         return render(request,"login.html",{"message":"Incorrect Old Password"})
+         return render(request,"login.html",{"message":"Incorrect Old Password","col":"red"})
     else:
       del request.session['regno']
-      return render(request,"login.html",{"message":"Incorrect Information!"})
+      return render(request,"login.html",{"message":"Incorrect Information!","col":"red"})
   else:
      return render(request,"home.html",{})
 
@@ -58,7 +87,7 @@ def logins(request):
      request.session['regno']=dbN.regno
      return HttpResponseRedirect('/scholar1')
     else:
-     return render(request,"login.html",{"message":"Invalid Username or Password"})
+     return render(request,"login.html",{"message":"Invalid Username or Password","col":"red"})
   else:
     return render(request,"login.html",{})
 
@@ -70,7 +99,7 @@ def logind(request):
      request.session['mid']=dbN.mid
      return HttpResponseRedirect('/dean1')
     else:
-     return render(request,"login.html",{"message":"Invalid Username or Password"})
+     return render(request,"login.html",{"message":"Invalid Username or Password","col":"red"})
   else:
     return render(request,"login.html",{})
 
@@ -79,14 +108,14 @@ def logout(request):
     del request.session['regno']
   except:
     pass
-  return render(request,"login.html",{"message":"Logged out successfully!"})
+  return render(request,"login.html",{"message":"Logged out successfully!","col":"green"})
 
 def logoutsu(request):
   try:
-    del request.session['regno']
+    del request.session['mid']
   except:
     pass
-  return render(request,"login.html",{"message":"Logged out successfully!"})
+  return render(request,"login.html",{"message":"Logged out successfully!","col":"green"})
 
 def loginsu(request):
   if request.POST:
@@ -96,7 +125,7 @@ def loginsu(request):
       request.session['mid']=dbN.mid
       return HttpResponseRedirect('/supervisor1')
     else:
-      return render(request,"login.html",{"message":"Invalid Username or Password"})
+      return render(request,"login.html",{"message":"Invalid Username or Password","col":"red"})
   else:
     return render(request,"login.html",{})
 
@@ -281,11 +310,14 @@ def schreg(request):
       for key,values in levels.iteritems():
         UObj=DC_Meeting(regno=RegS.cleaned_data['regno'],progress=key)
         UObj.save()
-      return render(request,"login.html",{"message":"Registered Successfully!"})
+      return render(request,"login.html",{"message":"Registered Successfully!","col":"green"})
     else:
-      return render(request,"login.html",{"message":"Couldn't Register!"})
+      return render(request,"login.html",{"message":"Couldn't Register!","col":"red"})
   else:
     return render(request,"home.html",{})
+
+def login1(request):
+  return render(request,"login1.html",{})
 
 def reg(request):
   return render(request,"reg.html",{})

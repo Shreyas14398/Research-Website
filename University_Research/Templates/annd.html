@@ -270,7 +270,19 @@
 <br>
 
 <br>
-
+<button onclick="nann()">Would you like to announce something?</button>
+<div class="newan" id="newan">
+  <form method="POST" action="http://127.0.0.1:8000/newann/">{%csrf_token%}
+  Enter the Title:
+  <input type="text" name="title" required/><br>
+  <br>
+  Enter Content:
+  <textarea name="body" rows="10" cols="20" required></textarea><br>
+  <br>
+  <button type="button" onclick="nann()">Cancel</button>
+  <button type="submit">Announce</button>
+</form>
+</div>
 <ul>
   {%for a in dbA%}
 <li class="anno">
@@ -289,6 +301,17 @@
   ga('create', 'UA-48118274-1', 'auto');
   ga('send', 'pageview');
 
+  function nann(){
+     var newann=document.getElementById('newan');
+     if(newann.style.maxHeight){
+       newann.style.maxHeight=null;
+     }
+     else{
+       newann.style.maxHeight=newann.scrollHeight+"px";
+     }
+  }
+
+
   var acc = document.getElementsByClassName("accordion");
 var i;
 
@@ -303,6 +326,7 @@ panel.style.maxHeight = panel.scrollHeight + "px";
 }
 });
 }
+
 </script>
 <style>
 .accordion {
@@ -340,6 +364,13 @@ panel.style.maxHeight = panel.scrollHeight + "px";
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+.newan{
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 body{
   font-size: 100%;

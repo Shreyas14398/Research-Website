@@ -149,7 +149,10 @@ class schregForm(forms.Form):
    email=forms.EmailField()
    supervisor=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    regdate=forms.DateField()
-   
+
+class AnForm(forms.Form):
+   title=forms.CharField(max_length=200)
+   body=forms.CharField(max_length=1000)
    
    
    
