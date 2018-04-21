@@ -373,6 +373,16 @@
 					</div>
 
 					<script>
+					var b={{trig}}
+          var Ti=setTimeout(trial(b),100)
+          function trial(b){
+						if (b==1){
+							document.getElementById("regde").style.display="block";
+						}
+						if(b==2){
+							document.getElementById("resde").style.display="block";
+						}
+					}
 					function openCity(evt, cityName) {
 					    var i, tabcontent, tablinks;
 					    tabcontent = document.getElementsByClassName("tabcontent");

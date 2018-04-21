@@ -196,7 +196,7 @@ def dean1(request):
       message="Good Afternoon..."
     else:
       message="Good Evening..."
-    return render(request,"dean1.html",{"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
+    return render(request,"dean1.html",{"trig":0,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
 
 def dean2(request):
   mid=request.session['mid']
@@ -215,31 +215,42 @@ def dean2(request):
     if SearchF.is_valid():
      rno=SearchF.cleaned_data['regno']
      dbS=Personal_Det.objects.filter(regno=rno).values()
-     return render(request,'dean1.html',{"dbS":dbS,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
+     return render(request,'dean1.html',{"dbS":dbS,"trig":1,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
     else:
      SearchF=namesearchForm(request.POST)
      if SearchF.is_valid():
        name=SearchF.cleaned_data['regno']
        dbS=Personal_Det.objects.filter(name=name).values()
-       return render(request,'dean1.html',{"dbS":dbS,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
+       return render(request,'dean1.html',{"dbS":dbS,"trig":1,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
      else:
        return render(request,'dean1.html',{})
   else:
     return render(request,'dean1.html',{})
 
 def dean3(request):
+    mid=request.session['mid']
+    dbD=Supervisor.objects.get(mid=mid,dean=True)
+    Schcnt=Scholar.objects.filter().count()
+    Supcnt=Supervisor.objects.filter().count()-1
+    now=datetime.datetime.now()
+    if now.hour<12:
+      message="Good Morning..."
+    elif now.hour>=12 and now.hour<16:
+      message="Good Afternoon..."
+    else:
+      message="Good Evening..."
     if request.POST:
       SearchF=midsearchForm(request.POST)
       if SearchF.is_valid():
         mid=SearchF.cleaned_data['mid']
         dbSu=Su_Personal_Det.objects.filter(mid=mid).values()
-        return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
+        return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"trig":2,"mid":mid,"sch":Schcnt,"sup":Supcnt})
       else:
         SearchF=SunamesearchForm(request.POST)
         if SearchF.is_valid():
           name=SearchF.cleaned_data['mid']
           dbSu=Su_Personal_Det.objects.filter(name=name).values()
-          return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt})
+          return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"trig":2,"mid":mid,"sch":Schcnt,"sup":Supcnt})
         else:
           return render(request,'dean1.html',{})
     else:
