@@ -281,7 +281,7 @@
                               <div class="reg">  Name:  <input type='text' name='name'/><br>
                               <br></div><div class="reg">
                               Sex: <input type="radio" name="sex" value="Male" checked> Male</input>
-  <input type="radio" name="sex" value="Female"> Female</input><br><br></div><div class="reg">
+                            <input type="radio" name="sex" value="Female"> Female</input><br><br></div><div class="reg">
 	                          Date of Birth: <br><input type="date" name="dob"><br><br></div>
 														<div class="reg">  Category:<br><select name="category"><option value="OC">OC</option>
 														<option value="BC">BC</option>
@@ -305,8 +305,8 @@
                               <br></div>
 															<div class="reg">  Proposed Title of Research: <br><input type='text' name='retitle'/><br>
                               <br></div>
-															<div class="reg">  Type: <br><input type='radio' name='typet' value='Full-Time' checked>Full-Time</input>
-																<input type='radio' name='typet' value='Part-Time'>Part-Time</input><br>
+															<div class="reg">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
+																<input type='radio' name='typet' value='Part-Time'> Part-Time</input><br>
                               <br></div>
                             </font>
       <button class="buttonlog" type='submit' name='in'>Submit</button>
@@ -323,7 +323,7 @@
 	                            <div class="reg"> Phone Number:<input type='text' name='phno'/><br>
 	<br></div>
                                 <div class="reg">Member ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p><br>
-                              <br></div>
+                              </div>
                               <div class="reg">  School: <input type='text' name='school'/><br>
                               <br></div>
                               <div class="reg">  Official E-mail ID:<input type='text' name='email'/><br>
@@ -331,13 +331,13 @@
 															<div class="reg"> Personal E-mail ID:<input type='text' name='pemail'/><br>
 															<br></div>
                                 <div class="reg">Areas of Interest:<input type='text' name='aoi'/><br>
-                              </div>
-															<div class="reg">Institution: <input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'">SASTRA</input>
-																<input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'">Other</input><br>
-															  <div class="external" id="external">
-																	<div class="reg">  Institution Name: <input type='text' name='institution'/><br>
-		                              <br></div>
-																	<div class="reg">  Affiliation: <input type='text' name='affiliation'/><br>
+                              </div><br>
+															<div class="reg">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
+																<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'"> OTHER</input><br>
+															  <div class="external" id="external"><br>
+																	<div class="reg1">Institiution  Name: <input type='text' name='institution'/><br>
+		                              </div>
+																	<div class="reg1">  Affiliation: <input type='text' name='affiliation'/><br>
 		                              <br></div>
                                </div>
 														</div>
@@ -379,10 +379,15 @@
 	margin-left: 35%;
 	margin-right: 35%;
 }
+
+.reg1{
+	margin-left: 5%;
+	margin-right: 5%;
+}
 .login{
   border-style: solid;
   border-width: thin;
-  height: 650px;
+  height: 1000px;
   width:599px;
   margin-left: auto;
   margin-right: auto;
