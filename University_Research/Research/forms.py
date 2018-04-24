@@ -135,20 +135,30 @@ class midsearchForm(forms.Form):
 class suregForm(forms.Form):
    name=forms.CharField(max_length=30)
    sex=forms.CharField(max_length=10)
+   phno=forms.IntegerField()
    mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    school=forms.CharField(max_length=30)
    email=forms.EmailField()
+   pemail=forms.EmailField()
    aoi=forms.CharField(max_length=500)
+   exin=forms.CharField(max_length=30)
+   institution=forms.CharField(max_length=500)
+   affiliation=forms.CharField(max_length=300)
 
 class schregForm(forms.Form):
    name=forms.CharField(max_length=30)
    sex=forms.CharField(max_length=10)
    dob=forms.DateField()
+   category=forms.CharField(max_length=10)
    regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    school=forms.CharField(max_length=30)
    email=forms.EmailField()
+   pemail=forms.EmailField()
+   phno=forms.IntegerField()
    supervisor=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    regdate=forms.DateField()
+   retitle=forms.CharField(max_length=500)
+   typet=forms.CharField(max_length=30)
 
 class AnForm(forms.Form):
    title=forms.CharField(max_length=200)

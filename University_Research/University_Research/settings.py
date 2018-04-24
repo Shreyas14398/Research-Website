@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'University_Research.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/shreyas/git2/Research-Website/University_Research/Templates'],
+        'DIRS': ['/home/sharath/Univ-Research-Git/Research-Website/University_Research/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,6 +114,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+SESSION_SAVE_EVERY_REQUEST=True
 
 
 # Static files (CSS, JavaScript, Images)
