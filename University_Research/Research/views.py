@@ -17,12 +17,14 @@ from Research.forms import startform
 from Research.forms import infof
 import datetime
 from Research.forms import namesearchForm
+from Research.forms import dcmForm
 from Research.models import Announcement
 from Research.forms import SunamesearchForm
 from Research.forms import midsearchForm
 from Research.forms import schregForm
 from Research.forms import suregForm
 from Research.forms import AnForm
+from Research.models import DCM
 from Research.forms import PwdForm
 import random
 # Create your views here.
@@ -82,6 +84,25 @@ def ann(request):
     return render(request,"ann.html",{"dbA":dbA})
   else:
     return HttpResponseRedirect('/login1')
+
+def adett(request):
+  if request.POST:
+    dcmm=dcmForm(request.POST)
+    if dcmm.is_valid():
+      mi=dcmm.cleaned_data['mmid']
+      dbSS=Su_Personal_Det.objects.filter(mid=mi).values()
+      if dbSS.exists():
+        dbSSS=Su_Personal_Det.objects.get(mid=mi)
+        dbD=DCM(mid=dcmm.cleaned_data['mmid'],regno=dcmm.cleaned_data['regno'],name=dbSSS.name,institution=dbSSS.institution)
+        dbD.save()
+        return HttpResponseRedirect('/profile/')
+      else:
+        return render(request,"home.html",{})
+    else:
+      return render(request,"home.html",{})
+  else:
+    return render(request,"home.html",{})
+
 
 def chnpwd(request):
   if request.POST:
@@ -164,10 +185,11 @@ def scholar1(request):
   dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True).values()
   dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
   dbsp=DC_Meeting.objects.filter(regno=rno).values()
+  dcms=DCM.objects.filter(regno=rno).values()
   if dbst.exists():
     status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
     status1=status.get_progress_display()
-  return render(request,"scholar1.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels})
+  return render(request,"scholar1.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
 
 def supervisor1(request):
   mid=request.session['mid']
@@ -199,10 +221,11 @@ def schinfo(request):
       dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
       dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True)
       dbsp=DC_Meeting.objects.filter(regno=rno).values()
+      dcms=DCM.objects.filter(regno=rno).values()
       if dbst.exists():
         status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
         status1=status.get_progress_display()
-      return render(request,"schinfo.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels})
+      return render(request,"schinfo.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
     else:
       return render(request,"home.html",{})
   else:

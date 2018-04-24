@@ -279,6 +279,7 @@
 					  <button class="tablinks" onclick="openCity(event, 'regde')">Registration Details</button>
 					  <button class="tablinks" onclick="openCity(event, 'resde')">Research Details</button>
 					  <button class="tablinks" onclick="openCity(event, 'prog')">Progress</button>
+						<button class="tablinks" onclick="openCity(event, 'dcm')">DC Details</button>
 					</div>
 
 					<div id="regde" class="tabcontent">
@@ -378,7 +379,21 @@
 					  {% endfor %}
 
 					</div>
-
+					<div id="dcm" class="tabcontent">
+           <h2>DC Details: </h2>
+					 <table>
+						<tr>
+						 <th>DC Member</th>
+						 <th>Institution</th>
+					 </tr>
+					 {%for dc in dcm%}
+					 <tr>
+						 <td>{{dc.name}}</td>
+						 <td>{{dc.institution}}</td>
+					 </tr>
+					 {%endfor%}
+				 </table>
+					</div>
 					<script>
 					var acc = document.getElementsByClassName("accordion");
 var i;

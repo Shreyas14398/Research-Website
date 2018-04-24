@@ -77,6 +77,11 @@ class Announcement(models.Model):
   body=models.CharField(max_length=1000)
   adate=models.DateField(null=True,blank=True)
 
+class DCM(models.Model):
+  mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  name=models.CharField(max_length=30)
+  institution=models.CharField(max_length=500)
    
    
    

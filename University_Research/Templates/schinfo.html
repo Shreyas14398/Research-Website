@@ -316,6 +316,7 @@
 					  <button class="tablinks" onclick="openCity(event, 'regde')">Registration Details</button>
 					  <button class="tablinks" onclick="openCity(event, 'resde')">Research Details</button>
 					  <button class="tablinks" onclick="openCity(event, 'prog')">Progress</button>
+						<button class="tablinks" onclick="openCity(event, 'dcm')">DC Details</button>
 					</div>
 
 					<div id="regde" class="tabcontent">
@@ -457,6 +458,31 @@
 					{%endfor%}
 					 {% endfor %}
 					</div>
+					<div id="dcm" class="tabcontent">
+					 <h2>DC Details: </h2>
+					 <button class="accordion">Add/Edit DC Details</button>
+					 <div class="panel">
+						 <form method="POST" action="http://127.0.0.1:8000/adett">{%csrf_token%}
+						 <bold>Member ID: </bold>
+						 <input type="text" name="mmid">
+						 <input type="hidden" name="regno" value={{regno}}>
+						 <input type="submit" value="Add">
+					 </form>
+					 </div>
+					 <br>
+					 <table class="dett">
+						<tr>
+						 <th>DC Member</th>
+						 <th>Institution</th>
+					 </tr>
+					 {%for dc in dcm%}
+					 <tr>
+						 <td>{{dc.name}}</td>
+						 <td>{{dc.institution}}</td>
+					 </tr>
+					 {%endfor%}
+				 </table>
+					</div>
 
 					<script>
 					var acc = document.getElementsByClassName("accordion");
@@ -581,7 +607,7 @@ for (i = 0; i < acc.length; i++) {
 .panel {
     padding: 0 18px;
     background-color: white;
-    max-height: auto;
+    max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }

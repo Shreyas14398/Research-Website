@@ -36,6 +36,7 @@ from Research.views import schedit
 from Research.views import schstart
 from Research.views import schinfo
 from Research.views import supervisor1
+from Research.views import adett
 from Research.views import reg
 from Research.views import schreg
 from Research.views import chnpwd
@@ -79,6 +80,7 @@ urlpatterns = [
     url(r'^schinfo',schinfo),
     url(r'^dean3',dean3),
     url(r'^reg',reg),
+    url(r'^adett',adett),
     url(r'^schreg',schreg),
     url(r'^sureg',sureg),
 ]

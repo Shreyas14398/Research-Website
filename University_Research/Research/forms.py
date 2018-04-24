@@ -165,5 +165,7 @@ class AnForm(forms.Form):
    body=forms.CharField(max_length=1000)
    
    
-   
+class dcmForm(forms.Form):
+   mmid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
  
