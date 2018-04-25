@@ -278,33 +278,38 @@
 														<form method="POST" action="http://127.0.0.1:8000/schreg/" name="logins">
 															{%csrf_token%}
                               <br>
-                              <div class="reg">  Name:  <input type='text' name='name'/><br>
-                              <br></div><div class="reg">
-                              Sex: <input type="radio" name="sex" value="Male" checked> Male</input>
-                            <input type="radio" name="sex" value="Female"> Female</input><br><br></div><div class="reg">
-	                          Date of Birth: <br><input type="date" name="dob"><br><br></div>
-														<div class="reg">  Category:<br><select name="category"><option value="OC">OC</option>
-														<option value="BC">BC</option>
-														<option value="MBC">MBC</option>
-														<option value="SC">SC</option>
-														<option value="ST">ST</option></select>
-													</div><br>
-                              <div class="reg">  Register Number: <input type='text' name='regno'/><br>
-                              <br></div>
-                              <div class="reg">  School:<input type='text' name='school'/><br>
-                              <br></div>
-                              <div class="reg"> Official E-mail ID:<input type='text' name='email'/><br>
-                              <br></div>
-															<div class="reg">  Personal E-mail ID:<input type='text' name='pemail'/><br>
-															<br></div>
-															<div class="reg">  Phone Number:<input type='number' name='phno'/><br>
-															<br></div>
-                              <div class="reg">  Supervisor ID:<input type='text' name='supervisor'/><br>
-                              <br></div>
-                              <div class="reg">  Reg Date:<br><input type='date' name='regdate'/><br>
-                              <br></div>
-															<div class="reg">  Proposed Title of Research: <br><input type='text' name='retitle'/><br>
-                              <br></div>
+                              <div class="reg3">  Name:  <input type='text' name='name'/><br>
+                              </div>
+
+															<div class="reg2"> Official E-mail ID:<input type='text' name='email'/><br>
+															</div>
+	                              <div class="reg3">  Register Number: <input type='text' name='regno'/><br>
+	                              </div>
+																<div class="reg2">  Personal E-mail ID:<input type='text' name='pemail'/><br>
+																<br></div>
+
+                              <div class="reg3">  School:<input type='text' name='school'/>
+                              </div>
+															<div class="reg2">
+															Sex:<br> <input type="radio" name="sex" value="Male" checked> Male</input>
+															<input type="radio" name="sex" value="Female"> Female</input><br><br></div>
+											<div class="reg3">
+											Date of Birth: <br><input type="date" name="dob"><br></div>
+											<div class="reg2">  Category:<br><select name="category"><option value="OC">OC</option>
+											<option value="BC">BC</option>
+											<option value="MBC">MBC</option>
+											<option value="SC">SC</option>
+											<option value="ST">ST</option></select>
+											</div>
+
+															<div class="reg3">  Phone Number:<input type='text' name='phno'/>
+															</div>
+                              <div class="reg2">  Supervisor ID:<input type='text' name='supervisor'/><br><br>
+                              </div>
+                              <div class="reg3">  Reg Date:<br><input type='date' name='regdate'/>
+                              </div>
+															<div class="reg2">  Proposed Title of Research: <br><input type='text' name='retitle'/><br>
+                              <br></div><br>
 															<div class="reg">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
 																<input type='radio' name='typet' value='Part-Time'> Part-Time</input><br>
                               <br></div>
@@ -316,22 +321,24 @@
                             <form method="POST" action="http://127.0.0.1:8000/sureg/" name="loginsu">
 															{%csrf_token%}
                               <br>
-                              <div class="reg">  Name: <input type='text' name='name'/><br>
-                              <br></div>
-                              Sex: <input type="radio" name="sex" value="male" checked> Male
-  <input type="radio" name="sex" value="female"> Female<br><br>
-	                            <div class="reg"> Phone Number:<input type='text' name='phno'/><br>
-	<br></div>
-                                <div class="reg">Member ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p><br>
+                              <div class="reg3">  Name: <input type='text' name='name'/><br>
                               </div>
-                              <div class="reg">  School: <input type='text' name='school'/><br>
+
+														                                <div class="reg2">Member ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
+														                              </div>
+                               <div class="reg3"> Phone Number:<input type='text' name='phno'/>
+	<br></div>
+                              <div class="reg2">  School: <input type='text' name='school'/><br>
                               <br></div>
-                              <div class="reg">  Official E-mail ID:<input type='text' name='email'/><br>
+                              <div class="reg3">  Official E-mail ID:<input type='text' name='email'/>
                               <br></div>
-															<div class="reg"> Personal E-mail ID:<input type='text' name='pemail'/><br>
+															<div class="reg2"> Personal E-mail ID:<input type='text' name='pemail'/><br>
 															<br></div>
-                                <div class="reg">Areas of Interest:<input type='text' name='aoi'/><br>
+                                <div class="reg3">Areas of Interest:<input type='text' name='aoi'/><br>
                               </div><br>
+															<div class="reg2">Sex: <input type="radio" name="sex" value="male" checked> Male
+  <input type="radio" name="sex" value="female"> Female<br><br></div><br><br>
+
 															<div class="reg">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
 																<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'"> OTHER</input><br>
 															  <div class="external" id="external"><br>
@@ -379,6 +386,16 @@
 	margin-left: 35%;
 	margin-right: 35%;
 }
+.reg3{
+	margin-top: 5%;
+	margin-left: 10%;
+	margin-right: 65%;
+}
+.reg2{
+	margin-top: -45px;
+	margin-left: 65%;
+	margin-right: 10%;
+}
 
 .reg1{
 	margin-left: 5%;
@@ -387,8 +404,8 @@
 .login{
   border-style: solid;
   border-width: thin;
-  height: 1000px;
-  width:599px;
+  height: 800px;
+  width:750px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -412,7 +429,7 @@
   width: 120px;
   text-align: center;
   font-weight: bold;
-  margin-left: 0.5px;
+  margin-left: -75px;
 }
 .supervisor-box{
   height: 5px;
@@ -427,7 +444,7 @@
   border-width: thin;
   height:30px;
   width:120px;
-  margin-left: 120px;
+  margin-left: 46px;
   margin-top: -30px;
   text-align: center;
   font-weight: normal;
@@ -449,8 +466,9 @@
 
   border-top: solid;
   border-width: thin;
-  width: 360px;
-  margin-left: 240px;
+  width: 510px;
+  margin-left: 165px;
+	margin-right: -20px;
   margin-top: -1px;
 }
 .Top{

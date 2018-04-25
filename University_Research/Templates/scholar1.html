@@ -389,14 +389,14 @@
 						{%ifequal key sp.progress%}
 						 {% ifequal sp.Started True %}
 							 {% ifequal sp.Completed True %}
-							 <button class="accordion"><h2 style="color:green;">{{value}}</h2></button>
+							 <button class="accordion1"><h2 style="color:green;">{{value}}</h2></button>
 						   <div class="panel">
 							   <h5>Date Completed:</h5><p>{{sp.sdate}}</p>
 							   <h5>Status: </h5><p>{{sp.status}}</p>
 							   <h5>Remarks:</h5><p>{{sp.remarks}}</p>
 						   </div>
 						  {% else %}
-							<button class="accordion"><h2 style="color:red;">{{value}}</h2></button>
+							<button class="accordion1"><h2 style="color:red;">{{value}}</h2></button>
 						    <div class="panel">
 								{%ifequal sp.status "Fail"%}
 								<h5>Repeat Date:</h5><p>{{sp.cdate}}</p>
@@ -418,7 +418,7 @@
 					</div>
 
 					<script>
-					var acc = document.getElementsByClassName("accordion");
+					var acc = document.getElementsByClassName("accordion1");
 var i;
 
 for (i = 0; i < acc.length; i++) {
@@ -497,7 +497,7 @@ for (i = 0; i < acc.length; i++) {
 					.pwd{
 						display: none;
 					}
-.accordion {
+.accordion1 {
     background-color: #eee;
     color: #444;
     cursor: pointer;
@@ -510,11 +510,11 @@ for (i = 0; i < acc.length; i++) {
     transition: 0.4s;
 }
 
-.active1, .accordion:hover{
+.active1,.accordion1:hover{
     background-color: #ccc;
 }
 
-.accordion:after{
+.accordion1:after{
     content: '\002B';
     color: #777;
     font-weight: bold;
@@ -522,7 +522,7 @@ for (i = 0; i < acc.length; i++) {
     margin-left: 5px;
 }
 
-.active1:after1{
+.active1:after{
     content: "\2212";
 }
 

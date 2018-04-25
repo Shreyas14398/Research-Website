@@ -413,7 +413,7 @@
 						 {%ifequal key sp.progress%}
 						 {% ifequal sp.Started True %}
 							{% ifequal sp.Completed True %}
-						<h2>{{value}}</h2>
+						<h2 style="color:green;">{{value}}</h2>
 							<div class="inner">
 								<h5>Date Completed:</h5><p>{{sp.cdate}}</p>
 								<h5>Status: </h5><p>{{sp.status}}</p>
@@ -443,7 +443,7 @@
 							</div>
 						</div>
 						 {% else %}
-						<h2>{{value}}</h2>
+						<h2 style="color:red;">{{value}}</h2>
 						  <div class="inner">
 							 <h5>Date:</h5><p>{{sp.sdate}}</p>
 							 <h5>Message:</h5><p>{{sp.message}}</p>
