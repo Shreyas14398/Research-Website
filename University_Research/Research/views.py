@@ -17,18 +17,25 @@ from Research.forms import startform
 from Research.forms import infof
 import datetime
 from Research.forms import namesearchForm
+from Research.forms import dcmForm
 from Research.models import Announcement
 from Research.forms import SunamesearchForm
 from Research.forms import midsearchForm
 from Research.forms import schregForm
 from Research.forms import suregForm
 from Research.forms import AnForm
+from Research.models import DCM
 from Research.forms import PwdForm
-
+import random
 # Create your views here.
+logg="Login"
 levels={"A":"Zeroth Review","B":"First DC","C":"Coursework Completion","D":"Comprehensive Viva","E":"RAC","F":"Second DC","G":"Thesis Submission","H":"Open Defence"}
 def home(request):
-  return render(request,"home.html",{})
+  if request.session.has_key('mid') or request.session.has_key('regno'):
+     logg="Logout"
+  else:
+     logg="Login"
+  return render(request,"home.html",{"logg":logg})
 
 def newann(request):
   if request.POST:
@@ -50,12 +57,52 @@ def annd(request):
   else: 
     return HttpResponseRedirect('/login1')
 
+def logq(request):
+  if request.session.has_key('mid'): 
+    return HttpResponseRedirect('/logoutsu/')    
+  elif request.session.has_key('regno'):
+    return HttpResponseRedirect('/logout/')
+  else:
+    return HttpResponseRedirect('/login/')
+
+def profile(request):
+  if request.session.has_key('mid'):
+    mid=request.session['mid']
+    dbS=Supervisor.objects.get(mid=mid)
+    if dbS.dean:
+       return HttpResponseRedirect('/dean1/')
+    else:
+       return HttpResponseRedirect('/supervisor1/')
+  elif request.session.has_key('regno'):
+    return HttpResponseRedirect('/scholar1/')
+  else:
+    return HttpResponseRedirect('/login1/')
+
 def ann(request):
   if request.session.has_key('mid') or request.session.has_key('regno'):
     dbA=Announcement.objects.filter()
     return render(request,"ann.html",{"dbA":dbA})
   else:
     return HttpResponseRedirect('/login1')
+
+def adett(request):
+  if request.POST:
+    dcmm=dcmForm(request.POST)
+    if dcmm.is_valid():
+      mi=dcmm.cleaned_data['mmid']
+      dbSS=Su_Personal_Det.objects.filter(mid=mi).values()
+      if dbSS.exists():
+        dbSSS=Su_Personal_Det.objects.get(mid=mi)
+        dbD=DCM(mid=dcmm.cleaned_data['mmid'],regno=dcmm.cleaned_data['regno'],name=dbSSS.name,institution=dbSSS.institution)
+        dbD.save()
+        return HttpResponseRedirect('/profile/')
+      else:
+        return render(request,"home.html",{})
+    else:
+      return render(request,"home.html",{})
+  else:
+    return render(request,"home.html",{})
+
 
 def chnpwd(request):
   if request.POST:
@@ -106,9 +153,10 @@ def logind(request):
 def logout(request):
   try:
     del request.session['regno']
+    return render(request,"login.html",{"message":"Logged out successfully!","col":"green"})
   except:
     pass
-  return render(request,"login.html",{"message":"Logged out successfully!","col":"green"})
+    return render(request,"scholar1.html",{})
 
 def logoutsu(request):
   try:
@@ -137,10 +185,11 @@ def scholar1(request):
   dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True).values()
   dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
   dbsp=DC_Meeting.objects.filter(regno=rno).values()
+  dcms=DCM.objects.filter(regno=rno).values()
   if dbst.exists():
     status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
     status1=status.get_progress_display()
-  return render(request,"scholar1.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels})
+  return render(request,"scholar1.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
 
 def supervisor1(request):
   mid=request.session['mid']
@@ -172,10 +221,11 @@ def schinfo(request):
       dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
       dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True)
       dbsp=DC_Meeting.objects.filter(regno=rno).values()
+      dcms=DCM.objects.filter(regno=rno).values()
       if dbst.exists():
         status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
         status1=status.get_progress_display()
-      return render(request,"schinfo.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels})
+      return render(request,"schinfo.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
     else:
       return render(request,"home.html",{})
   else:
@@ -289,11 +339,32 @@ def sureg(request):
   if request.POST:
     RegSu=suregForm(request.POST)
     if RegSu.is_valid():
-      SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],sex=RegSu.cleaned_data['sex'],mid=RegSu.cleaned_data['mid'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'])
+      SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],sex=RegSu.cleaned_data['sex'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'],phno=RegSu.cleaned_data['phno'],pemail=RegSu.cleaned_data['pemail'])
       SuObj.save()
-      SuuObj=Supervisor(mid=RegSu.cleaned_data['mid'],password=RegSu.cleaned_data['mid'])
-      SuuObj.save()
-      return render(request,"login.html",{"message":"Registered Successfully!"})
+      if RegSu.cleaned_data['exin']=="Other": 
+         SuObj.institution=RegSu.cleaned_data['institution']
+         SuObj.affiliation=RegSu.cleaned_data['affiliation']
+         check=True
+         mid=0
+         while(check):
+           mid=random.randint(200000000,200009999)
+           dbC=Supervisor.objects.filter(mid=mid)
+           if not dbC.exists():
+             check=False
+         SuObj.mid=mid
+         SuObj.save()
+         SuuObj=Supervisor(mid=mid,password=mid)
+         SuuObj.save()
+         message="Registered Successfully! The Member ID is: "+str(mid)
+         return render(request,"login.html",{"message":message})
+      else:
+         SuObj.institution="SASTRA"
+         SuObj.affiliation="Deemed"
+         SuObj.mid=RegSu.cleaned_data['mid']
+         SuObj.save()
+         SuuObj=Supervisor(mid=RegSu.cleaned_data['mid'],password=RegSu.cleaned_data['mid'])
+         SuuObj.save()
+         return render(request,"login.html",{"message":"Registered Successfully!"})
     else:
       return render(request,"login.html",{"message":"Couldn't Register!"})
   else:
@@ -303,7 +374,7 @@ def schreg(request):
   if request.POST:
     RegS=schregForm(request.POST)
     if RegS.is_valid():
-      SObj=Personal_Det(name=RegS.cleaned_data['name'],sex=RegS.cleaned_data['sex'],dob=RegS.cleaned_data['dob'],regno=RegS.cleaned_data['regno'],school=RegS.cleaned_data['school'],email=RegS.cleaned_data['email'],supervisor=RegS.cleaned_data['supervisor'],regdate=RegS.cleaned_data['regdate'])
+      SObj=Personal_Det(name=RegS.cleaned_data['name'],sex=RegS.cleaned_data['sex'],dob=RegS.cleaned_data['dob'],regno=RegS.cleaned_data['regno'],school=RegS.cleaned_data['school'],email=RegS.cleaned_data['email'],supervisor=RegS.cleaned_data['supervisor'],regdate=RegS.cleaned_data['regdate'],category=RegS.cleaned_data['category'],pemail=RegS.cleaned_data['pemail'],phno=RegS.cleaned_data['phno'],retitle=RegS.cleaned_data['retitle'],typet=RegS.cleaned_data['typet'])
       SObj.save()
       TObj=Scholar(regno=RegS.cleaned_data['regno'],password=RegS.cleaned_data['regno'])
       TObj.save()
@@ -338,4 +409,8 @@ def super4(request):
    return render(request,"super4.html",{})
 
 def support(request):
-   return render(request,"support.html",{})
+   if request.session.has_key('mid') or request.session.has_key('regno'):
+     logg="Logout"
+   else:
+     logg="Login"
+   return render(request,"support.html",{"logg":logg})

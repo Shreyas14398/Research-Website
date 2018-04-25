@@ -36,18 +36,22 @@ from Research.views import schedit
 from Research.views import schstart
 from Research.views import schinfo
 from Research.views import supervisor1
+from Research.views import adett
 from Research.views import reg
 from Research.views import schreg
 from Research.views import chnpwd
 from Research.views import newann
 from Research.views import sureg
+from Research.views import profile
 from Research.views import annd
 from Research.views import logout
+from Research.views import logq
 from Research.views import logoutsu
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', home),
+    url(r'^logq/', logq),
     url(r'^login/',TemplateView.as_view(template_name="login.html"),name="login"),
     url(r'^login1/',TemplateView.as_view(template_name="login1.html"),name="login1"),
     url(r'^chnpwd/',chnpwd),
@@ -62,6 +66,7 @@ urlpatterns = [
     url(r'^super2/',super2),
     url(r'^newann/',newann),
     url(r'^logout/',logout),
+    url(r'^profile/',profile),
     url(r'^logoutsu/',logoutsu),
     url(r'^super3/',super3),
     url(r'^super4/',super4),
@@ -75,6 +80,7 @@ urlpatterns = [
     url(r'^schinfo',schinfo),
     url(r'^dean3',dean3),
     url(r'^reg',reg),
+    url(r'^adett',adett),
     url(r'^schreg',schreg),
     url(r'^sureg',sureg),
 ]
