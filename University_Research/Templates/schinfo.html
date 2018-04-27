@@ -454,13 +454,17 @@
 						 </div>
 							{% endifequal %}
 						{%else%}
-						<h2 style="opacity:0.8">{{value}}</h2>
+					 <h2 >{{value}}</h2>
+
 						<div class="inner">
-						 <br><br><button class="edup">Start</button><br><br>
+								<button class="accordion">{{value}}</button>
+								<div class="panel">
+						 <br><button class="edup">Start</button><br><br>
 						 <div class="inner">
 						 <form method="POST" class="start-content" action="http://127.0.0.1:8000/schstart/">{%csrf_token%}
 								Date:
 								<input type="Date" name="date">
+								<br>
 								Message:
 								<input type="text" name="message">
 							 <input type="hidden" name="progress" value={{sp.progress}}>
@@ -469,6 +473,7 @@
 							 <input type="submit" name="submit" value="submit">
 						 </form>
 					 </div>
+				 </div>
 				 </div>
 					 {%endifequal%}
 					 {%endifequal%}
@@ -503,19 +508,19 @@
 
 					<script>
 					var acc = document.getElementsByClassName("accordion");
-var i;
+          var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight){
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
-}
+          for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+            panel.style.maxHeight = null;
+            } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+          });
+          }
 
 					function openCity(evt, cityName) {
 					    var i, tabcontent, tablinks;
