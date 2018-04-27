@@ -392,13 +392,16 @@
 								<form method="POST" action="http://127.0.0.1:8000/schedit/">{%csrf_token%}
 								<div id="ed1" class="ed1">
                    <br>
-                 Status:
-								 <select id="e1" name="Status">
-									 <option value="Pass"><br>Pass</option>
-									 <option value="Fail"><br>Fail</option>
-								 </select><br>
-								 <button type="button" onclick="document.getElementById('ed1').style.display='none'">Cancel</button>
-								 <button type="button" onclick="editfun1()">Next</button><br>
+                 <h3>Status:</h3><br>
+								 <div class="choice">
+								 <select id="e1" name="Status"><br><br>
+									 <option value="Pass">Pass</option>
+									 <option value="Fail">Fail</option><br><br>
+								 </select>
+							 </div>
+								 <br>
+								 <button class="buttonl" type="button" onclick="document.getElementById('ed1').style.display='none'"><span>Cancel<span></button>
+								 <button class="buttonl" type="button" onclick="editfun1()"><span>Next</span></button><br>
 							 </div>
 							 <div id="ed2" class="ed2">
 									 <p id="p1"></p>
@@ -420,19 +423,22 @@
 						  <div class="inner">
 								<button class="accordion">{{value}}</button>
 								<div class="panel">
-							 <h5>Date:</h5><p>{{sp.sdate}}</p>
-							 <h5>Message:</h5><p>{{sp.message}}</p>
-							<button class="edup">Update</button>
+									<table>
+							 <th style="width:30%">Date:</th><td style="text-align:center">{{sp.sdate}}</td><br>
+							 <tr><th style="width:30%">Message:</th><td style="text-align:center">{{sp.message}}</td><br>
+						 </table>
+						 <br>
+							<button class="edup"><h3>Update</h3></button>
 							 <div class="inner">
 							 <form method="POST" action="http://127.0.0.1:8000/schedit/">{%csrf_token%}
 								 <div class="no1" id="no1">
-									Status:
+									<h2>Status:</h2><br>
 									<select id="n1" class="n1" name="status">
-										<option value="Pass">Pass</option>
-										<option value="Fail">Fail</option>
+										<option value="Pass"><br><h2>Pass</h2></option>
+										<option value="Fail"><br><h2>Fail</h2></option>
 									</select>
-								 <button type="button" onclick="document.getElementById('no1').style.display='none'">Cancel</button>
-                 <button type="button" onclick="updatefun1()">Next</button>
+								 <button class="buttonl" type="button" onclick="document.getElementById('no1').style.display='none'">Cancel</button>
+                 <button class="buttonl" type="button" onclick="updatefun1()">Next</button>
 							 </div>
 								<p id="p2"></p>
 								<div class="no2" id="no2">
@@ -586,9 +592,25 @@ for (i = 0; i < acc.length; i++) {
 
 					</script>
 					<style>
-					.Status{
-
+					.choice{
+						margin-left: 100px;
+						margin-right: 500px;
 					}
+					.buttonl {
+					  display: inline-block;
+					  border-radius: 4px;
+						background-color: black;
+					  border: solid;
+						color: white;
+					  text-align: center;
+					  font-size: 10px;
+					  padding: 10px;
+					  width: 70px;
+					  transition: all 0.5s;
+					  cursor: pointer;
+					  margin: 5px;
+					}
+
 					.accordion {
 					    background-color: #eee;
 					    color: #444;
