@@ -343,7 +343,7 @@ def sureg(request):
       SuObj.save()
       if RegSu.cleaned_data['exin']=="Other": 
          SuObj.institution=RegSu.cleaned_data['institution']
-         SuObj.affiliation=RegSu.cleaned_data['affiliation']
+         SuObj.designation=RegSu.cleaned_data['designation']
          check=True
          mid=0
          while(check):
@@ -359,7 +359,7 @@ def sureg(request):
          return render(request,"login.html",{"message":message})
       else:
          SuObj.institution="SASTRA"
-         SuObj.affiliation="Deemed"
+         SuObj.designation=""
          SuObj.mid=RegSu.cleaned_data['mid']
          SuObj.save()
          SuuObj=Supervisor(mid=RegSu.cleaned_data['mid'],password=RegSu.cleaned_data['mid'])

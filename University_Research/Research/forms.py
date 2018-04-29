@@ -143,7 +143,7 @@ class suregForm(forms.Form):
    aoi=forms.CharField(max_length=500)
    exin=forms.CharField(max_length=30)
    institution=forms.CharField(max_length=500)
-   affiliation=forms.CharField(max_length=300)
+   designation=forms.CharField(max_length=300)
 
 class schregForm(forms.Form):
    name=forms.CharField(max_length=30)

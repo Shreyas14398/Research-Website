@@ -41,7 +41,7 @@ class Su_Personal_Det(models.Model):
    school=models.CharField(max_length=30)
    aoi=models.CharField(max_length=500)
    institution=models.CharField(max_length=500)
-   affiliation=models.CharField(max_length=300)
+   designation=models.CharField(max_length=300)
 
 class DC_Meeting(models.Model):
    Progress_Choices=(

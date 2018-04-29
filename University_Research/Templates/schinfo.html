@@ -271,11 +271,6 @@
 						overflow: auto;
 						padding-top: 50px;
 					}
-					.start-content{
-						background-color: #fefefe;
-	          border: 1px solid #888;
-	          width: 80%;
-					}
 					.ed1{
 						display:block;
 					}
@@ -286,7 +281,7 @@
 						width: 100%;
 					}
 					.no1{
-						display:none;
+						display:block;
 						z-index: 1;
 						overflow: auto;
 						width: 100%;
@@ -356,7 +351,7 @@
 						<table>
 							<tr>
 								<th>Title of the Publication</th>
-								<th>Name of thr Journal</th>
+								<th>Name of the Journal</th>
 								<th>Authors </th>
 								<th>Year of Publication</th>
 							</tr>
@@ -400,7 +395,7 @@
 								 </select>
 							 </div>
 								 <br>
-								 <button class="buttonl" type="button" onclick="document.getElementById('ed1').style.display='none'"><span>Cancel<span></button>
+								 <button class="buttonl" type="button" onclick="document.getElementsByClassName('panel1').style.display='none'"><span>Cancel<span></button>
 								 <button class="buttonl" type="button" onclick="editfun1()"><span>Next</span></button><br>
 							 </div>
 							 <div id="ed2" class="ed2">
@@ -420,7 +415,6 @@
 
 						 {% else %}
 						<h2 style="color:red;">{{value}}</h2>
-						  <div class="inner">
 								<button class="accordion">{{value}}</button>
 								<div class="panel">
 									<table>
@@ -428,8 +422,8 @@
 							 <tr><th style="width:30%">Message:</th><td style="text-align:center">{{sp.message}}</td><br>
 						 </table>
 						 <br>
-							<button class="edup"><h3>Update</h3></button>
-							 <div class="inner">
+							<button class="accordion">Update</button>
+							 <div class="panel1">
 							 <form method="POST" action="http://127.0.0.1:8000/schedit/">{%csrf_token%}
 								 <div class="no1" id="no1">
 									<h2>Status:</h2><br>
@@ -437,7 +431,7 @@
 										<option value="Pass"><br><h2>Pass</h2></option>
 										<option value="Fail"><br><h2>Fail</h2></option>
 									</select>
-								 <button class="buttonl" type="button" onclick="document.getElementById('no1').style.display='none'">Cancel</button>
+								 <button class="buttonl" type="button" onclick="document.getElementById('panel1').style.display='none'">Cancel</button>
                  <button class="buttonl" type="button" onclick="updatefun1()">Next</button>
 							 </div>
 								<p id="p2"></p>
@@ -456,24 +450,25 @@
 						{%else%}
 					 <h2 >{{value}}</h2>
 
-						<div class="inner">
 								<button class="accordion">{{value}}</button>
 								<div class="panel">
-						 <br><button class="edup">Start</button><br><br>
-						 <div class="inner">
-						 <form method="POST" class="start-content" action="http://127.0.0.1:8000/schstart/">{%csrf_token%}
+						 <br><button class="accordion">Start</button>
+						 <div class="panel1">
+						 <br>
+						 <form method="POST" action="http://127.0.0.1:8000/schstart/">{%csrf_token%}
+							<div class="no1" id="no1">
 								Date:
 								<input type="Date" name="date">
 								<br>
 								Message:
 								<input type="text" name="message">
 							 <input type="hidden" name="progress" value={{sp.progress}}>
-							 <input type="hidden" name="regno" value={{sp.regno}}
+							 <input type="hidden" name="regno" value={{sp.regno}}>
 							 <button type="button" onclick="document.getElementById('Start').style.display='none'" type="cancelbtn">Cancel</button>
 							 <input type="submit" name="submit" value="submit">
+						 </div>
 						 </form>
 					 </div>
-				 </div>
 				 </div>
 					 {%endifequal%}
 					 {%endifequal%}
@@ -485,7 +480,7 @@
 					 <button class="accordion">Add/Edit DC Details</button>
 					 <div class="panel">
 						 <form method="POST" action="http://127.0.0.1:8000/adett">{%csrf_token%}
-						 <bold>Member ID: </bold>
+						 <bold>Supervisor ID: </bold>
 						 <input type="text" name="mmid">
 						 <input type="hidden" name="regno" value={{regno}}>
 						 <input type="submit" value="Add">
