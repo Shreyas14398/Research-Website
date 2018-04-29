@@ -56,7 +56,7 @@ ROOT_URLCONF = 'University_Research.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/home/sharath/Univ-Research-Git/Research-Website/University_Research/Templates'],
+        'DIRS': ['/Users/shreyas/git2/Research-Website/University_Research/Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

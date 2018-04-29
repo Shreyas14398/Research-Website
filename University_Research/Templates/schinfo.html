@@ -419,6 +419,7 @@
 								<div class="panel">
 									<table>
 							 <th style="width:30%">Date:</th><td style="text-align:center">{{sp.sdate}}</td><br>
+
 							 <tr><th style="width:30%">Message:</th><td style="text-align:center">{{sp.message}}</td><br>
 						 </table>
 						 <br>
@@ -436,12 +437,12 @@
 							 </div>
 								<p id="p2"></p>
 								<div class="no2" id="no2">
-									<input type="Date" name="date">
+									<input type="Date" name="date"><br><br>
 								 Remarks:
-								 <input type="text" name="remarks">
+								 <br><input type="text" name="remarks">
 								 <input type="hidden" name="progress" value={{sp.progress}}>
 								 <input type="hidden" name="regno" value={{sp.regno}}>
-								 <button type="button">Cancel</button><input type="submit" name="submit" value="submit">
+								<br> <br><button type="button">Cancel</button><input type="submit" name="submit" value="submit">
 							 </div>
 							 </form>
 							 </div>
@@ -459,12 +460,12 @@
 							<div class="no1" id="no1">
 								Date:
 								<input type="Date" name="date">
-								<br>
+								<br><br>
 								Message:
-								<input type="text" name="message">
+								<input type="text" name="message"><br>
 							 <input type="hidden" name="progress" value={{sp.progress}}>
 							 <input type="hidden" name="regno" value={{sp.regno}}>
-							 <button type="button" onclick="document.getElementById('Start').style.display='none'" type="cancelbtn">Cancel</button>
+							<br> <button type="button" onclick="document.getElementById('Start').style.display='none'" type="cancelbtn">Cancel</button>
 							 <input type="submit" name="submit" value="submit">
 						 </div>
 						 </form>

@@ -354,21 +354,27 @@
 							 {% ifequal sp.Completed True %}
 							 <button class="accordion1"><h2 style="color:green;">{{value}}</h2></button>
 						   <div class="panel">
-							   <h5>Date Completed:</h5><p>{{sp.sdate}}</p>
-							   <h5>Status: </h5><p>{{sp.status}}</p>
-							   <h5>Remarks:</h5><p>{{sp.remarks}}</p>
+								 <table>
+	 							<th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td><br>
+	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
+	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
+								 </table><br><br>
 						   </div>
 						  {% else %}
 							<button class="accordion1"><h2 style="color:red;">{{value}}</h2></button>
 						    <div class="panel">
 								{%ifequal sp.status "Fail"%}
-								<h5>Repeat Date:</h5><p>{{sp.cdate}}</p>
-								<h5>Status:</h5><p>{{sp.status}}</p>
-								<h5>Remarks:</h5><p>{{sp.remarks}}</p>
-								{%else%}
-								<h5>Date:</h5><p>{{sp.sdate}}</p>
-								<h5>Message:</h5><p>{{sp.message}}</p>
+								<table>
+	 							<th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td><br>
+	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
+	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
+							</table>
+								{%else%}<br>
+								<table>
+								<tr><th style="width:30%">Date:</th><td style="text-align:center">{{sp.sdate}}</td></tr>
+								<tr><th style="width:30%">Message:</th><td style="text-align:center">{{sp.message}}</td></tr>
 								{%endifequal%}
+							</table><br><br>
 						    </div>
               {% endifequal %}
 					   {% else %}
