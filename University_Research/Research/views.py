@@ -14,6 +14,7 @@ from Research.models import DC_Meeting
 from Research.forms import editform
 from Research.forms import regnosearchForm
 from Research.forms import startform
+from Research.models import Reports
 from Research.forms import infof
 import datetime
 from Research.forms import namesearchForm
@@ -24,6 +25,7 @@ from Research.forms import midsearchForm
 from Research.forms import schregForm
 from Research.forms import suregForm
 from Research.forms import AnForm
+from Research.forms import repupForm
 from Research.models import DCM
 from Research.forms import PwdForm
 import random
@@ -186,10 +188,11 @@ def scholar1(request):
   dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
   dbsp=DC_Meeting.objects.filter(regno=rno).values()
   dcms=DCM.objects.filter(regno=rno).values()
+  reports=Reports.objects.filter(regno=rno).values()
   if dbst.exists():
     status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
     status1=status.get_progress_display()
-  return render(request,"scholar1.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
+  return render(request,"scholar1.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
 
 def supervisor1(request):
   mid=request.session['mid']
@@ -222,10 +225,11 @@ def schinfo(request):
       dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True)
       dbsp=DC_Meeting.objects.filter(regno=rno).values()
       dcms=DCM.objects.filter(regno=rno).values()
+      reports=Reports.objects.filter(regno=rno).values()
       if dbst.exists():
         status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
         status1=status.get_progress_display()
-      return render(request,"schinfo.html",{"name":dbP.name,"dob":dbP.dob,"sex":dbP.sex,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
+      return render(request,"schinfo.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
     else:
       return render(request,"home.html",{})
   else:
@@ -339,7 +343,7 @@ def sureg(request):
   if request.POST:
     RegSu=suregForm(request.POST)
     if RegSu.is_valid():
-      SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],sex=RegSu.cleaned_data['sex'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'],phno=RegSu.cleaned_data['phno'],pemail=RegSu.cleaned_data['pemail'])
+      SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],lname=RegSu.cleaned_data['lname'],sex=RegSu.cleaned_data['sex'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'],phno=RegSu.cleaned_data['phno'],pemail=RegSu.cleaned_data['pemail'])
       SuObj.save()
       if RegSu.cleaned_data['exin']=="Other": 
          SuObj.institution=RegSu.cleaned_data['institution']
@@ -374,7 +378,7 @@ def schreg(request):
   if request.POST:
     RegS=schregForm(request.POST)
     if RegS.is_valid():
-      SObj=Personal_Det(name=RegS.cleaned_data['name'],sex=RegS.cleaned_data['sex'],dob=RegS.cleaned_data['dob'],regno=RegS.cleaned_data['regno'],school=RegS.cleaned_data['school'],email=RegS.cleaned_data['email'],supervisor=RegS.cleaned_data['supervisor'],regdate=RegS.cleaned_data['regdate'],category=RegS.cleaned_data['category'],pemail=RegS.cleaned_data['pemail'],phno=RegS.cleaned_data['phno'],retitle=RegS.cleaned_data['retitle'],typet=RegS.cleaned_data['typet'])
+      SObj=Personal_Det(name=RegS.cleaned_data['name'],lname=RegS.cleaned_data['lname'],sex=RegS.cleaned_data['sex'],dob=RegS.cleaned_data['dob'],regno=RegS.cleaned_data['regno'],school=RegS.cleaned_data['school'],email=RegS.cleaned_data['email'],supervisor=RegS.cleaned_data['supervisor'],regdate=RegS.cleaned_data['regdate'],category=RegS.cleaned_data['category'],pemail=RegS.cleaned_data['pemail'],phno=RegS.cleaned_data['phno'],retitle=RegS.cleaned_data['retitle'],typet=RegS.cleaned_data['typet'])
       SObj.save()
       TObj=Scholar(regno=RegS.cleaned_data['regno'],password=RegS.cleaned_data['regno'])
       TObj.save()
@@ -386,6 +390,18 @@ def schreg(request):
       return render(request,"login.html",{"message":"Couldn't Register!","col":"red"})
   else:
     return render(request,"home.html",{})
+
+def adup(request):
+  if request.POST:
+   Adup=repupForm(request.POST)
+   if Adup.is_valid():
+     UpdObj=Reports(head=Adup.cleaned_data['head'],body=Adup.cleaned_data['body'],regno=Adup.cleaned_data['regno'])
+     UpdObj.save()
+     return HttpResponseRedirect('/supervisor1')
+   else:
+     return render(request,"home.html",{})
+  else:
+   return render(reqeust,"home.html",{})
 
 def login1(request):
   return render(request,"login1.html",{})

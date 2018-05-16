@@ -42,6 +42,7 @@ from Research.views import schreg
 from Research.views import chnpwd
 from Research.views import newann
 from Research.views import sureg
+from Research.views import adup
 from Research.views import profile
 from Research.views import annd
 from Research.views import logout
@@ -82,5 +83,6 @@ urlpatterns = [
     url(r'^reg',reg),
     url(r'^adett',adett),
     url(r'^schreg',schreg),
+    url(r'^adup',adup),
     url(r'^sureg',sureg),
 ]

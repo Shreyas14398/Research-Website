@@ -11,6 +11,7 @@ class Scholar(models.Model):
 
 class Personal_Det(models.Model):
    name=models.CharField(max_length=30)
+   lname=models.CharField(max_length=30)
    regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    email=models.EmailField()
    pemail=models.EmailField()
@@ -33,6 +34,7 @@ class Supervisor(models.Model):
    
 class Su_Personal_Det(models.Model):
    name=models.CharField(max_length=30)
+   lname=models.CharField(max_length=30)
    mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    phno=models.PositiveIntegerField()
    email=models.EmailField()
@@ -82,6 +84,11 @@ class DCM(models.Model):
   regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
   name=models.CharField(max_length=30)
   institution=models.CharField(max_length=500)
+
+class Reports(models.Model):
+  head=models.CharField(max_length=100)
+  body=models.CharField(max_length=1000)
+  regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)]) 
    
    
    

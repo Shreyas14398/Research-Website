@@ -312,13 +312,18 @@
 					  <button class="tablinks" onclick="openCity(event, 'resde')">Research Details</button>
 					  <button class="tablinks" onclick="openCity(event, 'prog')">Progress</button>
 						<button class="tablinks" onclick="openCity(event, 'dcm')">DC Details</button>
+						<button class="tablinks" onclick="openCity(event, 'report')">Updates</button>
 					</div>
 
 					<div id="regde" class="tabcontent">
 					  <center><table>
             <tr>
-							<th style="width:30%">Name:</th>
+							<th style="width:30%">First Name:</th>
 							<td style="text-align:center">{{name}}</td>
+						</tr>
+						<tr>
+							<th style="width:30%">Last Name:</th>
+							<td style="text-align:center">{{lname}}</td>
 						</tr>
 						<tr>
 							<th>Date of Birth:</th>
@@ -500,6 +505,31 @@
 					 </tr>
 					 {%endfor%}
 				 </table>
+					</div>
+					<div id="report" class="tabcontent">
+
+					 <button class="accordion">Add an Update/Progress Report: </button>
+					 <div class="panel">
+						 <form method="POST" action="http://127.0.0.1:8000/adup">{%csrf_token%}
+						 <bold>Title:</bold>
+						 <input tyoe="text" name="head"><br><br>
+						 <bold>Body:</bold>
+						 <textarea name="body" rows='10' cols='100'>
+				     </textarea>
+						 <br><br>
+						 <input type="hidden" name="regno" value={{regno}}>
+						 <input type="submit" value="Add">
+					 </form>
+					 </div>
+					 <br>
+					 <br>
+					 <h2>Updates: </h2>
+					 {%for rep in reports%}
+					 <button class="accordion"><h2>{{rep.head}}</h2></button>
+					 <div class="panel">
+						<p>{{rep.body}}</p>
+					 </div>
+					 {%endfor%}
 					</div>
 
 					<script>

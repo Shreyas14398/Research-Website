@@ -134,6 +134,7 @@ class midsearchForm(forms.Form):
 
 class suregForm(forms.Form):
    name=forms.CharField(max_length=30)
+   lname=forms.CharField(max_length=30)
    sex=forms.CharField(max_length=10)
    phno=forms.IntegerField()
    mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
@@ -147,6 +148,7 @@ class suregForm(forms.Form):
 
 class schregForm(forms.Form):
    name=forms.CharField(max_length=30)
+   lname=forms.CharField(max_length=30)
    sex=forms.CharField(max_length=10)
    dob=forms.DateField()
    category=forms.CharField(max_length=10)
@@ -168,4 +170,8 @@ class AnForm(forms.Form):
 class dcmForm(forms.Form):
    mmid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
- 
+
+class repupForm(forms.Form):
+   head=forms.CharField(max_length=100)
+   body=forms.CharField(max_length=1000)
+   regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
