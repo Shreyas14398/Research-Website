@@ -242,40 +242,40 @@
 														<form method="POST" action="http://127.0.0.1:8000/schreg/" name="logins">
 															{%csrf_token%}
                               <br>
-                              <div class="reg3"> First Name:  <input type='text' name='name'/><br>
-															Last Name: <input type="text" name='name'/><br>
+                              <div class="reg3"> First Name:  <input type='text' name='name'/><br></div>
+															<div class="reg2">Last Name: <input type="text" name='name'/><br>
                               </div>
 
-															<div class="reg2"> Official E-mail ID:<input type='text' name='email'/><br>
+															<div class="reg3"> Official E-mail ID:<input type='text' name='email'/><br>
 															</div>
-	                              <div class="reg3">  Register Number: <input type='text' name='regno'/><br>
+	                              <div class="reg2">  Register Number: <input type='text' name='regno'/><br>
 	                              </div>
-																<div class="reg2">  Personal E-mail ID:<input type='text' name='pemail'/><br>
-																<br></div>
+																<div class="reg3">  Personal E-mail ID:<input type='text' name='pemail'/><br>
+																</div>
 
-                              <div class="reg3">  School:<input type='text' name='school'/>
+                              <div class="reg2">  School:<input type='text' name='school'/>
                               </div>
-															<div class="reg2">
+															<div class="reg3">
 															Sex:<br> <input type="radio" name="sex" value="Male" checked> Male</input>
-															<input type="radio" name="sex" value="Female"> Female</input><br><br></div>
-											<div class="reg3">
+															<input type="radio" name="sex" value="Female"> Female</input><br></div>
+											<div class="reg2">
 											Date of Birth: <br><input type="date" name="dob"><br></div>
-											<div class="reg2">  Category:<br><select name="category"><option value="OC">OC</option>
+											<div class="reg3">  Category:<br><select name="category"><option value="OC">OC</option>
 											<option value="BC">BC</option>
 											<option value="MBC">MBC</option>
 											<option value="SC">SC</option>
 											<option value="ST">ST</option></select>
 											</div>
 
-															<div class="reg3">  Phone Number:<input type='text' name='phno'/>
+															<div class="reg2">  Phone Number:<input type='text' name='phno'/>
 															</div>
-                              <div class="reg2">  Supervisor ID:<input type='text' name='supervisor'/><br><br>
+                              <div class="reg3">  Supervisor ID:<input type='text' name='supervisor'/><br>
                               </div>
-                              <div class="reg3">  Reg Date:<br><input type='date' name='regdate'/>
+                              <div class="reg2">  Reg Date:<br><input type='date' name='regdate'/><br>
                               </div>
-															<div class="reg2">  Proposed Title of Research: <br><input type='text' name='retitle'/><br>
-                              <br></div><br>
-															<div class="reg">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
+															<div class="reg3"> <br> Proposed Title of Research: <br><input type='text' name='retitle'/>
+                              <br></div>
+															<div class="reg2">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
 																<input type='radio' name='typet' value='Part-Time'> Part-Time</input><br>
                               <br></div>
                             </font>

@@ -485,10 +485,13 @@
 					 <h2>DC Details: </h2>
 					 <button class="accordion">Add/Edit DC Details</button>
 					 <div class="panel">
+						 <br>
 						 <form method="POST" action="http://127.0.0.1:8000/adett">{%csrf_token%}
-						 <bold>Supervisor ID: </bold>
+						 <bold>Supervisor ID:<br> </bold>
 						 <input type="text" name="mmid">
+						 <br>
 						 <input type="hidden" name="regno" value={{regno}}>
+						 <br>
 						 <input type="submit" value="Add">
 					 </form>
 					 </div>
@@ -507,13 +510,14 @@
 				 </table>
 					</div>
 					<div id="report" class="tabcontent">
-
+						<br><br>
 					 <button class="accordion">Add an Update/Progress Report: </button>
 					 <div class="panel">
+						 <br>
 						 <form method="POST" action="http://127.0.0.1:8000/adup">{%csrf_token%}
 						 <bold>Title:</bold>
-						 <input tyoe="text" name="head"><br><br>
-						 <bold>Body:</bold>
+						 <input tyoe="text" name="head"><br><br><bold>Body:</bold><br>
+
 						 <textarea name="body" rows='10' cols='100'>
 				     </textarea>
 						 <br><br>
@@ -521,8 +525,6 @@
 						 <input type="submit" value="Add">
 					 </form>
 					 </div>
-					 <br>
-					 <br>
 					 <h2>Updates: </h2>
 					 {%for rep in reports%}
 					 <button class="accordion"><h2>{{rep.head}}</h2></button>
