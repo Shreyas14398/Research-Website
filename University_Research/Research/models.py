@@ -89,6 +89,12 @@ class Reports(models.Model):
   head=models.CharField(max_length=100)
   body=models.CharField(max_length=1000)
   regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)]) 
+
+class SupMess(models.Model):
+  head=models.CharField(max_length=100)
+  body=models.CharField(max_length=1000)
+  regno=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)]) 
+  mid=models.PositiveIntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
    
    
    

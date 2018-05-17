@@ -278,11 +278,13 @@
 
 					<div id="regde" class="tabcontent">
 					  <h3>Scholars</h3>
+						<a href="http://127.0.0.1:8000/reg/"><p>Create new Scholar</p></a><br>
+						                              <h5>Search for a Scholar:</h5><br>
                                           <form method="POST" action="http://127.0.0.1:8000/dean2/">{%csrf_token%}
 					                                <input type="search" required=True name="regno">
                                           <input type="submit" value="Search">
-                                          </form>
-																					<a href="http://127.0.0.1:8000/reg/"><p>Create new Scholar</p></a>
+																				</form><br>
+
 					{%if dbS%}
 					<table>
 					<tr>
@@ -305,11 +307,13 @@
 </div>
 					<div id="resde" class="tabcontent">
 						<h3>Supervisors</h3>
+						<a href="http://127.0.0.1:8000/reg/"><p>Create new Supervisor</p></a><br>
+						                              <h5>Search for a Supervisor</h5><br>
                                           <form method="POST" action="http://127.0.0.1:8000/dean3/">{%csrf_token%}
 					                                <input type="search" required=True name="mid">
                                           <input type="submit" value="Search">
-                                          </form>
-																					<a href="http://127.0.0.1:8000/reg/"><p>Create new Supervisor</p></a>
+																				</form><br>
+
 					{%if dbSu%}
 					<table>
 					<tr>
@@ -334,6 +338,36 @@
 					<div id="prog" class="tabcontent">
 					  <h3>Total No of Scholars: {{sch}}</h3>
 					  <h3>Total No of Supervisors: {{sup}}</h3>
+						<h2>Messages from Scholars:</h2>
+						<table>
+						<tr>
+							<th>Register Number:</th>
+							<th>Subject:</th>
+							<th>Message:</th>
+						</tr>
+						{%for supp in supmessage%}
+            <tr>
+							<td>{{supp.regno}}</td>
+							<td>{{supp.head}}</td>
+							<td>{{supp.body}}</td>
+						</tr>
+						{%endfor%}
+					</table><br>
+						<h2>Messages from Supervisors:</h2>
+						<table>
+						<tr>
+							<th>Employee ID:</th>
+							<th>Subject:</th>
+							<th>Message:</th>
+						</tr>
+						{%for supp1 in supmessage1%}
+						<tr>
+							<td>{{supp1.mid}}</td>
+							<td>{{supp1.head}}</td>
+							<td>{{supp1.body}}</td>
+						</tr>
+						{%endfor%}
+					</table><br>
 					</div>
 
 					<script>

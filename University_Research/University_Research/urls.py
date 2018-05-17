@@ -47,6 +47,7 @@ from Research.views import profile
 from Research.views import annd
 from Research.views import logout
 from Research.views import logq
+from Research.views import supmes
 from Research.views import logoutsu
 
 urlpatterns = [
@@ -85,4 +86,5 @@ urlpatterns = [
     url(r'^schreg',schreg),
     url(r'^adup',adup),
     url(r'^sureg',sureg),
+    url(r'^supmes',supmes),
 ]

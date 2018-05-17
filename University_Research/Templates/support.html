@@ -238,14 +238,14 @@
 <br>
 <button class='A' onclick='fun1()'>Write to the Dean</button>
 <div class='panel' id='1'>
-  <form method="POST">
+  <form method="POST" action="http://127.0.0.1:8000/supmes/">{%csrf_token%}
     <br>
-    Name:  <input type="name" class="name"></input><br><br>
-    Designation: <input type="radio" name="desig"> Scholar </input>
-    <input type="radio" name="desig"> Supervisor </input><br><br>
-    Message: <br><textarea name="Mess" rows='10' cols='100'>
+    Designation: <input type="radio" name="desig" value="Scholar"> Scholar </input>
+    <input type="radio" name="desig" value="Supervisor"> Supervisor </input><br><br>
+    Title: <input type="text" name="head">
+    Message: <br><textarea name="body" rows='10' cols='100'>
     </textarea><br><br>
-    <button type="button" onclick=fun()><a href="http://127.0.0.1:8000/home/">submit</a></button><br>
+    <input type="submit" value="Submit">
   </form>
 </div>
 <br>

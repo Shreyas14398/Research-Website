@@ -175,3 +175,8 @@ class repupForm(forms.Form):
    head=forms.CharField(max_length=100)
    body=forms.CharField(max_length=1000)
    regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+
+class supForm(forms.Form):
+   desig=forms.CharField(max_length=30)
+   head=forms.CharField(max_length=100)
+   body=forms.CharField(max_length=1000)
