@@ -3,7 +3,7 @@ from Research.models import Scholar
 from Research.models import Supervisor
 from django.core.validators import MaxValueValidator, MinValueValidator
 class LoginS(forms.Form):
-  regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  regno=forms.CharField(max_length=17)
   password=forms.CharField(widget=forms.PasswordInput())
 
   def clean_regno(self):
@@ -30,7 +30,7 @@ class LoginS(forms.Form):
          return password
 
 class LoginSu(forms.Form):
-  mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  mid=forms.CharField(max_length=15)
   password=forms.CharField(widget=forms.PasswordInput())
 
   def clean_mid(self):
@@ -61,7 +61,7 @@ class LoginSu(forms.Form):
           return password
 
 class LoginD(forms.Form):
-  mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  mid=forms.CharField(max_length=15)
   password=forms.CharField(widget=forms.PasswordInput())
 
   def clean_mid(self):
@@ -109,19 +109,19 @@ class editform(forms.Form):
   date=forms.DateField()
   remarks=forms.CharField(max_length=500)
   progress=forms.CharField(max_length=30)
-  regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  regno=forms.CharField(max_length=17)
 
 class infof(forms.Form):
-  regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  regno=forms.CharField(max_length=17)
 
 class startform(forms.Form):
   date=forms.DateField()
   message=forms.CharField(max_length=500)
   progress=forms.CharField(max_length=30)
-  regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  regno=forms.CharField(max_length=17)
 
 class regnosearchForm(forms.Form):
-  regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  regno=forms.CharField(max_length=17)
  
 class namesearchForm(forms.Form):
   regno=forms.CharField(max_length=30)
@@ -130,14 +130,14 @@ class SunamesearchForm(forms.Form):
   mid=forms.CharField(max_length=30)
 
 class midsearchForm(forms.Form):
-  mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+  mid=forms.CharField(max_length=15)
 
 class suregForm(forms.Form):
    name=forms.CharField(max_length=30)
    lname=forms.CharField(max_length=30)
    sex=forms.CharField(max_length=10)
    phno=forms.IntegerField()
-   mid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   mid=forms.CharField(max_length=15)
    school=forms.CharField(max_length=30)
    email=forms.EmailField()
    pemail=forms.EmailField()
@@ -152,7 +152,7 @@ class schregForm(forms.Form):
    sex=forms.CharField(max_length=10)
    dob=forms.DateField()
    category=forms.CharField(max_length=10)
-   regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   regno=forms.CharField(max_length=17)
    school=forms.CharField(max_length=30)
    email=forms.EmailField()
    pemail=forms.EmailField()
@@ -168,13 +168,13 @@ class AnForm(forms.Form):
    
    
 class dcmForm(forms.Form):
-   mmid=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
-   regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   mmid=forms.CharField(max_length=15)
+   regno=forms.CharField(max_length=17)
 
 class repupForm(forms.Form):
    head=forms.CharField(max_length=100)
    body=forms.CharField(max_length=1000)
-   regno=forms.IntegerField(validators=[MaxValueValidator(999999999), MinValueValidator(000000000)])
+   regno=forms.CharField(max_length=17)
 
 class supForm(forms.Form):
    desig=forms.CharField(max_length=30)
