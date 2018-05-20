@@ -201,7 +201,7 @@ def supervisor1(request):
   dbP=Su_Personal_Det.objects.get(mid=mid)
   dbPu=Publications.objects.filter(mid=mid).values()
   dbSch=Personal_Det.objects.filter(supervisor=mid).values()
-  return render(request,"supervisor1.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
+  return render(request,"supervisor1.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
 
 def suinfo(request):
   if request.POST:
@@ -211,7 +211,7 @@ def suinfo(request):
        dbP=Su_Personal_Det.objects.get(mid=mid)
        dbPu=Publications.objects.filter(mid=mid).values()
        dbSch=Personal_Det.objects.filter(supervisor=mid).values()
-       return render(request,"suinfo.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
+       return render(request,"suinfo.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
   else:
      return render(request,"home.html",{})
 
