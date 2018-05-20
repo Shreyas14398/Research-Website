@@ -245,39 +245,37 @@
                               <div class="reg3"> First Name:  <input type='text' name='name'/><br></div>
 															<div class="reg2">Last Name: <input type="text" name='lname'/><br>
                               </div>
-
-															<div class="reg3"> Official E-mail ID:<input type='text' name='email'/><br>
-															</div>
-	                              <div class="reg2">  Register Number: <input type='text' name='regno'/><br>
-	                              </div>
-																<div class="reg3">  Personal E-mail ID:<input type='text' name='pemail'/><br>
-																</div>
-
-                              <div class="reg2">  School:<input type='text' name='school'/>
-                              </div>
 															<div class="reg3">
 															Sex:<br> <input type="radio" name="sex" value="Male" checked> Male</input>
 															<input type="radio" name="sex" value="Female"> Female</input><br></div>
-											<div class="reg2">
-											Date of Birth: <br><input type="date" name="dob"><br></div>
-											<div class="reg3">  Category:<br><select name="category"><option value="OC">OC</option>
-											<option value="BC">BC</option>
-											<option value="MBC">MBC</option>
-											<option value="SC">SC</option>
-											<option value="ST">ST</option></select>
-											</div>
-
-															<div class="reg2">  Phone Number:<input type='text' name='phno'/>
+															<div class="reg2">
+															Date of Birth: <br><input type="date" name="dob"><br></div>
+															<div class="reg3">  Category:<br><select name="category"><option value="OC">OC</option>
+															<option value="BC">BC</option>
+															<option value="MBC">MBC</option>
+															<option value="SC">SC</option>
+															<option value="ST">ST</option></select>
 															</div>
-                              <div class="reg3">  Supervisor ID:<input type='text' name='supervisor'/><br>
-                              </div>
-                              <div class="reg2">  Reg Date:<br><input type='date' name='regdate'/><br>
-                              </div>
-															<div class="reg3"> <br> Proposed Title of Research: <br><input type='text' name='retitle'/>
-                              <br></div>
-															<div class="reg2">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
-																<input type='radio' name='typet' value='Part-Time'> Part-Time</input><br>
-                              <br></div>
+															<div class="reg2">  Register Number: <input type='text' name='regno'/><br>
+															</div>
+															<div class="reg3">  School:<input type='text' name='school'/>
+															</div>
+															<div class="reg2"> Official E-mail ID:<input type='text' name='email'/><br>
+															</div>
+															<div class="reg3">  Personal E-mail ID:<input type='text' name='pemail'/><br>
+															</div>
+																<div class="reg2">  Phone Number:<input type='text' name='phno'/>
+																</div>
+																<div class="reg3">  Supervisor ID:<input type='text' name='supervisor'/><br>
+																</div>
+																<div class="reg2">  Reg Date:<br><input type='date' name='regdate'/><br>
+																</div>
+																<div class="reg3"> <br> Proposed Title of Research: <br><input type='text' name='retitle'/>
+																<br></div>
+																<div class="reg2">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
+																	<input type='radio' name='typet' value='Part-Time'> Part-Time</input><br>
+																<br></div>
+
                             </font>
       <button class="buttonlog" type='submit' name='in'>Submit</button>
                             </form>
@@ -286,14 +284,14 @@
                             <form method="POST" action="http://127.0.0.1:8000/sureg/" name="loginsu">
 															{%csrf_token%}
                               <br>
-                              <div class="reg3">  Name: <input type='text' name='name'/><br>
+                              <div class="reg3">First Name: <input type='text' name='name'/><br></div>
 																<div class="reg2">Last Name: <input type="text" name='lname'/><br>
-                              </div>
-
-														                                <div class="reg2">Staff ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
+                              </div><br>
+															<div class="reg3">Sex: <input type="radio" name="sex" value="male" checked> Male
+															<input type="radio" name="sex" value="female"> Female<br></div>
+															   <div class="reg2"> Phone Number:<input type='text' name='phno'/></div><br>
+										            <div class="reg3">Staff ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
 														                              </div>
-                               <div class="reg3"> Phone Number:<input type='text' name='phno'/>
-	<br></div>
                               <div class="reg2">  School: <input type='text' name='school'/><br>
                               <br></div>
                               <div class="reg3">  Official E-mail ID:<input type='text' name='email'/>
@@ -301,11 +299,8 @@
 															<div class="reg2"> Personal E-mail ID:<input type='text' name='pemail'/><br>
 															<br></div>
                                 <div class="reg3">Areas of Interest:<input type='text' name='aoi'/><br>
-                              </div><br>
-															<div class="reg2">Sex: <input type="radio" name="sex" value="male" checked> Male
-  <input type="radio" name="sex" value="female"> Female<br><br></div><br><br>
-
-															<div class="reg">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
+                              </div>
+															<div class="reg2">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
 																<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'"> OTHER</input><br>
 															  <div class="external" id="external"><br>
 																	<div class="reg1">Institiution  Name: <input type='text' name='institution'/><br>
