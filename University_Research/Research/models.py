@@ -24,6 +24,8 @@ class Personal_Det(models.Model):
    sex=models.CharField(max_length=10)
    dob=models.CharField(max_length=10)
    supervisor=models.CharField(max_length=15)
+   institution=models.CharField(max_length=500)
+   institution_ad=models.CharField(max_length=500)
 
 
 class Supervisor(models.Model):
@@ -31,7 +33,7 @@ class Supervisor(models.Model):
    password=models.CharField(max_length=30)
    dean=models.BooleanField(default=False)
    external=models.BooleanField(default=False)
-   
+
 class Su_Personal_Det(models.Model):
    name=models.CharField(max_length=30)
    lname=models.CharField(max_length=30)
@@ -65,7 +67,7 @@ class DC_Meeting(models.Model):
    Completed=models.BooleanField(default=False)
    Started=models.BooleanField(default=False)
    regno=models.CharField(max_length=17)
-  
+
 class Publications(models.Model):
    title=models.CharField(max_length=1000)
    name=models.CharField(max_length=1000)
@@ -88,13 +90,10 @@ class DCM(models.Model):
 class Reports(models.Model):
   head=models.CharField(max_length=100)
   body=models.CharField(max_length=1000)
-  regno=models.CharField(max_length=17) 
+  regno=models.CharField(max_length=17)
 
 class SupMess(models.Model):
   head=models.CharField(max_length=100)
   body=models.CharField(max_length=1000)
-  regno=models.CharField(max_length=17) 
+  regno=models.CharField(max_length=17)
   mid=models.CharField(max_length=15)
-   
-   
-   

@@ -168,7 +168,7 @@
   			</li>
   		</ul>
   		</li>
-  		<li id="iceMenu_349" class="iceMenuLiLevel_1 mzr-drop parent" style="float:right"><a href="http://127.0.0.1:8000/login/" class=" iceMenuTitle"><span class="icemega_title icemega_nosubtitle">Login</span></a>
+  		<li id="iceMenu_349" class="iceMenuLiLevel_1 mzr-drop parent" style="float:right"><a href="http://127.0.0.1:8000/login/" class=" iceMenuTitle"><span class="icemega_title icemega_nosubtitle">{{logg}}</span></a>
   		</ul>
         </div>
         </div>
@@ -239,11 +239,11 @@
 <button class='A' onclick='fun1()'>Write to the Dean</button>
 <div class='panel' id='1'>
   <form method="POST" action="http://127.0.0.1:8000/supmes/">{%csrf_token%}
-    <br>
-    Designation: <input type="radio" name="desig" value="Scholar"> Scholar </input>
-    <input type="radio" name="desig" value="Supervisor"> Supervisor </input><br><br>
-    Title: <input type="text" name="head">
-    Message: <br><textarea name="body" rows='10' cols='100'>
+		<br>
+	  Designation: <input type="radio" name="desig" value="Scholar"> Scholar </input>
+		<input type="radio" name="desig" value="Supervisor"> Supervisor </input><br><br>
+    Title: <input type="text" name="head" required>
+    Message: <br><textarea name="body" rows='10' cols='100' required>
     </textarea><br><br>
     <input type="submit" value="Submit">
   </form>
@@ -276,8 +276,6 @@ body{
   margin-left: 0%;
   margin-right: 0%;
 }
-
-
 .headd{
   font-size:300%;
   margin-top:-9%;
