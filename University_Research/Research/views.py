@@ -435,6 +435,12 @@ def super4(request):
 def support(request):
    if request.session.has_key('mid') or request.session.has_key('regno'):
      logg="Logout"
+     if request.sessions.has_key('mid'):
+       midv=request.session['mid']
+       supsch='supervisor'
+     else:
+       schv=request.session['regno']
+       supsch='scholar'
    else:
      logg="Login"
    return render(request,"support.html",{"logg":logg})
