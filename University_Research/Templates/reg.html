@@ -275,7 +275,16 @@
 																<div class="reg2">  Type: <br><input type='radio' name='typet' value='Full-Time' checked> Full-Time</input><br>
 																	<input type='radio' name='typet' value='Part-Time'> Part-Time</input><br>
 																<br></div>
-
+																<div class="reg1">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
+																	<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'"> OTHER</input><br>
+																	<div class="external" id="external"><br>
+																		<div class="reg1">Institiution  Name: <input type='text' name='institution'/><br>
+																		</div>
+																		<div class="reg1">Institiution  Name: <input type='text' name='designation'/><br>
+																		<br></div>
+																 </div>
+															</div>
+              <br>
                             </font>
       <button class="buttonlog" type='submit' name='in'>Submit</button>
                             </form>
@@ -365,7 +374,7 @@
 .login{
   border-style: solid;
   border-width: thin;
-  height: 800px;
+  height: 950px;
   width:750px;
   margin-left: auto;
   margin-right: auto;
