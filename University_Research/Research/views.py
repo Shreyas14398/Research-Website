@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+import json
+from django.core import serializers
 from Research.forms import LoginS
 from Research.forms import LoginSu
 from Research.forms import LoginD
@@ -16,7 +18,9 @@ from Research.forms import regnosearchForm
 from Research.forms import startform
 from Research.models import Reports
 from Research.forms import infof
+from Research.serializers import AnnouncementSerializer
 import datetime
+from rest_framework.renderers import JSONRenderer
 from Research.forms import namesearchForm
 from Research.forms import dcmForm
 from Research.models import Announcement
@@ -54,6 +58,12 @@ def newann(request):
   else:
     return render(request,"home.html",{})
 
+def readj(request):
+  dbAAA=Announcement.objects.all()
+  dbAA=AnnouncementSerializer(dbAAA,many=True)
+  dbA=serializers.serialize('json',Announcement.objects.all(),fields=('title','body'))
+  return render(request,"index.html",{"dbA":dbA})
+  
 def annd(request):
   if request.session.has_key('mid'):
     dbA=Announcement.objects.filter()
@@ -84,7 +94,7 @@ def profile(request):
 
 def ann(request):
   if request.session.has_key('mid') or request.session.has_key('regno'):
-    dbA=Announcement.objects.filter()
+    dbA=serializers.serialize('json',Announcement.objects.all())
     return render(request,"ann.html",{"dbA":dbA})
   else:
     return HttpResponseRedirect('/login1')

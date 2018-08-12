@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SASTRA Deemed University</title>
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+          <div id="app" class="columns"><!-- React --></div>
+          <p>{{dbA}}</p>
+          <div id="app1"></div>
+    </div>
+  </section>
+  <script>
+      var Announcements=JSON.parse("{{dbA|escapejs}}");
+  </script>
+</body>
+{% load static %}
+<script src="{% static "main.js" %}"></script>
+</html>

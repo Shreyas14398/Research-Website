@@ -24,8 +24,6 @@ class Personal_Det(models.Model):
    sex=models.CharField(max_length=10)
    dob=models.CharField(max_length=10)
    supervisor=models.CharField(max_length=15)
-   institution=models.CharField(max_length=500)
-   institution_ad=models.CharField(max_length=500)
 
 
 class Supervisor(models.Model):

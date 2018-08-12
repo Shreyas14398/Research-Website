@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Research',
+    'rest_framework',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'University_Research.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/shreyas/git all/Research-Website/University_Research/Templates'],
+        'DIRS': [os.path.join(BASE_DIR,"templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,7 +73,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'University_Research.wsgi.application'
 
-
+WEBPACK_LOADER={
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE':os.path.join(BASE_DIR,'webpack-stats.json'),
+    }
+}
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 

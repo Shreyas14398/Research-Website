@@ -1,0 +1,34 @@
+{
+  "name": "Research-Website",
+  "version": "1.0.0",
+  "description": "A University-based Research Portal developed using HTML, CSS, Javascript.  Developed as an academic project and practice for web development.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development ./University_Research/Research/src/index.js --output ./University_Research/static/main.js",
+    "build": "webpack --mode production ./University_Research/Research/src/index.js --output ./University_Research/static/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shreyas14398/Research-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shreyas14398/Research-Website/issues"
+  },
+  "homepage": "https://github.com/Shreyas14398/Research-Website#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}

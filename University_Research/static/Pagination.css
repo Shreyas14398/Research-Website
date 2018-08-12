@@ -1,0 +1,66 @@
+
+ .pages{
+   list-style-type: none;
+   display: inline;
+ }
+ .paginate{
+   display: flex;
+ }
+.page{
+  float: left;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1.3em;
+}
+.curpage{
+  float: left;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight:bold;
+  opacity: 0.5;
+}
+.page:hover{
+   font-weight: bold;
+}
+.button{
+  font-size: 1.3em;
+  cursor: pointer;
+  padding: 5px;
+  float: left;
+  margin-left: -60%;
+}
+.button:hover{
+  font-weight: bold;
+}
+.buttondis{
+  opacity: 0.6;
+  font-size: 1.3em;
+  cursor: pointer;
+  padding: 5px;
+  float: left;
+  margin-left: -60%;
+}
+.buttonprev{
+  font-size: 1.3em;
+  float: left;
+  padding: 5px;
+  cursor: pointer;
+}
+.buttonprev:hover{
+  font-weight: bold;
+}
+.buttonprevdis{
+  opacity: 0.6;
+  font-size: 1.3em;
+  float: left;
+  padding: 5px;
+  cursor: pointer;
+}
+.content{
+  float: left;
+}
+.content-select{
+  height: 40px;
+  width: 60px;
+}

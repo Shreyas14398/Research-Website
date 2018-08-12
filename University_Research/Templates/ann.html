@@ -1,7 +1,6 @@
 <!Doctype HTML>
 <html>
 <head>
-  <title>SASTRA Deemed University</title>
   <base href="http://sastra.edu/index.php/2014-01-29-07-16-29.html" />
 	<title>Research - SASTRA Deemed University</title>
 	<link href="/templates/santosh/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
@@ -15,24 +14,9 @@
 	<script src="/media/system/js/mootools-core.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
 	<script src="/media/system/js/core.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
 	<script src="/media/system/js/mootools-more.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script type="text/javascript">
-</script>
-
 	<link rel="stylesheet" href="/templates/santosh/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="/templates/santosh/css/form.css" type="text/css" />
 	<script type="text/javascript" src="/templates/santosh/js/h.js"></script>
-	<script type="text/javascript"> $.noConflict();</script>
-	<script type="text/javascript">
-			function deleteAllCookies() {
-					var cookies = document.cookie.split(";");
-					for (var i = 0; i < cookies.length; i++) {
-						var cookie = cookies[i];
-						var eqPos = cookie.indexOf("=");
-						var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-						document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-					}
-				}
-	</script>
 </head>
 <body>
   <body oncontextmenu="return false" >
@@ -224,7 +208,6 @@
   				<div id="wraleft"><div class="clear"></div></div>
   				<div id="wraright"><div class="clear"></div></div>
   			</div>
-  			<!---------------- Mid content ----------------------------------->
   					<div class="clearpad"><div class="item-page">
   	<h1 class="item-page-title">Announcements</h1>
 
@@ -238,15 +221,37 @@
 <br>
 
 
-<ul>
-  {%for a in dbA%}
-<li class="anno">
-<button class="accordion"><h3><br>  {{a.title}}</h3></button>
-<div class="announcement">
-  <h3><br>{{a.body}}<br><br></h3>
+<div id="app">
+	{{dbA}}
 </div>
-{%endfor%}
-</ul>
+<script type="text/javascript">
+      var Announcements=JSON.parse("{{dbA|escapejs}}");
+</script>
+{% load static %}
+<script type="text/javascript" src="{% static "main.js" %}"></script>
+
+<style>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -437,4 +442,5 @@ function fun2(){
 }
 </script>
  </body>
+ 
  </html>
