@@ -360,9 +360,27 @@
 							 <button class="accordion1"><h2 style="color:green;">{{value}}</h2></button>
 						   <div class="panel">
 								 <table>
-	 							<th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td><br>
+									<tr><th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td></tr>
+								 {%ifequal key A or key C or key E%}
 	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
 	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
+								{%elifequal key B or key F%}
+								{%for member in sp.supervisors.all %}
+								 <tr><th style="width:30%">Name:</th><td style="text-align:center">Dr. {{member.supervisor.name}}</td></tr>
+								 <tr><th style="width:30%">Comments:</th><td style="text-align:center">{{member.comment}}</td></tr>
+								{%endfor%}
+								{%elifequal key D%}
+							   <tr><th style="width:30%">Marks:</th><td style="text-align:center">{{sp.marks}}</td></tr>
+								 <tr><th style="width:30%">Result:</th><td style="text-align:center">{{sp.status}}</td></tr>
+								{%elifequal key G%}
+								{%for guide in sp.guides.all%}
+								 <tr><th style="width:30%">Examiners: </th><td style="text-align:center">{{guide.supervisor.Su_Personal_Det}}</td></tr>
+							  {%endfor%}
+								 <tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
+								{%elifequal key H%}
+								 <tr><th style="width:30%">Comments: </th><td style="text-align:center">{{sp.remarks}}</td></tr>
+								 <tr><th style="width:30%">Result: </th><td style="text-align:center">{{sp.status}}</td></tr>
+		            {%endifequal%}
 								 </table><br><br>
 						   </div>
 						  {% else %}
@@ -370,7 +388,7 @@
 						    <div class="panel">
 								{%ifequal sp.status "Fail"%}
 								<table>
-	 							<th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td><br>
+	 							<th style="width:30%">Repeat Date:</th><td style="text-align:center">{{sp.cdate}}</td><br>
 	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
 	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
 							</table>
