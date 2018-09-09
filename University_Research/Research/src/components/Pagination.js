@@ -111,5 +111,4 @@ class Pagination extends React.Component{
   }
 };
 
-
-ReactDOM.render(<Pagination Announcements={Announcements}/>,document.getElementById('app'));
+export default Pagination;

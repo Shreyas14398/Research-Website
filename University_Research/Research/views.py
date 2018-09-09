@@ -32,8 +32,6 @@ from Research.forms import AnForm
 from Research.models import SupMess
 from Research.forms import supForm
 from Research.forms import repupForm
-from Research.models import DCMember
-from Research.models import ThesisGuide
 from Research.forms import PwdForm
 import random
 # Create your views here.
@@ -61,9 +59,9 @@ def newann(request):
 
 def readj(request):
   dbAAA=Announcement.objects.all()
-  dbAA=AnnouncementSerializer(dbAAA,many=True)
-  dbA=serializers.serialize('json',Announcement.objects.all(),fields=('title','body'))
-  return render(request,"index.html",{"dbA":dbA})
+  dbAA=Personal_Det.objects.all()
+  dbA=serializers.serialize('json',dbAA,fields=("name","scholar"))
+  return render(request,"index.html",{"dbA":dbA,"dbAA":dbAA})
   
 def annd(request):
   if request.session.has_key('mid'):
@@ -196,22 +194,23 @@ def scholar1(request):
   status1=""
   rno=request.session['regno']
   dbP=Personal_Det.objects.get(scholar__regno=rno)
-  dbPu=Publications.objects.filter(scholar__regno=rno).values()
+  dbPu=Publications.objects.filter(scholars__regno=rno)
   dbst=DC_Meeting.objects.filter(scholar__regno=rno,Completed=False,Started=True).values()
+  dbDC=DC_Meeting.objects.filter(scholar__regno=rno,progress="B")
   dbSu=Su_Personal_Det.objects.get(supervisor__mid=dbP.supervisor.mid)
   dbsp=DC_Meeting.objects.filter(scholar__regno=rno).values()
   reports=Reports.objects.filter(scholar__regno=rno).values()
   if dbst.exists():
     status=DC_Meeting.objects.get(scholar__regno=rno,Completed=False,Started=True)
     status1=status.get_progress_display()
-  return render(request,"scholar1.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
+  return render(request,"scholar1.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.scholar.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dbDC":dbDC})
 
 def supervisor1(request):
   mid=request.session['mid']
   dbP=Su_Personal_Det.objects.get(supervisor__mid=mid)
-  dbPu=Publications.objects.filter(supervisor__mid=mid).values()
-  dbSch=Personal_Det.objects.filter(supervisor__mid=mid).values()
-  return render(request,"supervisor1.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
+  dbPu=Publications.objects.filter(supervisors__mid=mid).values()
+  dbSch=Personal_Det.objects.filter(supervisor__mid=mid)
+  return render(request,"supervisor1.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.supervisor.mid,"aoi":dbP.aoi})
 
 def suinfo(request):
   if request.POST:
@@ -232,16 +231,16 @@ def schinfo(request):
     if IForm.is_valid():
       rno=IForm.cleaned_data['regno']
       dbP=Personal_Det.objects.get(scholar__regno=rno)
-      dbPu=Publications.objects.filter(scholar__regno=rno).values()
+      dbPu=Publications.objects.filter(scholars__regno=rno)
       dbSu=Su_Personal_Det.objects.get(supervisor__mid=dbP.supervisor.mid)
       dbst=DC_Meeting.objects.filter(scholar__regno=rno,Completed=False,Started=True)
-      dbsp=DC_Meeting.objects.filter(scholar__regno=rno).values()
-      dcms=DCM.objects.filter(scholar__regno=rno).values()
+      dbsp=DC_Meeting.objects.filter(scholar__regno=rno)
+      dcms=DC_Meeting.objects.filter(scholar__regno=rno,progress="B")
       reports=Reports.objects.filter(scholar__regno=rno).values()
       if dbst.exists():
         status=DC_Meeting.objects.get(scholar__regno=rno,Completed=False,Started=True)
         status1=status.get_progress_display()
-      return render(request,"schinfo.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
+      return render(request,"schinfo.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.scholar.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
     else:
       return render(request,"home.html",{})
   else:
@@ -282,6 +281,9 @@ def schstart(request):
 def dean1(request):
     mid=request.session['mid']
     dbD=Supervisor.objects.get(mid=mid,dean=True)
+    dbAA=Personal_Det.objects.all()
+    dbA=serializers.serialize('json',dbAA,fields=("name","scholar"))
+    dbSList=serializers.serialize('json',Su_Personal_Det.objects.all(),fields=("name","supervisor"))
     Schcnt=Scholar.objects.filter().count()
     Supcnt=Supervisor.objects.filter().count()-1
     now=datetime.datetime.now()
@@ -293,69 +295,7 @@ def dean1(request):
       message="Good Afternoon..."
     else:
       message="Good Evening..."
-    return render(request,"dean1.html",{"trig":0,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-
-def dean2(request):
-  mid=request.session['mid']
-  dbD=Supervisor.objects.get(mid=mid,dean=True)
-  Schcnt=Scholar.objects.filter().count()
-  Supcnt=Supervisor.objects.filter().count()-1
-  now=datetime.datetime.now()
-  supmessage=SupMess.objects.filter(mid=0).values()
-  supmessage1=SupMess.objects.filter(regno=0).values()
-  if now.hour<12:
-    message="Good Morning..."
-  elif now.hour>=12 and now.hour<16:
-    message="Good Afternoon..."
-  else:
-    message="Good Evening..."
-  if request.POST:
-    SearchF=regnosearchForm(request.POST)
-    if SearchF.is_valid():
-     rno=SearchF.cleaned_data['regno']
-     dbS=Personal_Det.objects.filter(scholar__regno=rno).values()
-     return render(request,'dean1.html',{"dbS":dbS,"trig":1,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-    else:
-     SearchF=namesearchForm(request.POST)
-     if SearchF.is_valid():
-       name=SearchF.cleaned_data['regno']
-       dbS=Personal_Det.objects.filter(name=name).values()
-       return render(request,'dean1.html',{"dbS":dbS,"trig":1,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-     else:
-       return render(request,'dean1.html',{})
-  else:
-    return render(request,'dean1.html',{})
-
-def dean3(request):
-    mid=request.session['mid']
-    dbD=Supervisor.objects.get(mid=mid,dean=True)
-    Schcnt=Scholar.objects.filter().count()
-    Supcnt=Supervisor.objects.filter().count()-1
-    now=datetime.datetime.now()
-    supmessage=SupMess.objects.filter(mid=0).values()
-    supmessage1=SupMess.objects.filter(regno=0).values()
-    if now.hour<12:
-      message="Good Morning..."
-    elif now.hour>=12 and now.hour<16:
-      message="Good Afternoon..."
-    else:
-      message="Good Evening..."
-    if request.POST:
-      SearchF=midsearchForm(request.POST)
-      if SearchF.is_valid():
-        mid=SearchF.cleaned_data['mid']
-        dbSu=Su_Personal_Det.objects.filter(supervisor__mid=mid).values()
-        return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"trig":2,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-      else:
-        SearchF=SunamesearchForm(request.POST)
-        if SearchF.is_valid():
-          name=SearchF.cleaned_data['mid']
-          dbSu=Su_Personal_Det.objects.filter(name=name).values()
-          return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"trig":2,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-        else:
-          return render(request,'dean1.html',{})
-    else:
-      return render(request,'dean1.html',{})
+    return render(request,"dean1.html",{"trig":0,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1,"dbA":dbA,"dbSList":dbSList})
 
 def sureg(request):
   if request.POST:

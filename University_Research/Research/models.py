@@ -46,13 +46,6 @@ class Su_Personal_Det(models.Model):
    institution=models.CharField(max_length=500)
    designation=models.CharField(max_length=300)
 
-class DCMember(models.Model):
-  supervisor=models.ForeignKey(Supervisor)
-  comment=models.CharField(max_length=1000)
-
-class ThesisGuide(models.Model):
-   supervisor=models.ForeignKey(Supervisor)
-
 class DC_Meeting(models.Model):
    Progress_Choices=(
         ("A","Zeroth Review"),
@@ -74,8 +67,7 @@ class DC_Meeting(models.Model):
    Completed=models.BooleanField(default=False)
    Started=models.BooleanField(default=False)
    scholar=models.ForeignKey(Scholar)
-   supervisors=models.ManyToManyField(DCMember)
-   guides=models.ManyToManyField(ThesisGuide)
+   supervisors=models.ManyToManyField(Supervisor)
 
 class Publications(models.Model):
    title=models.CharField(max_length=1000)

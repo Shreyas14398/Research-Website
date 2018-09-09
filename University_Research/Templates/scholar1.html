@@ -361,26 +361,27 @@
 						   <div class="panel">
 								 <table>
 									<tr><th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td></tr>
-								 {%ifequal key A or key C or key E%}
+								 {%if key == "A" or key == "C" or key == "E" %}
 	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
 	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
-								{%elifequal key B or key F%}
+								{%elif key == "B" or key == "F"%}
 								{%for member in sp.supervisors.all %}
-								 <tr><th style="width:30%">Name:</th><td style="text-align:center">Dr. {{member.supervisor.name}}</td></tr>
-								 <tr><th style="width:30%">Comments:</th><td style="text-align:center">{{member.comment}}</td></tr>
-								{%endfor%}
-								{%elifequal key D%}
+								 <tr><th style="width:30%">Name:</th><td style="text-align:center">Dr. {{member.Su_Personal_Det.name}}</td></tr>
+								 {%endfor%}
+								 <tr><th style="width:30%">Comments:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
+					             
+								{%elif key == "D"%}
 							   <tr><th style="width:30%">Marks:</th><td style="text-align:center">{{sp.marks}}</td></tr>
 								 <tr><th style="width:30%">Result:</th><td style="text-align:center">{{sp.status}}</td></tr>
-								{%elifequal key G%}
-								{%for guide in sp.guides.all%}
-								 <tr><th style="width:30%">Examiners: </th><td style="text-align:center">{{guide.supervisor.Su_Personal_Det}}</td></tr>
+								{%elif key == "G"%}
+								{%for guide in sp.supervisors.all%}
+								 <tr><th style="width:30%">Examiners: </th><td style="text-align:center">{{guide.Su_Personal_Det.name}}</td></tr>
 							  {%endfor%}
 								 <tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
-								{%elifequal key H%}
+								{%elif key == "H"%}
 								 <tr><th style="width:30%">Comments: </th><td style="text-align:center">{{sp.remarks}}</td></tr>
 								 <tr><th style="width:30%">Result: </th><td style="text-align:center">{{sp.status}}</td></tr>
-		            {%endifequal%}
+		            {%endif%}
 								 </table><br><br>
 						   </div>
 						  {% else %}
@@ -415,10 +416,10 @@
 						 <th>DC Member</th>
 						 <th>Institution</th>
 					 </tr>
-					 {%for dc in dcm%}
+					 {%for dc in dbDC.supervisors.all%}
 					 <tr>
-						 <td>{{dc.name}}</td>
-						 <td>{{dc.institution}}</td>
+						 <td>{{dc.Su_Personal_Det.name}}</td>
+						 <td>{{dc.Su_Personal_Det.institution}}</td>
 					 </tr>
 					 {%endfor%}
 				 </table>

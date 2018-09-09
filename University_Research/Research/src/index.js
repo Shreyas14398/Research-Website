@@ -1,2 +1,2 @@
-import Pagination from "./components/Pagination";
-import App from "./components/App";
+import Interface from "./components/Interface";
+import SupComplete from "./components/SupComplete";
