@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>SASTRA Deemed University | Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base href="http://sastra.edu/index.php/2014-01-29-07-16-29.html" />
 	<title>Research - SASTRA Deemed University</title>
 	<link href="/templates/santosh/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
@@ -35,6 +36,24 @@
 	</script>
 </head>
 <body>
+  <style>
+  @media only screen and (max-width:800px) {
+  /* For tablets: */
+  .mainmenu {
+    width: 80%;
+    padding: 0;
+  }
+  .menunav{
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .mainmenu, .menunav{
+    width: 100%;
+  }
+}
+  </style>
   <div  id="myDiv" class="animate-bottom">
   	<div id="top">
   		<div id="top1">
@@ -80,9 +99,11 @@
   			</table>
   		</div>
   		<div class="clear"></div></div>
-  	</div>
+    </div>
+    <br>
     <div id="mainmenu">
-  			<div id="menunav">		<div class="moduletable">
+  			<div id="menunav">		
+          <div class="moduletable">
   							<div class="icemegamenu">
   								<div class="ice-megamenu-toggle">
   									<a data-toggle="collapse" data-target=".nav-collapse"></a>
@@ -196,7 +217,8 @@
   			}
   		});
   	});
-  </script>		</div>
+  </script>		
+  </div>
   	</div>
   		<div class="clear"></div>
   	</div>

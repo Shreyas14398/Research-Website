@@ -1,20 +1,24 @@
 <html>
 <head>
 	<title>SASTRA Deemed University</title>
+	<script type="text/javascript" src="modernizr.js"></script>
 	<base href="http://sastra.edu/index.php/2014-01-29-07-16-29.html" />
 	<title>Research - SASTRA Deemed University</title>
 	<link href="/templates/santosh/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 	<link href="/plugins/editors/jckeditor/typography/typography2.php" rel="stylesheet" type="text/css" media="null" attribs="[]" />
 	<link href="http://sastra.edu/modules/mod_icemegamenu/themes/default/css/default_icemegamenu.css" rel="stylesheet" type="text/css" />
 	<link href="/" rel="stylesheet" type="text/css" />
-	<script src="/media/jui/js/jquery.min.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script src="/media/jui/js/jquery-noconflict.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script src="/media/jui/js/jquery-migrate.min.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script src="/media/jui/js/bootstrap.min.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script src="/media/system/js/mootools-core.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script src="/media/system/js/core.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script src="/media/system/js/mootools-more.js?2dad9313916a52135a01e0c9b50e8adb" type="text/javascript"></script>
-	<script type="text/javascript">
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+<script>
+  webshims.setOptions('waitReady', false);
+  webshims.setOptions('forms-ext', {type: 'date'});
+  webshims.setOptions('forms-ext', {type: 'time'});
+  webshims.polyfill('forms forms-ext');
+</script>
+
 </script>
 
 	<link rel="stylesheet" href="/templates/santosh/css/style.css" type="text/css" />
@@ -256,7 +260,7 @@
 															<option value="SC">SC</option>
 															<option value="ST">ST</option></select>
 															</div>
-															<div class="reg2">  Register Number: <input type='text' name='regno'/><br>
+															<div class="reg2">  Register Number: <input type='text' name='regno'/>
 															</div>
 															<div class="reg3">  School:<input type='text' name='school'/>
 															</div>
@@ -297,11 +301,11 @@
 																<div class="reg2">Last Name: <input type="text" name='lname'/><br>
                               </div><br>
 															<div class="reg3">Sex: <input type="radio" name="sex" value="male" checked> Male
-															<input type="radio" name="sex" value="female"> Female<br></div>
-															   <div class="reg2"> Phone Number:<input type='text' name='phno'/></div><br>
-										            <div class="reg3">Staff ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
+															<input type="radio" name="sex" value="female"> Female</div>
+															   <div class="reg2"> Phone Number:<input type='text' name='phno'/></div>
+										            <br><div class="reg3">Staff ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
 														                              </div>
-                              <div class="reg2">  School: <input type='text' name='school'/><br>
+                              <div class="reg4">  School: <input type='text' name='school'/>
                               <br></div>
                               <div class="reg3">  Official E-mail ID:<input type='text' name='email'/>
                               <br></div>
@@ -352,9 +356,10 @@
   text-align: center;
   margin-left: 1%;
 }
-.reg{
-	margin-left: 35%;
-	margin-right: 35%;
+.reg4{
+	margin-top: -65.6px;
+	margin-left: 65%;
+	margin-right: 10%;
 }
 .reg3{
 	margin-top: 5%;
