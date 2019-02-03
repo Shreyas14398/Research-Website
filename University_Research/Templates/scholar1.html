@@ -360,9 +360,28 @@
 							 <button class="accordion1"><h2 style="color:green;">{{value}}</h2></button>
 						   <div class="panel">
 								 <table>
-	 							<th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td><br>
+									<tr><th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td></tr>
+								 {%if key == "A" or key == "C" or key == "E" %}
 	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
 	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
+								{%elif key == "B" or key == "F"%}
+								{%for member in sp.supervisors.all %}
+								 <tr><th style="width:30%">Name:</th><td style="text-align:center">Dr. {{member.Su_Personal_Det.name}}</td></tr>
+								 {%endfor%}
+								 <tr><th style="width:30%">Comments:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
+					             
+								{%elif key == "D"%}
+							   <tr><th style="width:30%">Marks:</th><td style="text-align:center">{{sp.marks}}</td></tr>
+								 <tr><th style="width:30%">Result:</th><td style="text-align:center">{{sp.status}}</td></tr>
+								{%elif key == "G"%}
+								{%for guide in sp.supervisors.all%}
+								 <tr><th style="width:30%">Examiners: </th><td style="text-align:center">{{guide.Su_Personal_Det.name}}</td></tr>
+							  {%endfor%}
+								 <tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
+								{%elif key == "H"%}
+								 <tr><th style="width:30%">Comments: </th><td style="text-align:center">{{sp.remarks}}</td></tr>
+								 <tr><th style="width:30%">Result: </th><td style="text-align:center">{{sp.status}}</td></tr>
+		            {%endif%}
 								 </table><br><br>
 						   </div>
 						  {% else %}
@@ -370,7 +389,7 @@
 						    <div class="panel">
 								{%ifequal sp.status "Fail"%}
 								<table>
-	 							<th style="width:30%">Date Completed:</th><td style="text-align:center">{{sp.cdate}}</td><br>
+	 							<th style="width:30%">Repeat Date:</th><td style="text-align:center">{{sp.cdate}}</td><br>
 	 							<tr><th style="width:30%">Status: </th><td style="text-align:center">{{sp.status}}</td></tr>
 	 							<tr><th style="width:30%">Remarks:</th><td style="text-align:center">{{sp.remarks}}</td></tr>
 							</table>
@@ -397,10 +416,10 @@
 						 <th>DC Member</th>
 						 <th>Institution</th>
 					 </tr>
-					 {%for dc in dcm%}
+					 {%for dc in dbDC.supervisors.all%}
 					 <tr>
-						 <td>{{dc.name}}</td>
-						 <td>{{dc.institution}}</td>
+						 <td>{{dc.Su_Personal_Det.name}}</td>
+						 <td>{{dc.Su_Personal_Det.institution}}</td>
 					 </tr>
 					 {%endfor%}
 				 </table>

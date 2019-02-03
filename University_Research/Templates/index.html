@@ -6,13 +6,14 @@
 <body>
   <section class="section">
     <div class="container">
-          <div id="app" class="columns"><!-- React --></div>
+          <div id="react" class="columns"><!-- React --></div>
           <p>{{dbA}}</p>
-          <div id="app1"></div>
+          <p>{{dbAA}}</p>
     </div>
   </section>
   <script>
-      var Announcements=JSON.parse("{{dbA|escapejs}}");
+      var CompData=JSON.parse("{{dbA|escapejs}}");
+      var CompType="search";
   </script>
 </body>
 {% load static %}

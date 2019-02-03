@@ -282,9 +282,9 @@
 																<div class="reg1">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
 																	<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'"> OTHER</input><br>
 																	<div class="external" id="external"><br>
-																		<div class="reg1">Institiution  Name: <input type='text' name='institution'/><br>
+																		<div class="reg1">Institiution  Name: <input type='text' name='institution' value="College Name"/><br>
 																		</div>
-																		<div class="reg1">Institiution  Name: <input type='text' name='designation'/><br>
+																		<div class="reg1">Institiution  Address: <input type='text' name='institution_ad' value="Where is your college?"/><br>
 																		<br></div>
 																 </div>
 															</div>
@@ -300,10 +300,17 @@
                               <div class="reg3">First Name: <input type='text' name='name'/><br></div>
 																<div class="reg2">Last Name: <input type="text" name='lname'/><br>
                               </div><br>
+<<<<<<< HEAD
 															<div class="reg3">Sex: <input type="radio" name="sex" value="male" checked> Male
 															<input type="radio" name="sex" value="female"> Female</div>
 															   <div class="reg2"> Phone Number:<input type='text' name='phno'/></div>
 										            <br><div class="reg3">Staff ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
+=======
+															<div class="reg3">Sex: <input type="radio" name="sex" value="male" checked/> Male
+															<input type="radio" name="sex" value="female"/> Female<br></div>
+															   <div class="reg2"> Phone Number:<input type='text' name='phno'/></div><br>
+										            <div class="reg3">Staff ID: <input type='text' name='mid'/> <p style="opacity:0.3">Not for External Supervisors</p>
+>>>>>>> 08cb88c9eecc9f382ffc3780c67532b70b70c4d6
 														                              </div>
                               <div class="reg4">  School: <input type='text' name='school'/>
                               <br></div>
@@ -311,14 +318,14 @@
                               <br></div>
 															<div class="reg2"> Personal E-mail ID:<input type='text' name='pemail'/><br>
 															<br></div>
-                                <div class="reg3">Areas of Interest:<input type='text' name='aoi'/><br>
+                                <div class="reg3">Areas of Interest:<input type='text' name="aoi"/><br>
                               </div>
-															<div class="reg2">Institution:<br><input type='radio' name='exin' value='SASTRA' onclick="document.getElementById('external').style.display='none'"> SASTRA</input>
-																<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('external').style.display='block'"> OTHER</input><br>
-															  <div class="external" id="external"><br>
-																	<div class="reg1">Institiution  Name: <input type='text' name='institution'/><br>
+															<div class="reg2">Institution:<br><input type='radio' name="exin" value='SASTRA' onclick="document.getElementById('externalsu').style.display='none'"/> SASTRA
+																<br><input type="radio" name="exin" value="Other" onclick="document.getElementById('externalsu').style.display='block'"/> OTHER<br>
+															  <div class="externalsu" id="externalsu"><br>
+																	<div class="reg1">Institiution  Name: <input type='text' name='institution' value="Where do you work?"/><br>
 		                              </div>
-																	<div class="reg1">  Designation: <input type='text' name='designation'/><br>
+																	<div class="reg1">  Designation: <input type='text' name='designation' value="What do you do there?"/><br>
 		                              <br></div>
                                </div>
 														</div>
@@ -331,6 +338,10 @@
 <style>
 .external{
 	display: none;
+	width:100%;
+}
+.externalsu{
+	display:none;
 	width:100%;
 }
 .buttonlog {

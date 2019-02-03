@@ -32,7 +32,6 @@ from Research.forms import AnForm
 from Research.models import SupMess
 from Research.forms import supForm
 from Research.forms import repupForm
-from Research.models import DCM
 from Research.forms import PwdForm
 import random
 # Create your views here.
@@ -60,9 +59,9 @@ def newann(request):
 
 def readj(request):
   dbAAA=Announcement.objects.all()
-  dbAA=AnnouncementSerializer(dbAAA,many=True)
-  dbA=serializers.serialize('json',Announcement.objects.all(),fields=('title','body'))
-  return render(request,"index.html",{"dbA":dbA})
+  dbAA=Personal_Det.objects.all()
+  dbA=serializers.serialize('json',dbAA,fields=("name","scholar"))
+  return render(request,"index.html",{"dbA":dbA,"dbAA":dbAA})
   
 def annd(request):
   if request.session.has_key('mid'):
@@ -104,9 +103,9 @@ def adett(request):
     dcmm=dcmForm(request.POST)
     if dcmm.is_valid():
       mi=dcmm.cleaned_data['mmid']
-      dbSS=Su_Personal_Det.objects.filter(mid=mi).values()
+      dbSS=Su_Personal_Det.objects.filter(supervisor__mid=mi).values()
       if dbSS.exists():
-        dbSSS=Su_Personal_Det.objects.get(mid=mi)
+        dbSSS=Su_Personal_Det.objects.get(supervisor__mid=mi)
         dbD=DCM(mid=dcmm.cleaned_data['mmid'],regno=dcmm.cleaned_data['regno'],name=dbSSS.name,institution=dbSSS.institution)
         dbD.save()
         return HttpResponseRedirect('/profile/')
@@ -194,33 +193,33 @@ def loginsu(request):
 def scholar1(request):
   status1=""
   rno=request.session['regno']
-  dbP=Personal_Det.objects.get(regno=rno)
-  dbPu=Publications.objects.filter(regno=rno).values()
-  dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True).values()
-  dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
-  dbsp=DC_Meeting.objects.filter(regno=rno).values()
-  dcms=DCM.objects.filter(regno=rno).values()
-  reports=Reports.objects.filter(regno=rno).values()
+  dbP=Personal_Det.objects.get(scholar__regno=rno)
+  dbPu=Publications.objects.filter(scholars__regno=rno)
+  dbst=DC_Meeting.objects.filter(scholar__regno=rno,Completed=False,Started=True).values()
+  dbDC=DC_Meeting.objects.filter(scholar__regno=rno,progress="B")
+  dbSu=Su_Personal_Det.objects.get(supervisor__mid=dbP.supervisor.mid)
+  dbsp=DC_Meeting.objects.filter(scholar__regno=rno).values()
+  reports=Reports.objects.filter(scholar__regno=rno).values()
   if dbst.exists():
-    status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
+    status=DC_Meeting.objects.get(scholar__regno=rno,Completed=False,Started=True)
     status1=status.get_progress_display()
-  return render(request,"scholar1.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
+  return render(request,"scholar1.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.scholar.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dbDC":dbDC})
 
 def supervisor1(request):
   mid=request.session['mid']
-  dbP=Su_Personal_Det.objects.get(mid=mid)
-  dbPu=Publications.objects.filter(mid=mid).values()
-  dbSch=Personal_Det.objects.filter(supervisor=mid).values()
-  return render(request,"supervisor1.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
+  dbP=Su_Personal_Det.objects.get(supervisor__mid=mid)
+  dbPu=Publications.objects.filter(supervisors__mid=mid).values()
+  dbSch=Personal_Det.objects.filter(supervisor__mid=mid)
+  return render(request,"supervisor1.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.supervisor.mid,"aoi":dbP.aoi})
 
 def suinfo(request):
   if request.POST:
      SuF=midsearchForm(request.POST)
      if SuF.is_valid():
        mid=SuF.cleaned_data['mid']
-       dbP=Su_Personal_Det.objects.get(mid=mid)
-       dbPu=Publications.objects.filter(mid=mid).values()
-       dbSch=Personal_Det.objects.filter(supervisor=mid).values()
+       dbP=Su_Personal_Det.objects.get(supervisor__mid=mid)
+       dbPu=Publications.objects.filter(supervisor__mid=mid).values()
+       dbSch=Personal_Det.objects.filter(supervisor__mid=mid).values()
        return render(request,"suinfo.html",{"pubs":dbPu,"sch":dbSch,"name":dbP.name,"lname":dbP.lname,"email":dbP.email,"sex":dbP.sex,"school":dbP.school,"mid":dbP.mid,"aoi":dbP.aoi})
   else:
      return render(request,"home.html",{})
@@ -231,17 +230,17 @@ def schinfo(request):
     IForm=infof(request.POST)
     if IForm.is_valid():
       rno=IForm.cleaned_data['regno']
-      dbP=Personal_Det.objects.get(regno=rno)
-      dbPu=Publications.objects.filter(regno=rno).values()
-      dbSu=Su_Personal_Det.objects.get(mid=dbP.supervisor)
-      dbst=DC_Meeting.objects.filter(regno=rno,Completed=False,Started=True)
-      dbsp=DC_Meeting.objects.filter(regno=rno).values()
-      dcms=DCM.objects.filter(regno=rno).values()
-      reports=Reports.objects.filter(regno=rno).values()
+      dbP=Personal_Det.objects.get(scholar__regno=rno)
+      dbPu=Publications.objects.filter(scholars__regno=rno)
+      dbSu=Su_Personal_Det.objects.get(supervisor__mid=dbP.supervisor.mid)
+      dbst=DC_Meeting.objects.filter(scholar__regno=rno,Completed=False,Started=True)
+      dbsp=DC_Meeting.objects.filter(scholar__regno=rno)
+      dcms=DC_Meeting.objects.filter(scholar__regno=rno,progress="B")
+      reports=Reports.objects.filter(scholar__regno=rno).values()
       if dbst.exists():
-        status=DC_Meeting.objects.get(regno=rno,Completed=False,Started=True)
+        status=DC_Meeting.objects.get(scholar__regno=rno,Completed=False,Started=True)
         status1=status.get_progress_display()
-      return render(request,"schinfo.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
+      return render(request,"schinfo.html",{"name":dbP.name,"lname":dbP.lname,"dob":dbP.dob,"sex":dbP.sex,"reports":reports,"regno":dbP.scholar.regno,"regdate":dbP.regdate,"school":dbP.school,"pubs":dbPu,"supervisor":dbSu.name,"status1":status1,"dbsp":dbsp,"levels":levels,"dcm":dcms})
     else:
       return render(request,"home.html",{})
   else:
@@ -251,7 +250,7 @@ def schedit(request):
   if request.POST:
     EForm=editform(request.POST)
     if EForm.is_valid():
-      dbS=DC_Meeting.objects.get(regno=EForm.cleaned_data['regno'],progress=EForm.cleaned_data['progress'])
+      dbS=DC_Meeting.objects.get(scholar__regno=EForm.cleaned_data['regno'],progress=EForm.cleaned_data['progress'])
       dbS.status=EForm.cleaned_data['status']
       dbS.remarks=EForm.cleaned_data['remarks']
       dbS.cdate=EForm.cleaned_data['date']
@@ -268,7 +267,7 @@ def schstart(request):
   if request.POST:
     SForm=startform(request.POST)
     if SForm.is_valid():
-      dbS=DC_Meeting.objects.get(regno=SForm.cleaned_data['regno'],progress=SForm.cleaned_data['progress'])
+      dbS=DC_Meeting.objects.get(scholar__regno=SForm.cleaned_data['regno'],progress=SForm.cleaned_data['progress'])
       dbS.sdate=SForm.cleaned_data['date']
       dbS.message=SForm.cleaned_data['message']
       dbS.Started=True
@@ -282,6 +281,9 @@ def schstart(request):
 def dean1(request):
     mid=request.session['mid']
     dbD=Supervisor.objects.get(mid=mid,dean=True)
+    dbAA=Personal_Det.objects.all()
+    dbA=serializers.serialize('json',dbAA,fields=("name","scholar"))
+    dbSList=serializers.serialize('json',Su_Personal_Det.objects.all(),fields=("name","supervisor"))
     Schcnt=Scholar.objects.filter().count()
     Supcnt=Supervisor.objects.filter().count()-1
     now=datetime.datetime.now()
@@ -293,79 +295,13 @@ def dean1(request):
       message="Good Afternoon..."
     else:
       message="Good Evening..."
-    return render(request,"dean1.html",{"trig":0,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-
-def dean2(request):
-  mid=request.session['mid']
-  dbD=Supervisor.objects.get(mid=mid,dean=True)
-  Schcnt=Scholar.objects.filter().count()
-  Supcnt=Supervisor.objects.filter().count()-1
-  now=datetime.datetime.now()
-  supmessage=SupMess.objects.filter(mid=0).values()
-  supmessage1=SupMess.objects.filter(regno=0).values()
-  if now.hour<12:
-    message="Good Morning..."
-  elif now.hour>=12 and now.hour<16:
-    message="Good Afternoon..."
-  else:
-    message="Good Evening..."
-  if request.POST:
-    SearchF=regnosearchForm(request.POST)
-    if SearchF.is_valid():
-     rno=SearchF.cleaned_data['regno']
-     dbS=Personal_Det.objects.filter(regno=rno).values()
-     return render(request,'dean1.html',{"dbS":dbS,"trig":1,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-    else:
-     SearchF=namesearchForm(request.POST)
-     if SearchF.is_valid():
-       name=SearchF.cleaned_data['regno']
-       dbS=Personal_Det.objects.filter(name=name).values()
-       return render(request,'dean1.html',{"dbS":dbS,"trig":1,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-     else:
-       return render(request,'dean1.html',{})
-  else:
-    return render(request,'dean1.html',{})
-
-def dean3(request):
-    mid=request.session['mid']
-    dbD=Supervisor.objects.get(mid=mid,dean=True)
-    Schcnt=Scholar.objects.filter().count()
-    Supcnt=Supervisor.objects.filter().count()-1
-    now=datetime.datetime.now()
-    supmessage=SupMess.objects.filter(mid=0).values()
-    supmessage1=SupMess.objects.filter(regno=0).values()
-    if now.hour<12:
-      message="Good Morning..."
-    elif now.hour>=12 and now.hour<16:
-      message="Good Afternoon..."
-    else:
-      message="Good Evening..."
-    if request.POST:
-      SearchF=midsearchForm(request.POST)
-      if SearchF.is_valid():
-        mid=SearchF.cleaned_data['mid']
-        dbSu=Su_Personal_Det.objects.filter(mid=mid).values()
-        return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"trig":2,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-      else:
-        SearchF=SunamesearchForm(request.POST)
-        if SearchF.is_valid():
-          name=SearchF.cleaned_data['mid']
-          dbSu=Su_Personal_Det.objects.filter(name=name).values()
-          return render(request,'dean1.html',{"dbSu":dbSu,"message":message,"trig":2,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1})
-        else:
-          return render(request,'dean1.html',{})
-    else:
-      return render(request,'dean1.html',{})
+    return render(request,"dean1.html",{"trig":0,"message":message,"mid":mid,"sch":Schcnt,"sup":Supcnt,"supmessage":supmessage,"supmessage1":supmessage1,"dbA":dbA,"dbSList":dbSList})
 
 def sureg(request):
   if request.POST:
     RegSu=suregForm(request.POST)
     if RegSu.is_valid():
-      SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],lname=RegSu.cleaned_data['lname'],sex=RegSu.cleaned_data['sex'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'],phno=RegSu.cleaned_data['phno'],pemail=RegSu.cleaned_data['pemail'])
-      SuObj.save()
-      if RegSu.cleaned_data['exin']=="Other": 
-         SuObj.institution=RegSu.cleaned_data['institution']
-         SuObj.designation=RegSu.cleaned_data['designation']
+      if RegSu.cleaned_data['exin']=="Other":
          check=True
          mid=0
          while(check):
@@ -373,22 +309,28 @@ def sureg(request):
            dbC=Supervisor.objects.filter(mid=mid)
            if not dbC.exists():
              check=False
-         SuObj.mid=mid
-         SuObj.save()
          SuuObj=Supervisor(mid=mid,password=mid)
+         SuuObj.save()
+         SuObj.institution=RegSu.cleaned_data['institution']
+         SuObj.designation=RegSu.cleaned_data['designation']
+         SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],lname=RegSu.cleaned_data['lname'],sex=RegSu.cleaned_data['sex'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'],phno=RegSu.cleaned_data['phno'],pemail=RegSu.cleaned_data['pemail'])
+         SuObj.supervisor=SuuObj
+         SuObj.save()
          SuuObj.save()
          message="Registered Successfully! The Member ID is: "+str(mid)
          return render(request,"login.html",{"message":message})
       else:
-         SuObj.institution="SASTRA"
-         SuObj.designation=""
-         SuObj.mid=RegSu.cleaned_data['mid']
-         SuObj.save()
          SuuObj=Supervisor(mid=RegSu.cleaned_data['mid'],password=RegSu.cleaned_data['mid'])
          SuuObj.save()
-         return render(request,"login.html",{"message":"Registered Successfully!"})
+         SuObj=Su_Personal_Det(name=RegSu.cleaned_data['name'],lname=RegSu.cleaned_data['lname'],sex=RegSu.cleaned_data['sex'],school=RegSu.cleaned_data['school'],email=RegSu.cleaned_data['email'],aoi=RegSu.cleaned_data['aoi'],phno=RegSu.cleaned_data['phno'],pemail=RegSu.cleaned_data['pemail'])
+         SuObj.institution="SASTRA"
+         SuObj.designation=""     
+         SuObj.supervisor=SuuObj
+         SuObj.save()
+         SuuObj.save()
+         return render(request,"login.html",{"message":"Registered Successfully!","col":"green"})
     else:
-      return render(request,"login.html",{"message":"Couldn't Register!"})
+      return render(request,"login.html",{"message":"Couldn't register!","col":"red"})
   else:
     return render(request,"home.html",{})
 
@@ -396,16 +338,28 @@ def schreg(request):
   if request.POST:
     RegS=schregForm(request.POST)
     if RegS.is_valid():
-      SObj=Personal_Det(name=RegS.cleaned_data['name'],lname=RegS.cleaned_data['lname'],sex=RegS.cleaned_data['sex'],dob=RegS.cleaned_data['dob'],regno=RegS.cleaned_data['regno'],school=RegS.cleaned_data['school'],email=RegS.cleaned_data['email'],supervisor=RegS.cleaned_data['supervisor'],regdate=RegS.cleaned_data['regdate'],category=RegS.cleaned_data['category'],pemail=RegS.cleaned_data['pemail'],phno=RegS.cleaned_data['phno'],retitle=RegS.cleaned_data['retitle'],typet=RegS.cleaned_data['typet'])
-      SObj.save()
+      SObj=Personal_Det(name=RegS.cleaned_data['name'],lname=RegS.cleaned_data['lname'],sex=RegS.cleaned_data['sex'],dob=RegS.cleaned_data['dob'],school=RegS.cleaned_data['school'],email=RegS.cleaned_data['email'],regdate=RegS.cleaned_data['regdate'],category=RegS.cleaned_data['category'],pemail=RegS.cleaned_data['pemail'],phno=RegS.cleaned_data['phno'],retitle=RegS.cleaned_data['retitle'],typet=RegS.cleaned_data['typet'])
       TObj=Scholar(regno=RegS.cleaned_data['regno'],password=RegS.cleaned_data['regno'])
+      SuObj=Supervisor.objects.get(mid=RegS.cleaned_data['supervisor'])
+      SObj.supervisor=SuObj
+      TObj.save()
+      if RegS.cleaned_data['exin']=="Other":
+        SObj.institution=RegS.cleaned_data['institution']
+        SObj.institution_ad=RegS.cleaned_data['institution_ad']
+      else:
+        SObj.institution="SASTRA"
+        SObj.institution_ad=""
+      SObj.scholar=TObj
+      SObj.save()
+      SuObj.save()
       TObj.save()
       for key,values in levels.iteritems():
-        UObj=DC_Meeting(regno=RegS.cleaned_data['regno'],progress=key)
+        UObj=DC_Meeting(scholar=TObj,progress=key)
         UObj.save()
       return render(request,"login.html",{"message":"Registered Successfully!","col":"green"})
     else:
-      return render(request,"login.html",{"message":"Couldn't Register!","col":"red"})
+      errmess=schregForm.errors
+      return render(request,"login.html",{"message":errmess,"col":"red"})
   else:
     return render(request,"home.html",{})
 
@@ -413,7 +367,8 @@ def adup(request):
   if request.POST:
    Adup=repupForm(request.POST)
    if Adup.is_valid():
-     UpdObj=Reports(head=Adup.cleaned_data['head'],body=Adup.cleaned_data['body'],regno=Adup.cleaned_data['regno'])
+     schobj=Scholar.objects.get(regno=Adup.cleaned_data['regno'])
+     UpdObj=Reports(head=Adup.cleaned_data['head'],body=Adup.cleaned_data['body'],scholar=schobj)
      UpdObj.save()
      return HttpResponseRedirect('/supervisor1')
    else:

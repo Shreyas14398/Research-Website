@@ -161,6 +161,9 @@ class schregForm(forms.Form):
    regdate=forms.DateField()
    retitle=forms.CharField(max_length=500)
    typet=forms.CharField(max_length=30)
+   exin=forms.CharField(max_length=30)
+   institution=forms.CharField(max_length=500)
+   institution_ad=forms.CharField(max_length=500)
 
 class AnForm(forms.Form):
    title=forms.CharField(max_length=200)
